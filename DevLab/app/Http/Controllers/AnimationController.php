@@ -7,6 +7,7 @@ use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -47,7 +48,9 @@ class AnimationController extends Controller
     public function form(Animation $animation = null)
     {
         return Inertia::render('BackOffice/Animation/Form', [
-            'animation' => $animation
+            'animation' => $animation,
+            'categories' => Animation::CATEGORIES,
+            'department' => Animation::DEPARTMENT
         ]);
     }
 
@@ -60,7 +63,7 @@ class AnimationController extends Controller
     public function store(StoreAnimationRequest $request): RedirectResponse
     {
         Animation::create($request->validated());
-        return redirect()->route('animation')->with('success', "L'animation a bien été crée");
+        return redirect()->route('admin.animation')->with('success', "L'animation a bien été crée");
     }
 
     /**
@@ -73,6 +76,16 @@ class AnimationController extends Controller
     public function update(StoreAnimationRequest $request, Animation $animation): RedirectResponse
     {
         $animation->update($request->validated());
-        return redirect()->route('animation')->with('success', "L'animation a bien été mise à jour");
+        return redirect()->route('admin.animation')->with('success', "L'animation a bien été mise à jour");
+    }
+
+    /**
+     * @param Animation $animation
+     * @return RedirectResponse
+     */
+    public function destroy(Animation $animation): RedirectResponse
+    {
+        $animation->delete();
+        return Redirect::route('admin.animation')->with('success', 'L\'article a bien été supprimé');
     }
 }

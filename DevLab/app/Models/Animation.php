@@ -24,6 +24,22 @@ class Animation extends Model
 {
     use HasFactory;
 
+    const CATEGORIES = [
+        'Séminaire' => 'Séminaire',
+        'Pôt de départ' => 'Pôt de départ',
+        'After Work' => 'After Work',
+        'Activités diverses' => 'Activités diverses',
+    ];
+
+    const DEPARTMENT = [
+        'Ressources Humaines' => 'Ressources Humaines',
+        'Service Informatique' => 'Service Informatique',
+        'Externes' => 'Externes',
+        'Resources et développement' => 'Resources et développement',
+        'Marketing' => 'Marketing',
+        'Community Management' => 'Community Management'
+    ];
+
     protected $fillable = [
         'name',
         'localisation',

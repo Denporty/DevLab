@@ -19,7 +19,7 @@ class AddAnimationTable extends Migration
             $table->string('localisation');
             $table->string('tag')->nullable();
             $table->string('department')->nullable();
-            $table->string('places');
+            $table->integer('places');
             $table->string('description');
             $table->date('start_date');
             $table->date('end_date');

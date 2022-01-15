@@ -2,10 +2,7 @@
     <Authenticated>
         <div class="flex justify-between px-4">
             <h1 class="self-center">Gérer les événements</h1>
-            <InertiaLink :href="route('animation.form')" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                Ajouter un événement
-            </InertiaLink>
-            <a :href="route('animation.form')">
+            <a :href="route('admin.animation.form')" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
                 Ajouter un événement
             </a>
         </div>
@@ -21,6 +18,7 @@
                         <th>Date de fin</th>
                         <th>Nombre de participants</th>
                         <th>Type</th>
+                        <th>Départements concernés</th>
                         <th>Actions</th>
                     </tr>
                 </template>
@@ -33,16 +31,26 @@
                         <td>{{ animation.end_date }}</td>
                         <td>{{ animation.places }}</td>
                         <td>{{ animation.tag }}</td>
-                        <td></td>
+                        <td>{{ animation.department }}</td>
+                        <td>
+                            <div class="flex item-center justify-center">
+                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                    <a :href="route('admin.animation.form', animation.id)">
+                                        <Icon icon="pencil"></Icon>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </template>
             </Table>
-            <p class="w-fit ml-auto">Nombre d'événements : x</p>
+            <p class="w-fit ml-auto">Nombre d'événements : {{ this.animations.data.length }}</p>
         </div>
     </Authenticated>
 </template>
 <script>
 import Input from '@/Components/Input'
+import Icon from "@/Components/Icon";
 import Button from '@/Components/Button'
 import Authenticated from "@/Layouts/Authenticated";
 import { Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
@@ -52,6 +60,7 @@ export default {
         Authenticated,
         Input,
         Button,
+        Icon,
         Table: Tailwind2.Table,
     },
     props: {

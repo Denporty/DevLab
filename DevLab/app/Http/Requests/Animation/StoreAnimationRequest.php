@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Animation;
 
+use App\Models\Animation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAnimationRequest extends FormRequest
@@ -29,9 +30,9 @@ class StoreAnimationRequest extends FormRequest
             'localisation' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
-            'tag' => 'nullable|string|max:255',
-            'department' => 'nullable|string|max:255',
-            'places' => 'nullable|string|max:255',
+            'tag' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::CATEGORIES)),
+            'department' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::DEPARTMENT)),
+            'places' => 'required|integer',
         ];
     }
 
