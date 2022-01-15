@@ -30,6 +30,7 @@
         "webpack": "^5.66.0"
     },
     "dependencies": {
-        "@protonemedia/inertiajs-tables-laravel-query-builder": "^1.3.4"
+        "@protonemedia/inertiajs-tables-laravel-query-builder": "^1.3.4",
+        "flatpickr": "^4.6.9"
     }
 }

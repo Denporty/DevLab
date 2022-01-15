@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string places
  * @property string description
  * @property mixed id
+ * @method static create(array $validated)
  * @method static find(mixed $id)
  * @method static findOrfail(mixed $article_id)
  */
@@ -30,6 +31,8 @@ class Animation extends Model
         'department',
         'places',
         'description',
+        'start_date',
+        'end_date'
     ];
 
     protected $casts = [
