@@ -25935,6 +25935,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_protonemedia_inertiajs_tables_laravel_query_builder__WEBPACK_IMPORTED_MODULE_4__.InteractsWithQueryBuilder],
   name: 'AnimationsList',
   components: {
     Authenticated: _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -28113,7 +28114,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
       }, " Ajouter un événement ", 8
       /* PROPS */
-      , _hoisted_3)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Table, null, {
+      , _hoisted_3)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Table, {
+        filters: _ctx.queryBuilderProps.filters,
+        search: _ctx.queryBuilderProps.search,
+        columns: _ctx.queryBuilderProps.columns,
+        "on-update": _ctx.setQueryBuilder,
+        meta: _ctx.items
+      }, {
         head: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];
         }),
@@ -28151,7 +28158,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, "Nombre d'événements : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.animations.data.length), 1
+      }, 8
+      /* PROPS */
+      , ["filters", "search", "columns", "on-update", "meta"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, "Nombre d'événements : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.animations.data.length), 1
       /* TEXT */
       )])];
     }),

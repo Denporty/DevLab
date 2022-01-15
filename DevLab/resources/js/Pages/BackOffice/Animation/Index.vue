@@ -8,6 +8,11 @@
         </div>
         <div class="p-8">
             <Table
+                :filters="queryBuilderProps.filters"
+                :search="queryBuilderProps.search"
+                :columns="queryBuilderProps.columns"
+                :on-update="setQueryBuilder"
+                :meta="items"
             >
                 <template #head>
                     <tr>
@@ -53,8 +58,9 @@ import Input from '@/Components/Input'
 import Icon from "@/Components/Icon";
 import Button from '@/Components/Button'
 import Authenticated from "@/Layouts/Authenticated";
-import { Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
+import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
 export default {
+    mixins: [InteractsWithQueryBuilder],
     name: 'AnimationsList',
     components: {
         Authenticated,
