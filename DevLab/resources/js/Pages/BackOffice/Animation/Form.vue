@@ -38,17 +38,17 @@
                 </div>
                 <hr class="my-4">
                 <div>
-                    <Checkbox label="Activer le service Click&Eat :" classname="ml-2" name="active-service" v-model:checked="form.active_section" :message="form.errors.active_section"/>
+                    <Checkbox label="Ajouter une section supplémentaire :" classname="ml-2" name="active_section" v-model:checked="form.active_section" :message="form.errors.active_section"/>
                     <InputError class="mt-1" :message="form.errors.active_section"/>
                 </div>
                 <div class="flex" v-if="form.active_section">
-                    <div class="w-1/2 mr-2">
+                    <div class="w-1/3 mr-2">
                         <Input label='Nom de la section' name="section_title" v-model="form.section_title" :message="form.errors.section_title"/>
                     </div>
-                    <div class="w-1/2 ml-2">
+                    <div class="w-1/3 ml-2">
                         <Input label='Description de la section' name="description_section" v-model="form.description_section" :message="form.errors.description_section"/>
                     </div>
-                    <div class="w-1/2 ml-2">
+                    <div class="w-1/3 ml-2">
                         <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
                     </div>
                 </div>
