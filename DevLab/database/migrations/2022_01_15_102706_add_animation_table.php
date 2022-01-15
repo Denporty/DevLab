@@ -17,12 +17,16 @@ class AddAnimationTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('localisation');
-            $table->timestamp('tag')->nullable();
-            $table->string('department')->nullable();
-            $table->string('places');
+            $table->string('tag')->nullable();
+            $table->string('department');
+            $table->integer('places');
             $table->string('description');
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->string('map')->nullable();
+            $table->string('section_title')->nullable();
+            $table->string('description_section')->nullable();
+            $table->boolean('active_section')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
