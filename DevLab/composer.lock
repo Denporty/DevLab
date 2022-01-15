@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd3cad198d0f31276e9f72a2fd202f07",
+    "content-hash": "7c626a28c8beba9b79c8687501d3c0b4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2259,6 +2259,66 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "protonemedia/inertiajs-tables-laravel-query-builder",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder.git",
+                "reference": "61217e371fc4076409f330e167e8d244874333f0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protonemedia/inertiajs-tables-laravel-query-builder/zipball/61217e371fc4076409f330e167e8d244874333f0",
+                "reference": "61217e371fc4076409f330e167e8d244874333f0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.67",
+                "php": "^7.4|^8.0|^8.1"
+            },
+            "require-dev": {
+                "inertiajs/inertia-laravel": "^0.4.5",
+                "orchestra/testbench": "^6.23",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ProtoneMedia\\LaravelQueryBuilderInertiaJs\\InertiaTableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ProtoneMedia\\LaravelQueryBuilderInertiaJs\\": "php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pascal Baljet",
+                    "email": "pascal@protone.media"
+                }
+            ],
+            "description": "Inertia.js Front-end Components for Spatie's Laravel Query Builder",
+            "homepage": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder",
+            "support": {
+                "issues": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder/issues",
+                "source": "https://github.com/protonemedia/inertiajs-tables-laravel-query-builder/tree/1.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/pascalbaljet",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-19T18:19:24+00:00"
         },
         {
             "name": "psr/container",

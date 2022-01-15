@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnimationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,5 +29,14 @@ Route::get('/index', [Controller::class, 'index'])->name('index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/animation', [AnimationController::class, 'index'])->name('animation');
+});
+Route::get('/animation', [AnimationController::class, 'index'])->name('animation');
 
 require __DIR__.'/auth.php';
