@@ -180,6 +180,7 @@
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
 export default {
+    name: "Welcome",
     components: {
       Head,
       Link,
