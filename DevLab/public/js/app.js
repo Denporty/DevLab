@@ -25621,10 +25621,13 @@ __webpack_require__.r(__webpack_exports__);
     Table: _protonemedia_inertiajs_tables_laravel_query_builder__WEBPACK_IMPORTED_MODULE_3__.Tailwind2.Table
   },
   props: {
-    items: {
+    animations: {
       type: Object,
       "default": {}
     }
+  },
+  mounted: function mounted() {
+    console.log(this.animations);
   }
 });
 

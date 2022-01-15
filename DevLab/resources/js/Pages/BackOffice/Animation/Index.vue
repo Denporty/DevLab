@@ -52,11 +52,14 @@ export default {
         Table: Tailwind2.Table,
     },
     props: {
-        items: {
+        animations: {
             type: Object,
             default: {}
         }
     },
+    mounted() {
+        console.log(this.animations)
+    }
 }
 </script>
 
