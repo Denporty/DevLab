@@ -12,8 +12,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string localisation
  * @property string tag
  * @property string department
- * @property string places
+ * @property integer places
  * @property string description
+ * @property string map
+ * @property string section_title
+ * @property string description_section
+ * @property boolean active_section
  * @property mixed id
  * @method static create(array $validated)
  * @method static find(mixed $id)
@@ -47,6 +51,10 @@ class Animation extends Model
         'department',
         'places',
         'description',
+        'map',
+        'section_title',
+        'description_section',
+        'active_section',
         'start_date',
         'end_date'
     ];

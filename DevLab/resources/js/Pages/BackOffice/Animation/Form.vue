@@ -36,6 +36,22 @@
                 <div class="my-2">
                     <Datepicker label="Date de fin" name="end_date" v-model="form.end_date" :message="form.errors.end_date"/>
                 </div>
+                <hr class="my-4">
+                <div>
+                    <Checkbox label="Activer le service Click&Eat :" classname="ml-2" name="active-service" v-model:checked="form.active_section" :message="form.errors.active_section"/>
+                    <InputError class="mt-1" :message="form.errors.active_section"/>
+                </div>
+                <div class="flex" v-if="form.active_section">
+                    <div class="w-1/2 mr-2">
+                        <Input label='Nom de la section' name="section_title" v-model="form.section_title" :message="form.errors.section_title"/>
+                    </div>
+                    <div class="w-1/2 ml-2">
+                        <Input label='Description de la section' name="description_section" v-model="form.description_section" :message="form.errors.description_section"/>
+                    </div>
+                    <div class="w-1/2 ml-2">
+                        <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
+                    </div>
+                </div>
                 <div class="flex py-4">
                     <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
                         Sauvegarder
@@ -57,6 +73,7 @@ import Button from '@/Components/Button'
 import Datepicker from "@/Components/DatePicker";
 import Select from "@/Components/Select";
 import Modal from "@/Components/Modal";
+import InputError from "@/Components/InputError";
 export default {
     name: 'AnimationForm',
     components: {
@@ -66,7 +83,8 @@ export default {
         Checkbox,
         Button,
         Select,
-        Modal
+        Modal,
+        InputError
 
     },
     props: {
@@ -85,6 +103,10 @@ export default {
                 end_date: this.animation?.end_date ?? null,
                 tag: this.animation?.tag ?? null,
                 places: this.animation?.places ?? 0,
+                description_section: this.animation?.description_section ?? null,
+                section_title: this.animation?.section_title ?? null,
+                map: this.animation?.map ?? null,
+                active_section: this.animation?.active_section ?? false,
             }),
             showModal: false
         }

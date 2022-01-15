@@ -25837,6 +25837,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_DatePicker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/DatePicker */ "./resources/js/Components/DatePicker.vue");
 /* harmony import */ var _Components_Select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Select */ "./resources/js/Components/Select.vue");
 /* harmony import */ var _Components_Modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/Modal */ "./resources/js/Components/Modal.vue");
+/* harmony import */ var _Components_InputError__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Components/InputError */ "./resources/js/Components/InputError.vue");
+
 
 
 
@@ -25853,7 +25855,8 @@ __webpack_require__.r(__webpack_exports__);
     Checkbox: _Components_Checkbox__WEBPACK_IMPORTED_MODULE_2__["default"],
     Button: _Components_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
     Select: _Components_Select__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Modal: _Components_Modal__WEBPACK_IMPORTED_MODULE_6__["default"]
+    Modal: _Components_Modal__WEBPACK_IMPORTED_MODULE_6__["default"],
+    InputError: _Components_InputError__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   props: {
     animation: Object,
@@ -25861,7 +25864,7 @@ __webpack_require__.r(__webpack_exports__);
     department: Object
   },
   data: function data() {
-    var _this$animation$name, _this$animation, _this$animation$descr, _this$animation2, _this$animation$local, _this$animation3, _this$animation$depar, _this$animation4, _this$animation$start, _this$animation5, _this$animation$end_d, _this$animation6, _this$animation$tag, _this$animation7, _this$animation$place, _this$animation8;
+    var _this$animation$name, _this$animation, _this$animation$descr, _this$animation2, _this$animation$local, _this$animation3, _this$animation$depar, _this$animation4, _this$animation$start, _this$animation5, _this$animation$end_d, _this$animation6, _this$animation$tag, _this$animation7, _this$animation$place, _this$animation8, _this$animation$descr2, _this$animation9, _this$animation$secti, _this$animation10, _this$animation$map, _this$animation11, _this$animation$activ, _this$animation12;
 
     return {
       form: this.$inertia.form({
@@ -25872,21 +25875,25 @@ __webpack_require__.r(__webpack_exports__);
         start_date: (_this$animation$start = (_this$animation5 = this.animation) === null || _this$animation5 === void 0 ? void 0 : _this$animation5.start_date) !== null && _this$animation$start !== void 0 ? _this$animation$start : null,
         end_date: (_this$animation$end_d = (_this$animation6 = this.animation) === null || _this$animation6 === void 0 ? void 0 : _this$animation6.end_date) !== null && _this$animation$end_d !== void 0 ? _this$animation$end_d : null,
         tag: (_this$animation$tag = (_this$animation7 = this.animation) === null || _this$animation7 === void 0 ? void 0 : _this$animation7.tag) !== null && _this$animation$tag !== void 0 ? _this$animation$tag : null,
-        places: (_this$animation$place = (_this$animation8 = this.animation) === null || _this$animation8 === void 0 ? void 0 : _this$animation8.places) !== null && _this$animation$place !== void 0 ? _this$animation$place : 0
+        places: (_this$animation$place = (_this$animation8 = this.animation) === null || _this$animation8 === void 0 ? void 0 : _this$animation8.places) !== null && _this$animation$place !== void 0 ? _this$animation$place : 0,
+        description_section: (_this$animation$descr2 = (_this$animation9 = this.animation) === null || _this$animation9 === void 0 ? void 0 : _this$animation9.description_section) !== null && _this$animation$descr2 !== void 0 ? _this$animation$descr2 : null,
+        section_title: (_this$animation$secti = (_this$animation10 = this.animation) === null || _this$animation10 === void 0 ? void 0 : _this$animation10.section_title) !== null && _this$animation$secti !== void 0 ? _this$animation$secti : null,
+        map: (_this$animation$map = (_this$animation11 = this.animation) === null || _this$animation11 === void 0 ? void 0 : _this$animation11.map) !== null && _this$animation$map !== void 0 ? _this$animation$map : null,
+        active_section: (_this$animation$activ = (_this$animation12 = this.animation) === null || _this$animation12 === void 0 ? void 0 : _this$animation12.active_section) !== null && _this$animation$activ !== void 0 ? _this$animation$activ : false
       }),
       showModal: false
     };
   },
   methods: {
     submitForm: function submitForm() {
-      var _this$animation9;
+      var _this$animation13;
 
-      if ((_this$animation9 = this.animation) !== null && _this$animation9 !== void 0 && _this$animation9.id) this.form.post(route('admin.animation.update', this.animation.id));else this.form.post(route('admin.animation.store'));
+      if ((_this$animation13 = this.animation) !== null && _this$animation13 !== void 0 && _this$animation13.id) this.form.post(route('admin.animation.update', this.animation.id));else this.form.post(route('admin.animation.store'));
     },
     confirmDelete: function confirmDelete() {
-      var _this$animation10;
+      var _this$animation14;
 
-      this.$inertia["delete"](route('admin.animation.delete', (_this$animation10 = this.animation) === null || _this$animation10 === void 0 ? void 0 : _this$animation10.id));
+      this.$inertia["delete"](route('admin.animation.delete', (_this$animation14 = this.animation) === null || _this$animation14 === void 0 ? void 0 : _this$animation14.id));
       this.showModal = false;
     }
   }
@@ -27749,13 +27756,33 @@ var _hoisted_12 = {
 var _hoisted_13 = {
   "class": "my-2"
 };
-var _hoisted_14 = {
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
+  "class": "my-4"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  key: 0,
+  "class": "flex"
+};
+var _hoisted_16 = {
+  "class": "w-1/2 mr-2"
+};
+var _hoisted_17 = {
+  "class": "w-1/2 ml-2"
+};
+var _hoisted_18 = {
+  "class": "w-1/2 ml-2"
+};
+var _hoisted_19 = {
   "class": "flex py-4"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sauvegarder ");
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sauvegarder ");
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Supprimer ");
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Supprimer ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Modal");
@@ -27765,6 +27792,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Select");
 
   var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
+
+  var _component_Checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Checkbox");
+
+  var _component_InputError = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputError");
 
   var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
 
@@ -27882,13 +27913,59 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         message: $data.form.errors.end_date
       }, null, 8
       /* PROPS */
-      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+      , ["modelValue", "message"])]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Checkbox, {
+        label: "Activer le service Click&Eat :",
+        classname: "ml-2",
+        name: "active-service",
+        checked: $data.form.active_section,
+        "onUpdate:checked": _cache[10] || (_cache[10] = function ($event) {
+          return $data.form.active_section = $event;
+        }),
+        message: $data.form.errors.active_section
+      }, null, 8
+      /* PROPS */
+      , ["checked", "message"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputError, {
+        "class": "mt-1",
+        message: $data.form.errors.active_section
+      }, null, 8
+      /* PROPS */
+      , ["message"])]), $data.form.active_section ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+        label: "Nom de la section",
+        name: "section_title",
+        modelValue: $data.form.section_title,
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $data.form.section_title = $event;
+        }),
+        message: $data.form.errors.section_title
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+        label: "Description de la section",
+        name: "description_section",
+        modelValue: $data.form.description_section,
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+          return $data.form.description_section = $event;
+        }),
+        message: $data.form.errors.description_section
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+        label: "Carte",
+        name: "map",
+        modelValue: $data.form.map,
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+          return $data.form.map = $event;
+        }),
+        message: $data.form.errors.map
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
         disabled: $data.form.processing,
         onClick: $options.submitForm,
         "class": "bg-blue-500 hover:bg-blue-700"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_15];
+          return [_hoisted_20];
         }),
         _: 1
         /* STABLE */
@@ -27897,13 +27974,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["disabled", "onClick"]), (_$props$animation = $props.animation) !== null && _$props$animation !== void 0 && _$props$animation.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Button, {
         key: 0,
-        onClick: _cache[10] || (_cache[10] = function ($event) {
+        onClick: _cache[14] || (_cache[14] = function ($event) {
           return $data.showModal = true;
         }),
         "class": "bg-red-500 hover:bg-red-700 ml-4"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_16];
+          return [_hoisted_21];
         }),
         _: 1
         /* STABLE */
