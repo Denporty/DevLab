@@ -28,6 +28,9 @@
                     <Input type="number" label='Nombre de places' name="places" v-model="form.places" :message="form.errors.places"/>
                 </div>
                 <div class="my-2">
+                    <Input label="Résumé" name="summary" v-model="form.summary" :message="form.errors.summary"/>
+                </div>
+                <div class="my-2">
                     <Input label="Description de l'événement" name="description" v-model="form.description" :message="form.errors.description"/>
                 </div>
                 <div class="my-2">
@@ -107,6 +110,7 @@ export default {
                 section_title: this.animation?.section_title ?? null,
                 map: this.animation?.map ?? null,
                 active_section: this.animation?.active_section ?? false,
+                summary: this.animation?.summary ?? null,
             }),
             showModal: false
         }

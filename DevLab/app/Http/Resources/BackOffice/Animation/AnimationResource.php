@@ -27,6 +27,7 @@ class AnimationResource extends JsonResource
             'active_service' => $this->active_service,
             'description_section' => $this->description_section,
             'section_title' => $this->section_title,
+            'summary' => $this->summary,
             'start_date' => Carbon::createFromFormat('Y-m-d H:i:s', $this->start_date)->isoFormat('dddd D MMMM HH[h]mm'),
             'end_date' => Carbon::createFromFormat('Y-m-d H:i:s', $this->end_date)->isoFormat('dddd D MMMM HH[h]mm'),
             'created_at' => Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->isoFormat('dddd D MMMM HH[h]mm'),
