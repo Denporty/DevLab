@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimationController;
+use App\Http\Controllers\FOAnimationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -41,6 +42,9 @@ Route::group([
     Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->name('animation.update');
     Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->name('animation.delete');
 });
+
+Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
+Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
 
 
 require __DIR__.'/auth.php';
