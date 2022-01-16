@@ -12,7 +12,7 @@
                 :search="queryBuilderProps.search"
                 :columns="queryBuilderProps.columns"
                 :on-update="setQueryBuilder"
-                :meta="items"
+                :meta="animations"
             >
                 <template #head>
                     <tr>

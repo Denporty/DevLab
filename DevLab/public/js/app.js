@@ -28119,7 +28119,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         search: _ctx.queryBuilderProps.search,
         columns: _ctx.queryBuilderProps.columns,
         "on-update": _ctx.setQueryBuilder,
-        meta: _ctx.items
+        meta: $props.animations
       }, {
         head: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_5];

@@ -17,7 +17,7 @@ class AnimationController extends Controller
     /**
      * @var int
      */
-    protected $nbPerPage = 10;
+    protected $nbPerPage = 100;
 
     public function index()
     {
