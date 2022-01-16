@@ -37,6 +37,7 @@ class StoreAnimationRequest extends FormRequest
             'tag' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::CATEGORIES)),
             'department' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::DEPARTMENT)),
             'places' => 'required|integer',
+            'summary' => 'required|string|max:255',
         ];
     }
 

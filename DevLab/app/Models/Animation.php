@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string section_title
  * @property string description_section
  * @property boolean active_section
+ * @property string summary
  * @property mixed id
  * @method static create(array $validated)
  * @method static find(mixed $id)
@@ -56,11 +57,12 @@ class Animation extends Model
         'description_section',
         'active_section',
         'start_date',
-        'end_date'
+        'end_date',
+        'summary'
     ];
 
     protected $casts = [
-        'start_date' => 'datetime:Y-m-d H:i:s',
-        'end_date' => 'datetime:Y-m-d H:i:s',
+        'start_date' => 'datetime:Y-m-d',
+        'end_date' => 'datetime:Y-m-d',
     ];
 }
