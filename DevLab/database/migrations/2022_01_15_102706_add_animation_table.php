@@ -20,10 +20,10 @@ class AddAnimationTable extends Migration
             $table->string('tag')->nullable();
             $table->string('department');
             $table->integer('places');
-            $table->string('description');
+            $table->text('description');
             $table->string('map')->nullable();
             $table->string('section_title')->nullable();
-            $table->string('description_section')->nullable();
+            $table->text('description_section')->nullable();
             $table->boolean('active_section')->nullable();
             $table->date('start_date');
             $table->date('end_date');
