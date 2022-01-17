@@ -8,7 +8,7 @@
                     <a class="block md:text-white mr-4 hidden lg:flex" :href="route('animation')">Liste des animations</a>
                 </div>
                 <button id="nav" v-on:click="toggleBurger" class="text-gray-600 font-semibold px-1 text-2xl p-1 px-2 rounded bg-gray-20 flex lg:hidden" type="button">
-                    <Icon icon="menuburger"></Icon>
+                    <Icon :icon="showBurger ? 'cross' : 'menuburger'"></Icon>
                 </button>
             </div>
         </nav>
