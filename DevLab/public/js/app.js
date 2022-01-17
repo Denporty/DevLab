@@ -28006,7 +28006,7 @@ var _hoisted_2 = {
   "class": "flex my-2 justify-center"
 };
 var _hoisted_3 = {
-  "class": "px-36"
+  "class": "lg:px-36 px-4"
 };
 var _hoisted_4 = ["href"];
 var _hoisted_5 = {
@@ -28047,17 +28047,16 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_16 = {
-  key: 0,
-  "class": "flex"
+  key: 0
 };
 var _hoisted_17 = {
-  "class": "w-1/3 mr-2"
+  "class": "flex lg:flex-row flex-col"
 };
 var _hoisted_18 = {
-  "class": "w-1/3 ml-2"
+  "class": "lg:w-1/2 mr-2"
 };
 var _hoisted_19 = {
-  "class": "w-1/3 ml-2"
+  "class": "lg:w-1/2"
 };
 var _hoisted_20 = {
   "class": "flex py-4"
@@ -28222,7 +28221,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         message: $data.form.errors.active_section
       }, null, 8
       /* PROPS */
-      , ["message"])]), $data.form.active_section ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+      , ["message"])]), $data.form.active_section ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
         label: "Nom de la section",
         name: "section_title",
         modelValue: $data.form.section_title,
@@ -28232,24 +28231,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         message: $data.form.errors.section_title
       }, null, 8
       /* PROPS */
-      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
-        label: "Description de la section",
-        name: "description_section",
-        modelValue: $data.form.description_section,
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return $data.form.description_section = $event;
-        }),
-        message: $data.form.errors.description_section
-      }, null, 8
-      /* PROPS */
       , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
         label: "Carte",
         name: "map",
         modelValue: $data.form.map,
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
           return $data.form.map = $event;
         }),
         message: $data.form.errors.map
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+        label: "Description de la section",
+        name: "description_section",
+        modelValue: $data.form.description_section,
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+          return $data.form.description_section = $event;
+        }),
+        message: $data.form.errors.description_section
       }, null, 8
       /* PROPS */
       , ["modelValue", "message"])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {

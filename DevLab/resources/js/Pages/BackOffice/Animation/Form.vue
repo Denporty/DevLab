@@ -7,7 +7,7 @@
                 <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
             </div>
         </Modal>
-        <div class="px-36">
+        <div class="lg:px-36 px-4">
             <a :href="route('admin.animation')" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                 Retour
             </a>
@@ -44,15 +44,17 @@
                     <Checkbox label="Ajouter une section supplémentaire :" classname="ml-2" name="active_section" v-model:checked="form.active_section" :message="form.errors.active_section"/>
                     <InputError class="mt-1" :message="form.errors.active_section"/>
                 </div>
-                <div class="flex" v-if="form.active_section">
-                    <div class="w-1/3 mr-2">
-                        <Input label='Nom de la section' name="section_title" v-model="form.section_title" :message="form.errors.section_title"/>
+                <div v-if="form.active_section">
+                    <div class="flex lg:flex-row flex-col">
+                        <div class="lg:w-1/2 mr-2">
+                            <Input label='Nom de la section' name="section_title" v-model="form.section_title" :message="form.errors.section_title"/>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
+                        </div>
                     </div>
-                    <div class="w-1/3 ml-2">
+                    <div>
                         <Input label='Description de la section' name="description_section" v-model="form.description_section" :message="form.errors.description_section"/>
-                    </div>
-                    <div class="w-1/3 ml-2">
-                        <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
                     </div>
                 </div>
                 <div class="flex py-4">
