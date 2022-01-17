@@ -15,6 +15,12 @@ then
     php artisan migrate --force
 fi
 
+read -p "Do you want to generate fake data ? : y / N " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    php artisan db:seed --class=AnimationSeeder
+fi
+
 php artisan clear-compiled
 php artisan view:clear
 php artisan config:clear
