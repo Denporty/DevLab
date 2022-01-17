@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Pour Init le projet :
+
+### Il suffit de faire un "sh pullScript.sh" dans votre console apres avoir configuré votre env et nottamment votre db.
+### /!\ N'oubliez pas de lancer votre serveur avec "php artisan serve" et de lancer votre watch "npm run watch". /!\
+Si ça ne marche pas faire : "npm install && npm run dev" + "composer install" + lancer votre serveur et votre watch avec "npm run watch" et "php artisan serve".
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

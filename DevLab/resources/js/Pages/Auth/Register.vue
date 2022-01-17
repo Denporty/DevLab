@@ -1,5 +1,5 @@
 <template>
-    <Head title="Register" />
+    <Head title="Register / ManageMyEvents" />
 
     <BreezeValidationErrors class="mb-4" />
 
