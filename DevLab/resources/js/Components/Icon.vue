@@ -32,6 +32,15 @@
 			c6.387-6.614,6.387-17.099,0-23.712L228.929,205.01z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
     </svg>
 
+    <!-- Menu Responsive -->
+    <svg v-if="icon === 'menuburger'"
+         viewBox="0 0 100 80" width="40" height="40">
+		<rect width="100" fill="#FFFFFF" height="20"></rect>
+        <rect y="30" fill="#FFFFFF" width="100" height="20"></rect>
+        <rect y="60" fill="#FFFFFF" width="100" height="20"></rect>
+    </svg>
+
+
 </template>
 
 <script>
