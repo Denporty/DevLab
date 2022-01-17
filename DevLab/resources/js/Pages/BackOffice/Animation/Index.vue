@@ -19,10 +19,7 @@
                         <th>ID</th>
                         <th>Nom</th>
                         <th>Localisation</th>
-                        <th>Date de début</th>
                         <th>Date de fin</th>
-                        <th>Nombre de participants</th>
-                        <th>Type</th>
                         <th>Départements concernés</th>
                         <th>Actions</th>
                     </tr>
@@ -32,10 +29,7 @@
                         <td>{{ animation.id }}</td>
                         <td>{{ animation.name }}</td>
                         <td>{{ animation.localisation }}</td>
-                        <td>{{ animation.start_date }}</td>
                         <td>{{ animation.end_date }}</td>
-                        <td>{{ animation.places }}</td>
-                        <td>{{ animation.tag }}</td>
                         <td>{{ animation.department }}</td>
                         <td>
                             <div class="flex item-center justify-center">
