@@ -14,7 +14,7 @@ class UpdateAnimationTable extends Migration
     public function up()
     {
         Schema::table('animations', function (Blueprint $table) {
-            $table->string('summary');
+            $table->text('summary');
         });
     }
 
