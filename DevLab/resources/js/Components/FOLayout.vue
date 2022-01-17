@@ -9,7 +9,7 @@
             </div>
         </nav>
     </header>
-    <body class="p-16">
+    <body class="lg:p-16 px-8 py-16">
         <slot></slot>
     </body>
 </template>
