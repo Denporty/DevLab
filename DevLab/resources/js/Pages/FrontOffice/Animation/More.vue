@@ -41,12 +41,12 @@
                     <br>
                     <h2 class="text-gray-800 text-2xl font-semibold">Carte de l'événement :</h2>
                     <br>
-                    <div v-html="animation.map" id="map" class="manage-size flex flex-col flex-grow">
-                    </div>
                 </div>
             </div>
         </div>
     </FOLayout>
+    <div v-html="animation.map" id="map" class="manage-size flex flex-col flex-grow items-center overflow-hidden pb-16">
+    </div>
 </template>
 <script>
 import FOLayout from "@/Components/FOLayout";

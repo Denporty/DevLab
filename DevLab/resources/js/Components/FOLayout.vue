@@ -16,7 +16,7 @@
             <a class="block md:text-white mr-4 p-4" :href="route('animation')">Liste des animations</a>
         </div>
     </header>
-    <body class="lg:p-16 px-8 py-16">
+    <body class="lg:px-16 px-8 pt-16">
         <slot></slot>
     </body>
 </template>

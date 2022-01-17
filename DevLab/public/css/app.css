@@ -644,6 +644,9 @@ select {
 .z-10 {
   z-index: 10;
 }
+.m-auto {
+  margin: auto;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1264,6 +1267,12 @@ select {
 }
 .pr-3 {
   padding-right: 0.75rem;
+}
+.pt-16 {
+  padding-top: 4rem;
+}
+.pb-16 {
+  padding-bottom: 4rem;
 }
 .text-left {
   text-align: left;
@@ -1896,6 +1905,10 @@ select {
     display: none;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -1911,6 +1924,16 @@ select {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .lg\:px-36 {
+    padding-left: 9rem;
+    padding-right: 9rem;
   }
 }
 
