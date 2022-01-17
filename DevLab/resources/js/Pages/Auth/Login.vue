@@ -1,5 +1,5 @@
 <template>
-    <Head title="Log in" />
+    <Head title="Log in / ManageMyEvents" />
 
     <BreezeValidationErrors class="mb-4" />
 

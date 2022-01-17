@@ -1,4 +1,5 @@
 <template>
+    <Head title="ManageMyEvents"/>
     <header>
         <nav class="flex justify-between w-full bg-blue-500 text-white p-4">
             <a :href="route('animation')"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
@@ -14,7 +15,11 @@
     </body>
 </template>
 <script>
+import {Head} from "@inertiajs/inertia-vue3";
 export default {
-    name: 'FOLayout'
+    name: 'FOLayout',
+    components: {
+        Head
+    }
 }
 </script>
