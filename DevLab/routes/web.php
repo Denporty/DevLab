@@ -29,18 +29,18 @@ Route::get('/', function () {
 Route::get('/index', [Controller::class, 'index'])->name('index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/animation', [AnimationController::class, 'index'])->name('animation');
-    Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->name('animation.form');
-    Route::post('/animation/store', [AnimationController::class, 'store'])->name('animation.store');
-    Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->name('animation.update');
-    Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->name('animation.delete');
+    Route::get('/animation', [AnimationController::class, 'index'])->middleware(['admin'])->name('animation');
+    Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->middleware(['admin'])->name('animation.form');
+    Route::post('/animation/store', [AnimationController::class, 'store'])->middleware(['admin'])->name('animation.store');
+    Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('animation.update');
+    Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('animation.delete');
 });
 
 Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
