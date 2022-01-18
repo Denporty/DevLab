@@ -28156,24 +28156,24 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   "class": "my-2"
 };
+var _hoisted_15 = {
+  "class": "my-2"
+};
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
   "class": "my-4"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
+var _hoisted_17 = {
   key: 0
 };
-var _hoisted_17 = {
+var _hoisted_18 = {
   "class": "flex lg:flex-row flex-col"
 };
-var _hoisted_18 = {
-  "class": "lg:w-1/2 mr-2"
-};
 var _hoisted_19 = {
-  "class": "lg:w-1/2"
+  "class": "lg:w-1/2 mr-2"
 };
 var _hoisted_20 = {
   "class": "flex py-4"
@@ -28317,12 +28317,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         message: $data.form.errors.end_date
       }, null, 8
       /* PROPS */
-      , ["modelValue", "message"])]), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Checkbox, {
+      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+        label: "Carte",
+        name: "map",
+        modelValue: $data.form.map,
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $data.form.map = $event;
+        }),
+        message: $data.form.errors.map
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "message"])]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Checkbox, {
         label: "Ajouter une section supplémentaire :",
         classname: "ml-2",
         name: "active_section",
         checked: $data.form.active_section,
-        "onUpdate:checked": _cache[11] || (_cache[11] = function ($event) {
+        "onUpdate:checked": _cache[12] || (_cache[12] = function ($event) {
           return $data.form.active_section = $event;
         }),
         message: $data.form.errors.active_section
@@ -28333,24 +28343,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         message: $data.form.errors.active_section
       }, null, 8
       /* PROPS */
-      , ["message"])]), $data.form.active_section ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
+      , ["message"])]), $data.form.active_section ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
         label: "Nom de la section",
         name: "section_title",
         modelValue: $data.form.section_title,
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
           return $data.form.section_title = $event;
         }),
         message: $data.form.errors.section_title
-      }, null, 8
-      /* PROPS */
-      , ["modelValue", "message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
-        label: "Carte",
-        name: "map",
-        modelValue: $data.form.map,
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return $data.form.map = $event;
-        }),
-        message: $data.form.errors.map
       }, null, 8
       /* PROPS */
       , ["modelValue", "message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Input, {
