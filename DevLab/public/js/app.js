@@ -26000,9 +26000,6 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": {}
     }
-  },
-  mounted: function mounted() {
-    console.log(this.animations);
   }
 });
 
@@ -26054,10 +26051,6 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     items: Object,
     user: Object
-  },
-  mounted: function mounted() {
-    console.log(this.items);
-    console.log(this.user);
   }
 });
 
@@ -26083,9 +26076,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     animation: Object
-  },
-  mounted: function mounted() {
-    console.log(this.animation);
   }
 });
 

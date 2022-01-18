@@ -55,9 +55,6 @@ export default {
     components: {FOLayout},
     props: {
         animation: Object
-    },
-    mounted() {
-        console.log(this.animation)
     }
 }
 </script>

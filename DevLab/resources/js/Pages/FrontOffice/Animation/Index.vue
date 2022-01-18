@@ -42,10 +42,6 @@ export default {
     props: {
         items: Object,
         user: Object
-    },
-    mounted() {
-        console.log(this.items)
-        console.log(this.user)
     }
 }
 </script>
