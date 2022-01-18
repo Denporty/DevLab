@@ -68,9 +68,6 @@ export default {
             type: Object,
             default: {}
         }
-    },
-    mounted() {
-        console.log(this.animations)
     }
 }
 </script>

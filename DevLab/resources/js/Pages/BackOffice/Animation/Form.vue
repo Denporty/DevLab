@@ -8,9 +8,9 @@
             </div>
         </Modal>
         <div class="lg:px-36 px-4">
-            <a :href="route('admin.animation')" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
+            <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                 Retour
-            </a>
+            </button>
             <div class="w-full px-4 py-6">
                 <div class="my-2">
                     <Input label="Titre de l'animation" name="name" v-model="form.name" :message="form.errors.name"/>
@@ -39,6 +39,9 @@
                 <div class="my-2">
                     <Datepicker label="Date de fin" name="end_date" v-model="form.end_date" :message="form.errors.end_date"/>
                 </div>
+                <div class="my-2">
+                    <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
+                </div>
                 <hr class="my-4">
                 <div>
                     <Checkbox label="Ajouter une section supplémentaire :" classname="ml-2" name="active_section" v-model:checked="form.active_section" :message="form.errors.active_section"/>
@@ -48,9 +51,6 @@
                     <div class="flex lg:flex-row flex-col">
                         <div class="lg:w-1/2 mr-2">
                             <Input label='Nom de la section' name="section_title" v-model="form.section_title" :message="form.errors.section_title"/>
-                        </div>
-                        <div class="lg:w-1/2">
-                            <Input label='Carte' name="map" v-model="form.map" :message="form.errors.map"/>
                         </div>
                     </div>
                     <div>

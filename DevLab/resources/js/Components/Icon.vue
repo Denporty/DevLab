@@ -6,6 +6,13 @@
               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
     </svg>
 
+    <!--    Pencil Blue     -->
+    <svg v-if="icon === 'pencil-blue'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" class="text-blue-500 hover:scale-110">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+    </svg>
+
     <!--    Trash     -->
     <svg v-if="icon === 'trash'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
          stroke="currentColor" class="hover:text-red-500 hover:scale-110">
@@ -21,24 +28,10 @@
     </svg>
 
     <!--    Cross     -->
-    <svg v-if="icon === 'cross'" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-         y="0px"
-         width="20" height="20"
-         viewBox="0 0 409.806 409.806" style="enable-background:new 0 0 409.806 409.806;" xml:space="preserve"><g><g>
-		<path d="M228.929,205.01L404.596,29.343c6.78-6.548,6.968-17.352,0.42-24.132c-6.548-6.78-17.352-6.968-24.132-0.42
-			c-0.142,0.137-0.282,0.277-0.42,0.42L204.796,180.878L29.129,5.21c-6.78-6.548-17.584-6.36-24.132,0.42
-			c-6.388,6.614-6.388,17.099,0,23.713L180.664,205.01L4.997,380.677c-6.663,6.664-6.663,17.468,0,24.132
-			c6.664,6.662,17.468,6.662,24.132,0l175.667-175.667l175.667,175.667c6.78,6.548,17.584,6.36,24.132-0.42
-			c6.387-6.614,6.387-17.099,0-23.712L228.929,205.01z"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
-    </svg>
+    <svg v-if="icon === 'cross'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
 
     <!-- Menu Responsive -->
-    <svg v-if="icon === 'menuburger'"
-         viewBox="0 0 100 80" width="40" height="40">
-		<rect width="100" fill="#FFFFFF" height="20"></rect>
-        <rect y="30" fill="#FFFFFF" width="100" height="20"></rect>
-        <rect y="60" fill="#FFFFFF" width="100" height="20"></rect>
-    </svg>
+    <svg v-if="icon === 'menuburger'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>
 
 
 </template>

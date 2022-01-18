@@ -1,8 +1,15 @@
 <template>
     <FOLayout>
-        <a :href="route('animation')" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
-            Retour
-        </a>
+        <div class="flex flex-row justify-between w-full">
+            <button onclick="window.history.back()" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+                Retour
+            </button>
+            <div v-if="$page.props.auth.user.admin" class="w-8 mr-2 transform hover:text-purple-500 hover:scale-110">
+                <a :href="route('admin.animation.form', animation.id)">
+                    <Icon class="text-blue-400" icon="pencil-blue"></Icon>
+                </a>
+            </div>
+        </div>
         <div>
             <div class="flex lg:flex-row flex-col items-end lg:justify-between mb-16">
                 <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ animation.tag }}</p>
@@ -35,29 +42,26 @@
                 <h2 class="text-gray-800 text-2xl font-semibold capitalize">{{ animation.section_title }}</h2>
                 <br>
                 <p>{{ animation.description_section }}</p>
-                <div v-if="animation.map != null">
-                    <br>
-                    <hr class="w-36">
-                    <br>
-                    <h2 class="text-gray-800 text-2xl font-semibold">Carte de l'événement :</h2>
-                    <br>
-                </div>
             </div>
         </div>
+        <div v-if="animation.map != null">
+            <br>
+            <hr class="w-36">
+            <br>
+            <h2 class="text-gray-800 text-2xl font-semibold">Carte de l'événement :</h2>
+            <br>
+        </div>
+        <div v-html="animation.map" id="map" class="manage-size flex flex-col flex-grow items-center overflow-hidden pb-16"></div>
     </FOLayout>
-    <div v-html="animation.map" id="map" class="manage-size flex flex-col flex-grow items-center overflow-hidden pb-16">
-    </div>
 </template>
 <script>
 import FOLayout from "@/Components/FOLayout";
+import Icon from "@/Components/Icon";
 export default {
     name: 'AnimationMore',
-    components: {FOLayout},
+    components: {FOLayout, Icon},
     props: {
         animation: Object
-    },
-    mounted() {
-        console.log(this.animation)
     }
 }
 </script>

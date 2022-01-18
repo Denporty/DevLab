@@ -18,33 +18,23 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 Route::get('/index', [Controller::class, 'index'])->name('index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/animation', [AnimationController::class, 'index'])->name('animation');
-    Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->name('animation.form');
-    Route::post('/animation/store', [AnimationController::class, 'store'])->name('animation.store');
-    Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->name('animation.update');
-    Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->name('animation.delete');
+    Route::get('/animation', [AnimationController::class, 'index'])->middleware(['admin'])->name('animation');
+    Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->middleware(['admin'])->name('animation.form');
+    Route::post('/animation/store', [AnimationController::class, 'store'])->middleware(['admin'])->name('animation.store');
+    Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('animation.update');
+    Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('animation.delete');
 });
-
-Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
-
+Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
+Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 
 require __DIR__.'/auth.php';
