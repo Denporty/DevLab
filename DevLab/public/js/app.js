@@ -26050,7 +26050,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     items: Object,
-    user: Object
+    user: Object,
+    datenow: Date
+  },
+  methods: {
+    checkDate: function checkDate(date) {
+      if (this.datenow > date) {
+        return true;
+      }
+    }
   }
 });
 
@@ -28648,7 +28656,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: item.id,
           "class": "p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tag), 1
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-2xl", $options.checkDate(item.end_date) ? 'flex flex-col items-end' : 'hidden'])
+        }, "Cet événement est terminé.", 2
+        /* CLASS */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tag), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.department), 1
         /* TEXT */
@@ -28660,9 +28672,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           href: _ctx.route('animation.more', item.id),
-          "class": "inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
-        }, " Plus d'infos ", 8
-        /* PROPS */
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2", $options.checkDate(item.end_date) ? 'pointer-events-none bg-blue-200' : ''])
+        }, " Plus d'infos ", 10
+        /* CLASS, PROPS */
         , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.places), 1
         /* TEXT */
         )])])]);
