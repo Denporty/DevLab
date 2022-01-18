@@ -18,14 +18,6 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
 Route::get('/index', [Controller::class, 'index'])->name('index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -43,7 +35,7 @@ Route::group([
     Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('animation.delete');
 });
 
-Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
+Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
 
 
