@@ -15,6 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('admin')->default(false);
+            $table->string('department');
         });
     }
 
@@ -27,6 +28,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('admin');
+            $table->dropColumn('department');
         });
     }
 }
