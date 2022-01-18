@@ -26042,10 +26042,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Components_FOLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Components/FOLayout */ "./resources/js/Components/FOLayout.vue");
+/* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Dashboard */ "./resources/js/Pages/Dashboard.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AnimationIndex',
   components: {
+    Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__["default"],
     FOLayout: _Components_FOLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
@@ -28656,9 +28659,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: item.id,
           "class": "p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-2xl", $options.checkDate(item.end_date) ? 'flex flex-col items-end' : 'hidden'])
-        }, "Cet événement est terminé.", 2
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+          "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["rounded-full p-4 w-4 items-end ml-auto", $options.checkDate(item.end_date) ? 'bg-red-600' : 'bg-green-600'])
+        }, null, 2
         /* CLASS */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tag), 1
         /* TEXT */

@@ -2,7 +2,7 @@
     <FOLayout>
         <div>
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
-                    <h3 class="text-2xl" :class="checkDate(item.end_date) ? 'flex flex-col items-end' : 'hidden'">Cet événement est terminé.</h3>
+                    <div class="rounded-full p-4 w-4 items-end ml-auto" :class="checkDate(item.end_date) ? 'bg-red-600' : 'bg-green-600'"></div>
                     <div class="flex lg:flex-row flex-col justify-between">
                         <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
                         <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
@@ -37,9 +37,10 @@
 </template>
 <script>
 import FOLayout from "@/Components/FOLayout";
+import Dashboard from "@/Pages/Dashboard";
 export default {
     name: 'AnimationIndex',
-    components: { FOLayout },
+    components: {Dashboard, FOLayout },
     props: {
         items: Object,
         user: Object,
