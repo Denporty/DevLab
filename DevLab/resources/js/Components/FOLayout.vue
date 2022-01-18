@@ -5,12 +5,15 @@
             <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
             <div class="md:items-center md:w-auto flex">
                 <div class="lg:flex hidden self-end">
-                    <BreezeNavLink :href="route('animation')" method="get" as="button" class="block md:text-white mr-4 p-4">
-                        Liste des animations
-                    </BreezeNavLink>
-                    <BreezeNavLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
-                        Déconnexion
-                    </BreezeNavLink>
+                    <div v-if="$page.props.auth.user != null">
+                        <BreezeNavLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
+                            Liste des animations
+                        </BreezeNavLink>
+                        <BreezeNavLink :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
+                            Déconnexion
+                        </BreezeNavLink>
+                    </div>
+
                     <div v-else>
                         <BreezeNavLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4">
                             Inscription
@@ -26,12 +29,14 @@
             </div>
         </nav>
         <div v-if="showBurger" class="bg-blue-300 w-full">
-            <BreezeDropdownLink :href="route('animation')" method="get" as="button" class="block md:text-white mr-4 p-4">
-                Liste des animations
-            </BreezeDropdownLink>
-            <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
-                Déconnexion
-            </BreezeDropdownLink>
+            <div v-if="$page.props.auth.user != null">
+                <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
+                    Liste des animations
+                </BreezeDropdownLink>
+                <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
+                    Déconnexion
+                </BreezeDropdownLink>
+            </div>
             <div v-else>
                 <BreezeDropdownLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4">
                     Inscription

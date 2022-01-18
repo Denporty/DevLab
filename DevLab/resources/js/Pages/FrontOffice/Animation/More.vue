@@ -1,6 +1,6 @@
 <template>
     <FOLayout>
-        <a :href="route('animation')" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+        <a :href="route('animation.online', $page.props.auth.user.id)" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
             Retour
         </a>
         <div>

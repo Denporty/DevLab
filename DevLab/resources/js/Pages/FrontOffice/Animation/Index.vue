@@ -1,7 +1,7 @@
 <template>
     <FOLayout>
         <div>
-            <div v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
+            <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
                 <div class="flex lg:flex-row flex-col justify-between">
                     <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
                     <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
@@ -25,6 +25,12 @@
                     </p>
                 </div>
             </div>
+            <div v-else-if="$page.props.auth.user != null">
+                <h3>Bienvenue sur ManageMyEvents vous pouvez accéder à la liste des événements via la navigation.</h3>
+            </div>
+            <div v-else>
+                <h3>Merci de créer un compte afin d'avoir accés à la liste des événements de l'entreprise.</h3>
+            </div>
         </div>
     </FOLayout>
 </template>
@@ -34,10 +40,12 @@ export default {
     name: 'AnimationIndex',
     components: { FOLayout },
     props: {
-        items: Object
+        items: Object,
+        user: Object
     },
     mounted() {
         console.log(this.items)
+        console.log(this.user)
     }
 }
 </script>
