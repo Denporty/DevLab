@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Animation\StoreAnimationRequest;
 use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +19,7 @@ class AnimationController extends Controller
      */
     protected $nbPerPage = 100;
 
-    public function index(User $user = null)
+    public function index()
     {
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
@@ -34,13 +33,10 @@ class AnimationController extends Controller
             ->allowedFilters(['id', 'name', $globalSearch])
             ->paginate($this->nbPerPage)
             ->withQueryString();
-        if($user->admin) {
-            return Inertia::render('BackOffice/Animation/Index', [
-                'animations' => new AnimationCollection($animations),
-            ])->table();
-        } else {
-            return Inertia::render('FrontOffice/Animation/Index');
-        }
+
+        return Inertia::render('BackOffice/Animation/Index', [
+            'animations' => new AnimationCollection($animations),
+        ])->table();
     }
 
     /**

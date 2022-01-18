@@ -36,7 +36,7 @@ Route::group([
     'as' => 'admin.',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/animation/{user?}', [AnimationController::class, 'index'])->name('animation');
+    Route::get('/animation', [AnimationController::class, 'index'])->name('animation');
     Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->name('animation.form');
     Route::post('/animation/store', [AnimationController::class, 'store'])->name('animation.store');
     Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->name('animation.update');
