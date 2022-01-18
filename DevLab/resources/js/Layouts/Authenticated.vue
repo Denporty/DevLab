@@ -16,7 +16,7 @@
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('admin.animation')" :active="route().current('admin.animation')">
+                                <BreezeNavLink :href="route('admin.animation', $page.props.auth.user.id)" :active="route().current('admin.animation')">
                                     Animation
                                 </BreezeNavLink>
                             </div>
@@ -67,7 +67,7 @@
                         </BreezeResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
-                        <BreezeResponsiveNavLink :href="route('admin.animation')" :active="route().current('admin.animation')">
+                        <BreezeResponsiveNavLink :href="route('admin.animation', $page.props.auth.user.id)" :active="route().current('admin.animation')">
                             Animation
                         </BreezeResponsiveNavLink>
                     </div>
