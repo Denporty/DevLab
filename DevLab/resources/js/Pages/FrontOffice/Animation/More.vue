@@ -1,12 +1,12 @@
 <template>
     <FOLayout>
         <div class="flex flex-row justify-between w-full">
-            <a :href="route('animation.online', $page.props.auth.user.id)" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+            <button onclick="window.history.back()" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
                 Retour
-            </a>
+            </button>
             <div v-if="$page.props.auth.user.admin" class="w-8 mr-2 transform hover:text-purple-500 hover:scale-110">
                 <a :href="route('admin.animation.form', animation.id)">
-                    <Icon icon="pencil"></Icon>
+                    <Icon class="text-blue-400" icon="pencil-blue"></Icon>
                 </a>
             </div>
         </div>

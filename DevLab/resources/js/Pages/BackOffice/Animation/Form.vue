@@ -8,9 +8,9 @@
             </div>
         </Modal>
         <div class="lg:px-36 px-4">
-            <a :href="route('admin.animation')" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
+            <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                 Retour
-            </a>
+            </button>
             <div class="w-full px-4 py-6">
                 <div class="my-2">
                     <Input label="Titre de l'animation" name="name" v-model="form.name" :message="form.errors.name"/>
