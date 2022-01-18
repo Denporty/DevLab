@@ -26429,7 +26429,7 @@ var _hoisted_5 = {
   "class": "md:items-center md:w-auto flex"
 };
 var _hoisted_6 = {
-  "class": "md:flex hidden self-end"
+  "class": "lg:flex hidden self-end"
 };
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Liste des animations ");

@@ -4,7 +4,7 @@
         <nav class="flex justify-between w-full bg-blue-500 text-white px-4">
             <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
             <div class="md:items-center md:w-auto flex">
-                <div class="md:flex hidden self-end">
+                <div class="lg:flex hidden self-end">
                     <BreezeNavLink :href="route('animation')" method="get" as="button" class="block md:text-white mr-4 p-4">
                         Liste des animations
                     </BreezeNavLink>
