@@ -22,7 +22,6 @@ Route::get('/index', [Controller::class, 'index'])->name('index');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified', 'admin'])->name('dashboard');
-
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
@@ -34,9 +33,8 @@ Route::group([
     Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('animation.update');
     Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('animation.delete');
 });
-
-Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
-
+Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
+Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 
 require __DIR__.'/auth.php';
