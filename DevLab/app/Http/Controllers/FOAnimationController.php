@@ -14,11 +14,18 @@ class FOAnimationController extends Controller
     public function index(User $user = null): Response
     {
         if($user != null){
-            $scopedAnimation = DB::table('animations')->where('department', '=', $user->department)->get();
-            return Inertia::render('FrontOffice/Animation/Index', [
-                'items' =>  $scopedAnimation,
-                'user' => $user
-            ]);
+            if($user->department === "ADMIN") {
+                return Inertia::render('FrontOffice/Animation/Index', [
+                    'items' => Animation::all(),
+                    'user' => $user
+                ]);
+            } else {
+                $scopedAnimation = DB::table('animations')->where('department', '=', $user->department)->get();
+                return Inertia::render('FrontOffice/Animation/Index', [
+                    'items' =>  $scopedAnimation,
+                    'user' => $user
+                ]);
+            }
         }
         return Inertia::render('FrontOffice/Animation/Index');
     }
