@@ -1,6 +1,13 @@
 <template>
     <Head title="ManageMyEvents"/>
     <header>
+        <div v-if="$page.props.auth.user != null">
+            <div v-if="$page.props.auth.user.department === 'ADMIN'" class="bg-gray-300 w-full flex justify-end">
+                <a :href="route('dashboard')" method="get" as="button" class="block mr-4 p-4">
+                    Dashboard Admin
+                </a>
+            </div>
+        </div>
         <nav class="flex justify-between w-full bg-blue-500 text-white px-4">
             <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
             <div class="md:items-center md:w-auto flex">
