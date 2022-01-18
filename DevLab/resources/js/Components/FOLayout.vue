@@ -20,7 +20,7 @@
                         </BreezeNavLink>
                     </div>
                 </div>
-                <button id="nav" v-on:click="toggleBurger" class="text-gray-600 font-semibold px-1 text-2xl p-1 px-2 rounded bg-gray-20 flex lg:hidden" type="button">
+                <button id="nav" v-on:click="toggleBurger" class="text-gray-600 font-semibold px-1 text-2xl p-1 px-2 rounded bg-gray-20 flex lg:hidden items-center" type="button">
                     <Icon :icon="showBurger ? 'cross' : 'menuburger'"></Icon>
                 </button>
             </div>
@@ -29,9 +29,17 @@
             <BreezeDropdownLink :href="route('animation')" method="get" as="button" class="block md:text-white mr-4 p-4">
                 Liste des animations
             </BreezeDropdownLink>
-            <BreezeDropdownLink :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
-                Log Out
+            <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
+                Déconnexion
             </BreezeDropdownLink>
+            <div v-else>
+                <BreezeDropdownLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                    Inscription
+                </BreezeDropdownLink>
+                <BreezeDropdownLink :href="route('login')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                    Connexion
+                </BreezeDropdownLink>
+            </div>
         </div>
     </header>
     <body class="lg:px-16 px-8 pt-16">
