@@ -54,7 +54,7 @@
             </div>
         </div>
     </header>
-    <body class="px-16 py-20" :class="$page.props.auth.user.admin ? 'py-32' : ''">
+    <body class="md:px-16 px-4 py-20" :class="$page.props.auth.user.admin ? 'py-32' : ''">
         <slot></slot>
     </body>
 </template>
