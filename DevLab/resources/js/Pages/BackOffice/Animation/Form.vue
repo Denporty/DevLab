@@ -95,7 +95,8 @@ export default {
     props: {
         animation: Object,
         categories: Object,
-        department: Object
+        department: Object,
+        reservation: Object
     },
     data() {
         return {
@@ -113,6 +114,7 @@ export default {
                 map: this.animation?.map ?? null,
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
+                place_take: this.reservation?.place_take ?? 0
             }),
             showModal: false
         }

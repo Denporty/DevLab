@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Animation\StoreAnimationRequest;
+use App\Http\Requests\Animation\StoreReservationRequest;
 use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
+use App\Models\Reservation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -28,7 +30,7 @@ class AnimationController extends Controller
             });
         });
         $animations = QueryBuilder::for(Animation::class)
-            ->defaultSort('created_at')
+            ->defaultSort('start_date')
             ->allowedSorts(['id', 'name', 'created_at'])
             ->allowedFilters(['id', 'name', $globalSearch])
             ->paginate($this->nbPerPage)
@@ -45,12 +47,13 @@ class AnimationController extends Controller
      * @param Animation|null $animation
      * @return \Inertia\Response
      */
-    public function form(Animation $animation = null)
+    public function form(Animation $animation = null, Reservation $reservation = null)
     {
         return Inertia::render('BackOffice/Animation/Form', [
             'animation' => $animation,
             'categories' => Animation::CATEGORIES,
-            'department' => Animation::DEPARTMENT
+            'department' => Animation::DEPARTMENT,
+            'reservation' => $reservation
         ]);
     }
 
@@ -60,9 +63,10 @@ class AnimationController extends Controller
      * @param StoreAnimationRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreAnimationRequest $request): RedirectResponse
+    public function store(StoreAnimationRequest $request, StoreReservationRequest $reservationRequest): RedirectResponse
     {
         Animation::create($request->validated());
+        Reservation::create($reservationRequest->validated());
         return redirect()->route('admin.animation')->with('success', "L'animation a bien été crée");
     }
 

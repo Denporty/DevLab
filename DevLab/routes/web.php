@@ -35,6 +35,7 @@ Route::group([
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
+Route::patch('/animation-list/{animation}', [FOAnimationController::class, 'update'])->name('animation.reservation');
 Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 
 require __DIR__.'/auth.php';

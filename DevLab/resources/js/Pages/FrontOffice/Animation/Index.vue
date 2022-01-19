@@ -3,6 +3,7 @@
         <div>
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
                 <div class="flex md:flex-row flex-col justify-between">
+                    <Button @click="submitForm(item)">Reserver</Button>
                     <div class="flex flex-col justify-between">
                         <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
                         <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
@@ -28,7 +29,7 @@
                     </a>
                     <p class="flex items-center">
                         <span>Nombre de places : </span>
-                        <span class="font-bold">{{ item.places }}</span>
+                        <span class="font-bold"> {{ checkPlaces(item.places) }}</span>
                     </p>
                 </div>
             </div>
@@ -44,13 +45,22 @@
 <script>
 import FOLayout from "@/Components/FOLayout";
 import Dashboard from "@/Pages/Dashboard";
+import Button from "@/Components/Button";
 export default {
     name: 'AnimationIndex',
-    components: {Dashboard, FOLayout },
+    components: {Button, Dashboard, FOLayout },
     props: {
         items: Object,
         user: Object,
-        datenow: String
+        datenow: String,
+        reservations: Object
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                place_take: this.reservations?.place_take ?? 0,
+            }),
+        }
     },
     methods: {
         checkDate(date, element) {
@@ -64,7 +74,25 @@ export default {
                     return true
                 }
             }
-        }
+        },
+        checkPlaces(item) {
+            let tmpData = {};
+            this.reservations.forEach(reservation => {
+                tmpData = {
+                    'placess': item - reservation.place_take
+                }
+            });
+            return tmpData.placess
+        },
+        submitForm(item) {
+            // this.reservations.forEach(reservation => {
+            //     this.$inertia.put(route('animation.reservation', reservation.id), { place_take: reservation.place_take++ })
+            // })
+            this.$inertia.patch(route('animation.reservation', item.id), { places: item.places-- })
+        },
+    },
+    mounted() {
+        console.log(this.reservations)
     }
 }
 </script>
