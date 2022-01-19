@@ -2,9 +2,16 @@
     <FOLayout>
         <div>
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
-                <div class="flex lg:flex-row flex-col justify-between">
-                    <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
-                    <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+                <div class="flex md:flex-row flex-col justify-between">
+                    <div class="flex flex-col justify-between">
+                        <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
+                        <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+                    </div>
+                    <div class="flex flex-row md:justify-end items-center">
+                        <div class="rounded-full py-2 px-4 text-white"
+                             :class="checkDate(item.end_date, false) ? 'bg-red-600' : 'bg-green-600'"
+                             v-html="checkDate(item.end_date, false) ? 'Terminé' : 'A venir'"/>
+                    </div>
                 </div>
 
                 <h1 class="text-2xl font-semibold text-blue-500 capitalize dark:text-blue-500">{{ item.name }}</h1>
@@ -16,7 +23,7 @@
                     {{ item.start_date }} / {{ item.end_date }}
                 </p>
                 <div class="flex lg:flex-row flex-col justify-between">
-                    <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                    <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" :class="checkDate(item.end_date, true) ? 'pointer-events-none bg-blue-200' : ''">
                         Plus d'infos
                     </a>
                     <p class="flex items-center">
@@ -36,12 +43,28 @@
 </template>
 <script>
 import FOLayout from "@/Components/FOLayout";
+import Dashboard from "@/Pages/Dashboard";
 export default {
     name: 'AnimationIndex',
-    components: { FOLayout },
+    components: {Dashboard, FOLayout },
     props: {
         items: Object,
-        user: Object
+        user: Object,
+        datenow: String
+    },
+    methods: {
+        checkDate(date, element) {
+            if(element) {
+                if(!this.user.admin) {
+                    return this.datenow > date;
+
+                }
+            } else {
+                if(this.datenow > date) {
+                    return true
+                }
+            }
+        }
     }
 }
 </script>

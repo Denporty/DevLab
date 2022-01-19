@@ -8,7 +8,7 @@
                     <div class="flex justify-between h-16">
                         <div class="flex">
 
-                            <BreezeNavLink class="text-black font-semibold text-xl" :href="route('animation')" :active="route().current('dashboard')">
+                            <BreezeNavLink class="text-black font-semibold text-xl" :href="route('animation')">
                                 ManageMyEvents
                             </BreezeNavLink>
                             <!-- Navigation Links -->

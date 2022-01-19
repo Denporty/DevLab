@@ -32,8 +32,8 @@ class AnimationFactory extends Factory
             'active_section' => $this->faker->boolean(),
             'section_title' => $this->faker->realTextBetween(50, 75),
             'description_section' => $this->faker->realTextBetween(500, 3500),
-            'start_date' => $this->faker->date,
-            'end_date' => $this->faker->date,
+            'start_date' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+            'end_date' => $this->faker->dateTimeBetween('-1 week', '+1 week'),
             'map' => '<iframe src="https://www.google.com/maps/d/embed?mid=1R7CpWZ-ML0bg9jI9jRoCd58b-QqsPD_n&ehbc=2E312F" width="640" height="480"></iframe>'
         ];
     }
