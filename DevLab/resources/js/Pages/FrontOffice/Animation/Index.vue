@@ -2,14 +2,16 @@
     <FOLayout>
         <div>
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
-                <div class="flex flex-row justify-end items-center">
-                    <div class="rounded-full py-2 px-4 text-white"
-                         :class="checkDate(item.end_date, false) ? 'bg-red-600' : 'bg-green-600'"
-                         v-html="checkDate(item.end_date, false) ? 'Terminé' : 'A venir'"/>
-                </div>
-                <div class="flex lg:flex-row flex-col justify-between">
-                    <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
-                    <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+                <div class="flex md:flex-row flex-col justify-between">
+                    <div class="flex flex-col justify-between">
+                        <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
+                        <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+                    </div>
+                    <div class="flex flex-row md:justify-end items-center">
+                        <div class="rounded-full py-2 px-4 text-white"
+                             :class="checkDate(item.end_date, false) ? 'bg-red-600' : 'bg-green-600'"
+                             v-html="checkDate(item.end_date, false) ? 'Terminé' : 'A venir'"/>
+                    </div>
                 </div>
 
                 <h1 class="text-2xl font-semibold text-blue-500 capitalize dark:text-blue-500">{{ item.name }}</h1>
