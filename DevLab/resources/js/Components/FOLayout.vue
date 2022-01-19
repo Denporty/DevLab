@@ -2,7 +2,7 @@
     <Head title="ManageMyEvents"/>
     <header class="fixed w-screen">
         <div v-if="$page.props.auth.user != null">
-            <div v-if="$page.props.auth.user.admin" class="bg-gray-300 w-full flex justify-end">
+            <div v-if="$page.props.auth.user.department === 'ADMIN'" class="bg-gray-300 w-full flex justify-end">
                 <a :href="route('dashboard')" class="block mr-4 p-4">
                     Dashboard Admin
                 </a>
@@ -54,7 +54,7 @@
             </div>
         </div>
     </header>
-    <body class="md:px-16 px-4 py-20" :class="$page.props.auth.user.admin ? 'py-32' : ''">
+    <body class="md:px-16 px-4 py-20" :class="$page.props.auth.user.department === 'ADMIN' ? 'py-32' : ''">
         <slot></slot>
     </body>
 </template>
