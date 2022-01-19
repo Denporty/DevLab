@@ -1,6 +1,6 @@
 <template>
     <Head title="ManageMyEvents"/>
-    <header>
+    <header class="fixed w-screen">
         <div v-if="$page.props.auth.user != null">
             <div v-if="$page.props.auth.user.department === 'ADMIN'" class="bg-gray-300 w-full flex justify-end">
                 <a :href="route('dashboard')" class="block mr-4 p-4">
