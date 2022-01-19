@@ -2,7 +2,10 @@
     <FOLayout>
         <div>
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
-                    <div class="rounded-full p-4 w-4 items-end ml-auto" :class="checkDate(item.end_date) ? 'bg-red-600' : 'bg-green-600'"></div>
+                <div class="flex flex-row justify-end items-center">
+                    <p class="mr-4" v-html="checkDate(item.end_date) ? 'Terminé' : 'A venir'"></p>
+                    <div class="rounded-full p-4 w-4" :class="checkDate(item.end_date) ? 'bg-red-600' : 'bg-green-600'"></div>
+                </div>
                     <div class="flex lg:flex-row flex-col justify-between">
                         <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
                         <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
