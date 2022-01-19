@@ -26470,7 +26470,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_16 = {
   key: 1,
-  "class": "bg-blue-300 w-full"
+  "class": "bg-blue-500 w-full"
 };
 var _hoisted_17 = {
   key: 0
@@ -26504,8 +26504,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "ManageMyEvents"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [_ctx.$page.props.auth.user != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_ctx.$page.props.auth.user.department === 'ADMIN' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('dashboard'),
-    method: "get",
-    as: "button",
     "class": "block mr-4 p-4"
   }, " Dashboard Admin ", 8
   /* PROPS */
@@ -26585,7 +26583,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('animation.online', _ctx.$page.props.auth.user.id),
     method: "get",
     as: "button",
-    "class": "block md:text-white mr-4 p-4"
+    "class": "block md:text-white mr-4 p-4 hover:bg-blue-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_18];
@@ -26600,7 +26598,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('logout'),
     method: "post",
     as: "button",
-    "class": "block md:text-white mr-4 p-4"
+    "class": "block md:text-white mr-4 p-4 hover:bg-blue-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_19];
@@ -26614,7 +26612,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('register'),
     method: "get",
     as: "button",
-    "class": "block md:text-white mr-4 p-4"
+    "class": "block md:text-white mr-4 p-4 hover:bg-blue-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_21];
@@ -26628,7 +26626,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('login'),
     method: "get",
     as: "button",
-    "class": "block md:text-white mr-4 p-4"
+    "class": "block md:text-white mr-4 p-4 hover:bg-blue-300"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_22];

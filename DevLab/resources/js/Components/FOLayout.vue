@@ -3,7 +3,7 @@
     <header>
         <div v-if="$page.props.auth.user != null">
             <div v-if="$page.props.auth.user.department === 'ADMIN'" class="bg-gray-300 w-full flex justify-end">
-                <a :href="route('dashboard')" method="get" as="button" class="block mr-4 p-4">
+                <a :href="route('dashboard')" class="block mr-4 p-4">
                     Dashboard Admin
                 </a>
             </div>
@@ -35,20 +35,20 @@
                 </button>
             </div>
         </nav>
-        <div v-if="showBurger" class="bg-blue-300 w-full">
+        <div v-if="showBurger" class="bg-blue-500 w-full">
             <div v-if="$page.props.auth.user != null">
-                <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
+                <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Liste des animations
                 </BreezeDropdownLink>
-                <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
+                <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Déconnexion
                 </BreezeDropdownLink>
             </div>
             <div v-else>
-                <BreezeDropdownLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                <BreezeDropdownLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Inscription
                 </BreezeDropdownLink>
-                <BreezeDropdownLink :href="route('login')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                <BreezeDropdownLink :href="route('login')" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Connexion
                 </BreezeDropdownLink>
             </div>
