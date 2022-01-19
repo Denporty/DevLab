@@ -54,7 +54,7 @@
             </div>
         </div>
     </header>
-    <body class="lg:px-16 px-8 pt-16">
+    <body class="px-16 py-20">
         <slot></slot>
     </body>
 </template>
