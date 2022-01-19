@@ -53,10 +53,8 @@ export default {
         checkDate(date, element) {
             if(element) {
                 if(!this.user.admin) {
-                    if(this.datenow > date) {
-                        return true
-                    }
-                    return false
+                    return this.datenow > date;
+
                 }
             } else {
                 if(this.datenow > date) {

@@ -26060,11 +26060,7 @@ __webpack_require__.r(__webpack_exports__);
     checkDate: function checkDate(date, element) {
       if (element) {
         if (!this.user.admin) {
-          if (this.datenow > date) {
-            return true;
-          }
-
-          return false;
+          return this.datenow > date;
         }
       } else {
         if (this.datenow > date) {
@@ -26480,7 +26476,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_16 = {
   key: 1,
-  "class": "bg-blue-500 w-full"
+  "class": "bg-blue-500 w-full lg:hidden"
 };
 var _hoisted_17 = {
   key: 0

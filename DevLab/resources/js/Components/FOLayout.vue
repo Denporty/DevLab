@@ -35,7 +35,7 @@
                 </button>
             </div>
         </nav>
-        <div v-if="showBurger" class="bg-blue-500 w-full">
+        <div v-if="showBurger" class="bg-blue-500 w-full lg:hidden">
             <div v-if="$page.props.auth.user != null">
                 <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Liste des animations
