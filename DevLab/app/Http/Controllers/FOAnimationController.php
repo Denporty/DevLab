@@ -15,7 +15,7 @@ class FOAnimationController extends Controller
     public function index(User $user = null): Response
     {
         if($user != null){
-            if($user->department === "ADMIN") {
+            if($user->admin) {
                 return Inertia::render('FrontOffice/Animation/Index', [
                     'items' => Animation::all(),
                     'user' => $user,
