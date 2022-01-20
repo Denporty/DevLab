@@ -14,6 +14,6 @@ class AnimationSeeder extends Seeder
      */
     public function run()
     {
-        Animation::factory(10)->create();
+        Animation::factory(20)->create();
     }
 }
