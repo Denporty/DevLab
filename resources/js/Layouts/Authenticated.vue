@@ -17,7 +17,7 @@
                                     Dashboard
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('admin.animation')" :active="route().current('admin.animation')">
-                                    Animation
+                                    Event List
                                 </BreezeNavLink>
                             </div>
                         </div>

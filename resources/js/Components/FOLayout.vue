@@ -14,7 +14,7 @@
                 <div class="lg:flex hidden self-end">
                     <div v-if="$page.props.auth.user != null">
                         <BreezeNavLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
-                            Liste des animations
+                            Liste des événements
                         </BreezeNavLink>
                         <BreezeNavLink :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
                             Déconnexion
@@ -38,7 +38,7 @@
         <div v-if="showBurger" class="bg-blue-500 w-full lg:hidden">
             <div v-if="$page.props.auth.user != null">
                 <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
-                    Liste des animations
+                    Liste des événements
                 </BreezeDropdownLink>
                 <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
                     Déconnexion

@@ -1,9 +1,9 @@
 <template>
     <Authenticated>
         <div class="flex justify-between px-4">
-            <h1 class="self-center">Gérer les événements</h1>
+            <h1 class="self-center">Manage your events</h1>
             <a :href="route('admin.animation.form')" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                Ajouter un événement
+                Add an event
             </a>
         </div>
         <div class="p-8">
@@ -43,7 +43,7 @@
                     </tr>
                 </template>
             </Table>
-            <p class="w-fit ml-auto">Nombre d'événements : {{ this.animations.data.length }}</p>
+            <p class="w-fit ml-auto">Events : {{ this.animations.data.length }}</p>
         </div>
     </Authenticated>
 </template>
