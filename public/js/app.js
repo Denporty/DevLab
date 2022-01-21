@@ -26448,15 +26448,16 @@ var _hoisted_5 = {
 };
 var _hoisted_6 = ["href"];
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "font-semibold text-xl tracking-tight"
-}, "ManageMyEvents", -1
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  "class": "w-1/12",
+  src: "https://cdn.discordapp.com/attachments/892036199651368970/933852244674216016/white_logo_transparent_background.png"
+}, null, -1
 /* HOISTED */
 );
 
 var _hoisted_8 = [_hoisted_7];
 var _hoisted_9 = {
-  "class": "md:items-center md:w-auto flex"
+  "class": "md:items-center md:w-auto flex lg:w-96"
 };
 var _hoisted_10 = {
   "class": "lg:flex hidden self-end"
@@ -26518,7 +26519,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_4)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('animation'),
-    "class": "items-center flex py-4"
+    "class": "items-center flex"
   }, _hoisted_8, 8
   /* PROPS */
   , _hoisted_6), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_ctx.$page.props.auth.user != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeNavLink, {
