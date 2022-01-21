@@ -9,8 +9,8 @@
             </div>
         </div>
         <nav class="flex justify-between w-full bg-blue-500 text-white px-4">
-            <a :href="route('animation')" class="items-center flex"><img class="w-1/12" src="https://cdn.discordapp.com/attachments/892036199651368970/933852244674216016/white_logo_transparent_background.png"></a>
-            <div class="md:items-center md:w-auto flex lg:w-96">
+            <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
+            <div class="md:items-center md:w-auto flex">
                 <div class="lg:flex hidden self-end">
                     <div v-if="$page.props.auth.user != null">
                         <BreezeNavLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
