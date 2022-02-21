@@ -4,6 +4,12 @@
   background: url("/img/background.png")
 }
 
+.background-index {
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background: url("/img/background-index.png")
+}
+
 .select-login {
   width: 50%;
   border-width: 1px;
