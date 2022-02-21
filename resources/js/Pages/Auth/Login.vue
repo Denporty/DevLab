@@ -18,13 +18,13 @@
             </div>
             <div class="select-login">
                 <div class="button">
-                    <button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :disabled="form.processing">
+                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')">
                         Connexion
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="px-16 py-10">
+        <div class="px-16 pt-10 pb-6">
         <div>
             <BreezeLabel for="email" class="text-mme-blue uppercase" value="Email" />
             <Input id="email" type="email" :classname="'mt-1 block w-full bg-white'" v-model="form.email" autofocus autocomplete="username" />
@@ -35,11 +35,14 @@
             <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
         </div>
 
-        <div class="block mt-4">
-            <label class="flex items-center">
-                <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                <span class="ml-2 text-sm">Remember me</span>
-            </label>
+        <div class="block mt-8 flex">
+<!--            <label class="flex items-center">-->
+<!--                <BreezeCheckbox name="remember" v-model:checked="form.remember" />-->
+<!--                <span class="ml-2 text-sm">Remember me</span>-->
+<!--            </label>-->
+            <Button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold m-auto bg-mme-blue hover:bg-mme-blue" :disabled="form.processing">
+                Se connecter
+            </Button>
         </div>
 
         </div>
@@ -55,11 +58,13 @@ import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Input from "@/Components/Input";
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import Button from "@/Components/Button";
 
 export default {
     layout: BreezeGuestLayout,
 
     components: {
+        Button,
         BreezeButton,
         BreezeCheckbox,
         Input,

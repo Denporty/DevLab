@@ -20,8 +20,7 @@
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-duration: 300ms
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
 .select-login .button {
   width: 100%;
@@ -32,18 +31,5 @@
   font-weight: 700;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity));
-  transition-duration: 300ms
-}
-.select-login .link:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity))
-}
-.select-login .button:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
