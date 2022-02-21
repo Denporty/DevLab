@@ -1,6 +1,6 @@
 <template>
     <Label :for="name" :value="label"/>
-    <input class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
+    <input class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:border-gray-500"
            :class="classname"
            :type="type"
            :min="min"

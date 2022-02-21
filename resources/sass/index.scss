@@ -6,9 +6,9 @@
 .select-login {
     @apply w-1/2 text-center border border-mme-blue uppercase font-bold;
     .link {
-        @apply bg-mme-blue text-white w-full py-1;
+        @apply text-mme-blue w-full py-1 uppercase font-bold uppercase bg-white font-bold;
     }
     .button {
-        @apply text-mme-blue w-full py-1 uppercase font-bold uppercase bg-white font-bold;
+        @apply bg-mme-blue text-white w-full py-1;
     }
 }
