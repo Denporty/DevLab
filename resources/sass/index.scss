@@ -1,0 +1,20 @@
+.background-base {
+    @apply bg-no-repeat;
+    min-height: 100vh;
+    background: url('/img/background.png');
+}
+.select-login {
+    @apply w-1/2 text-center border border-mme-blue uppercase font-bold;
+    .link {
+        @apply bg-mme-blue text-white w-full py-1 duration-300;
+    }
+    .button {
+        @apply text-mme-blue w-full py-1 uppercase font-bold uppercase bg-white font-bold duration-300;
+    }
+    .link:hover {
+        @apply bg-white text-mme-blue;
+    }
+    .button:hover {
+        @apply bg-mme-blue text-white;
+    }
+}

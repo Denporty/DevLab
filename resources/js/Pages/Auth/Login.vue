@@ -3,36 +3,45 @@
 
     <BreezeValidationErrors class="mb-4" />
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+    <div v-if="status" class="mb-4 font-medium text-sm">
         {{ status }}
     </div>
 
     <form @submit.prevent="submit">
+        <div class="flex w-full">
+            <div class="select-login">
+                <div class="link">
+                    <a :href="route('register')">
+                        Inscription
+                    </a>
+                </div>
+            </div>
+            <div class="select-login">
+                <div class="button">
+                    <button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :disabled="form.processing">
+                        Connexion
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="px-16 py-10">
         <div>
-            <BreezeLabel for="email" value="Email" />
-            <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+            <BreezeLabel for="email" class="text-mme-blue uppercase" value="Email" />
+            <Input id="email" type="email" :classname="'mt-1 block w-full bg-white'" v-model="form.email" autofocus autocomplete="username" />
         </div>
 
         <div class="mt-4">
-            <BreezeLabel for="password" value="Password" />
+            <BreezeLabel class="text-mme-blue uppercase" for="password" value="Password" />
             <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
         </div>
 
         <div class="block mt-4">
             <label class="flex items-center">
                 <BreezeCheckbox name="remember" v-model:checked="form.remember" />
-                <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                <span class="ml-2 text-sm">Remember me</span>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <Link :href="route('register')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Register
-            </Link>
-
-            <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Log in
-            </BreezeButton>
         </div>
     </form>
 </template>
@@ -44,6 +53,7 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue'
 import BreezeInput from '@/Components/Input.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import Input from "@/Components/Input";
 import { Head, Link } from '@inertiajs/inertia-vue3';
 
 export default {
@@ -52,6 +62,7 @@ export default {
     components: {
         BreezeButton,
         BreezeCheckbox,
+        Input,
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,

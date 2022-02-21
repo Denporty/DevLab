@@ -97,7 +97,9 @@
 
             <!-- Page Content -->
             <main>
-                <slot />
+                <div class="background-base">
+                    <slot />
+                </div>
             </main>
         </div>
     </div>

@@ -54,7 +54,7 @@
             </div>
         </div>
     </header>
-    <body class="md:px-16 px-4 py-32">
+    <body class="md:px-16 px-4 py-32 background-base">
         <slot></slot>
     </body>
 </template>
