@@ -1,7 +1,7 @@
 <template>
     <FOLayout>
         <div>
-            <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8">
+            <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8 bg-white">
                 <div class="flex md:flex-row flex-col justify-between">
                     <div class="flex flex-col justify-between">
                         <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>

@@ -8,24 +8,26 @@
                 </a>
             </div>
         </div>
-        <nav class="flex justify-between w-full bg-white text-black px-4">
-            <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
+        <nav class="flex justify-between w-full text-black px-4">
+            <a :href="route('animation')" class="items-center flex">
+                <img src="/img/logo-mme.png">
+            </a>
             <div class="md:items-center md:w-auto flex my-auto">
                 <div class="lg:flex hidden self-end">
                     <div v-if="$page.props.auth.user != null" class="flex self-center">
-                        <a :href="route('animation.online', $page.props.auth.user.id)" class="block mr-4 my-auto py-1 px-4 text-center bg-mme-blue rounded uppercase text-white">
+                        <a :href="route('animation.online', $page.props.auth.user.id)" class="block mr-4 my-auto py-1 px-4 text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600">
                             Liste des événements
                         </a>
-                        <NavLink method="post" as="button" :href="route('logout')" :base_style="false" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
+                        <NavLink method="post" as="button" :href="route('logout')" :base_style="false" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600">
                             Déconnexion
                         </NavLink>
                     </div>
 
                     <div v-else class="flex self-center">
-                        <a :href="route('register')" class="block py-1 px-4 mr-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
+                        <a :href="route('register')" class="block py-1 px-4 mr-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600">
                             Inscription
                         </a>
-                        <a :href="route('login')" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
+                        <a :href="route('login')" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600">
                             Connexion
                         </a>
                     </div>
@@ -54,7 +56,7 @@
             </div>
         </div>
     </header>
-    <body class="md:px-16 px-4 py-32 background-index">
+    <body class="md:px-16 px-4 py-8 background-index">
         <slot></slot>
     </body>
 </template>
