@@ -1,0 +1,19 @@
+.background-base {
+    min-height: 100vh;
+    background: url('/img/background.png');
+    @apply bg-no-repeat bg-fixed bg-contain;
+}
+.background-index {
+    min-height: 100vh;
+    background: url('/img/background-index.png');
+    @apply bg-no-repeat bg-fixed bg-contain;
+}
+.select-login {
+    @apply w-1/2 text-center border border-mme-blue uppercase font-bold;
+    .link {
+        @apply text-mme-blue w-full py-1 uppercase font-bold uppercase bg-white font-bold;
+    }
+    .button {
+        @apply bg-mme-blue text-white w-full py-1;
+    }
+}
