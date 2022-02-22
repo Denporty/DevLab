@@ -1,6 +1,6 @@
 <template>
     <Head title="ManageMyEvents"/>
-    <header class="fixed w-screen">
+    <header class="w-screen">
         <div v-if="$page.props.auth.user != null">
             <div v-if="$page.props.auth.user.department === 'ADMIN'" class="bg-gray-300 w-full flex justify-end">
                 <a :href="route('dashboard')" class="block mr-4 p-4">
@@ -8,26 +8,26 @@
                 </a>
             </div>
         </div>
-        <nav class="flex justify-between w-full bg-blue-500 text-white px-4">
+        <nav class="flex justify-between w-full bg-white text-black px-4">
             <a :href="route('animation')" class="items-center flex py-4"><span class="font-semibold text-xl tracking-tight">ManageMyEvents</span></a>
-            <div class="md:items-center md:w-auto flex">
+            <div class="md:items-center md:w-auto flex my-auto">
                 <div class="lg:flex hidden self-end">
-                    <div v-if="$page.props.auth.user != null">
-                        <BreezeNavLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4">
+                    <div v-if="$page.props.auth.user != null" class="flex self-center">
+                        <a :href="route('animation.online', $page.props.auth.user.id)" class="block mr-4 my-auto py-1 px-4 text-center bg-mme-blue rounded uppercase text-white">
                             Liste des événements
-                        </BreezeNavLink>
-                        <BreezeNavLink :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4">
+                        </a>
+                        <NavLink method="post" as="button" :href="route('logout')" :base_style="false" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
                             Déconnexion
-                        </BreezeNavLink>
+                        </NavLink>
                     </div>
 
-                    <div v-else>
-                        <BreezeNavLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                    <div v-else class="flex self-center">
+                        <a :href="route('register')" class="block py-1 px-4 mr-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
                             Inscription
-                        </BreezeNavLink>
-                        <BreezeNavLink :href="route('login')" method="get" as="button" class="block md:text-white mr-4 p-4">
+                        </a>
+                        <a :href="route('login')" class="block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white">
                             Connexion
-                        </BreezeNavLink>
+                        </a>
                     </div>
                 </div>
                 <button id="nav" v-on:click="toggleBurger" class="text-gray-600 font-semibold px-1 text-2xl p-1 px-2 rounded bg-gray-20 flex lg:hidden items-center" type="button">
@@ -35,22 +35,22 @@
                 </button>
             </div>
         </nav>
-        <div v-if="showBurger" class="bg-blue-500 w-full lg:hidden">
+        <div v-if="showBurger" class="bg-white w-full lg:hidden absolute">
             <div v-if="$page.props.auth.user != null">
-                <BreezeDropdownLink :href="route('animation.online', $page.props.auth.user.id)" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
+                <a :href="route('animation.online', $page.props.auth.user.id)" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Liste des événements
-                </BreezeDropdownLink>
-                <BreezeDropdownLink v-if="$page.props.auth.user != null" :href="route('logout')" method="post" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
+                </a>
+                <a v-if="$page.props.auth.user != null" :href="route('logout')" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Déconnexion
-                </BreezeDropdownLink>
+                </a>
             </div>
             <div v-else>
-                <BreezeDropdownLink :href="route('register')" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
+                <a :href="route('register')" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Inscription
-                </BreezeDropdownLink>
-                <BreezeDropdownLink :href="route('login')" method="get" as="button" class="block md:text-white mr-4 p-4 hover:bg-blue-300">
+                </a>
+                <a :href="route('login')" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Connexion
-                </BreezeDropdownLink>
+                </a>
             </div>
         </div>
     </header>
@@ -63,9 +63,13 @@ import {Head} from "@inertiajs/inertia-vue3";
 import BreezeNavLink from '@/Components/NavLink.vue'
 import Icon from "@/Components/Icon";
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
+import Button from "@/Components/Button";
+import NavLink from "@/Components/NavLink";
 export default {
     name: 'FOLayout',
     components: {
+        NavLink,
+        Button,
         Icon,
         Head,
         BreezeDropdownLink,
