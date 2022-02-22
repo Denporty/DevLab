@@ -26465,13 +26465,13 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = ["href"];
 var _hoisted_5 = {
-  "class": "flex justify-between w-full bg-white text-black px-4"
+  "class": "flex justify-between w-full text-black px-4"
 };
 var _hoisted_6 = ["href"];
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "font-semibold text-xl tracking-tight"
-}, "ManageMyEvents", -1
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/logo-mme.png"
+}, null, -1
 /* HOISTED */
 );
 
@@ -26511,7 +26511,7 @@ var _hoisted_21 = {
 var _hoisted_22 = ["href"];
 var _hoisted_23 = ["href"];
 var _hoisted_24 = {
-  "class": "md:px-16 px-4 py-32 background-index"
+  "class": "md:px-16 px-4 py-8 background-index"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -26529,12 +26529,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , _hoisted_4)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('animation'),
-    "class": "items-center flex py-4"
+    "class": "items-center flex"
   }, _hoisted_8, 8
   /* PROPS */
   , _hoisted_6), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_ctx.$page.props.auth.user != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('animation.online', _ctx.$page.props.auth.user.id),
-    "class": "block mr-4 my-auto py-1 px-4 text-center bg-mme-blue rounded uppercase text-white"
+    "class": "block mr-4 my-auto py-1 px-4 text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600"
   }, " Liste des événements ", 8
   /* PROPS */
   , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
@@ -26542,7 +26542,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     as: "button",
     href: _ctx.route('logout'),
     base_style: false,
-    "class": "block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white"
+    "class": "block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_13];
@@ -26554,12 +26554,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('register'),
-    "class": "block py-1 px-4 mr-4 my-auto text-center bg-mme-blue rounded uppercase text-white"
+    "class": "block py-1 px-4 mr-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600"
   }, " Inscription ", 8
   /* PROPS */
   , _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: _ctx.route('login'),
-    "class": "block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white"
+    "class": "block py-1 px-4 my-auto text-center bg-mme-blue rounded uppercase text-white hover:bg-blue-600"
   }, " Connexion ", 8
   /* PROPS */
   , _hoisted_16)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
@@ -27673,7 +27673,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <label class=\"flex items-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <BreezeCheckbox name=\"remember\" v-model:checked=\"form.remember\" />"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <span class=\"ml-2 text-sm\">Remember me</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            </label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'opacity-25': $data.form.processing
-    }, "uppercase font-bold m-auto bg-mme-blue hover:bg-mme-blue"]),
+    }, "uppercase font-bold m-auto bg-mme-blue hover:bg-blue-600"]),
     disabled: $data.form.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27859,7 +27859,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["modelValue", "options", "message"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <label class=\"flex items-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <BreezeCheckbox name=\"remember\" v-model:checked=\"form.remember\" />"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                <span class=\"ml-2 text-sm\">Remember me</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            </label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'opacity-25': $data.form.processing
-    }, "uppercase font-bold m-auto bg-mme-blue hover:bg-mme-blue"]),
+    }, "uppercase font-bold m-auto bg-mme-blue hover:bg-blue-600"]),
     disabled: $data.form.processing
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -28637,7 +28637,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.items, function (item) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: item.id,
-          "class": "p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8"
+          "class": "p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8 bg-white"
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tag), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.department), 1
