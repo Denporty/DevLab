@@ -9,7 +9,7 @@
 .background-index {
   min-height: 100vh;
   background: url("/img/background-index.png") 0 10rem;
-  background-size: cover;
+  background-size: 100% 75%;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
