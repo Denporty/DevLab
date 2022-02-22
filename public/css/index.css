@@ -1,13 +1,17 @@
 .background-base {
-  background-repeat: no-repeat;
   min-height: 100vh;
-  background: url("/img/background.png")
+  background: url("/img/background.png");
+  background-size: contain;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .background-index {
-  background-repeat: no-repeat;
   min-height: 100vh;
-  background: url("/img/background-index.png")
+  background: url("/img/background-index.png");
+  background-size: contain;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .select-login {
@@ -17,7 +21,7 @@
   border-color: rgb(96 165 250 / var(--tw-border-opacity));
   text-align: center;
   font-weight: 700;
-  text-transform: uppercase
+  text-transform: uppercase;
 }
 .select-login .link {
   width: 100%;
@@ -28,7 +32,7 @@
   font-weight: 700;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity))
+  color: rgb(96 165 250 / var(--tw-text-opacity));
 }
 .select-login .button {
   width: 100%;
@@ -37,5 +41,5 @@
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity))
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }

@@ -1,12 +1,12 @@
 .background-base {
-    @apply bg-no-repeat;
     min-height: 100vh;
     background: url('/img/background.png');
+    @apply bg-no-repeat bg-fixed bg-contain;
 }
 .background-index {
-    @apply bg-no-repeat;
     min-height: 100vh;
     background: url('/img/background-index.png');
+    @apply bg-no-repeat bg-fixed bg-contain;
 }
 .select-login {
     @apply w-1/2 text-center border border-mme-blue uppercase font-bold;
