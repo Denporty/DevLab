@@ -12,7 +12,7 @@
                     <div class="flex flex-col ml-3">
                         <slot></slot>
                     </div>
-                    <div>Bonjour ceci est un try pour le nom de ma clé SSH !</div>
+                    <div>Bonjour ceci est un try pour le nom</div>
                 </div>
             </div>
         </div>
