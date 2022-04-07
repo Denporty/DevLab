@@ -9,7 +9,7 @@
                         <div class="flex">
 
                             <BreezeNavLink class="text-black font-semibold text-xl" :href="route('animation')">
-                                ManageMyEvents
+                                ManageMyEvent
                             </BreezeNavLink>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
