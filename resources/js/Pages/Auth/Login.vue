@@ -40,7 +40,7 @@
 <!--                <BreezeCheckbox name="remember" v-model:checked="form.remember" />-->
 <!--                <span class="ml-2 text-sm">Remember me</span>-->
 <!--            </label>-->
-            <Button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold m-auto bg-mme-blue hover:bg-mme-blue" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold m-auto bg-mme-blue hover:bg-blue-600" :disabled="form.processing">
                 Se connecter
             </Button>
         </div>
