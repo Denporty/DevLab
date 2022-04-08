@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'admin' => 'nullable|boolean|',
+            'super_admin' => 'nullable|boolean|',
             'department' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::DEPARTMENT)),
             'email' => ['required', 'string', 'email'],
         ];
