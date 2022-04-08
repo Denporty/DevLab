@@ -27,21 +27,22 @@ Route::get('/dashboard', function () {
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
-    'middleware' => 'auth',
+    'middleware' => ['auth', 'admin'],
 ], function () {
     Route::group([
         'prefix' => 'animation',
         'as' => 'animation',
     ], function () {
-        Route::get('', [AnimationController::class, 'index'])->middleware(['admin'])->name('');
-        Route::get('/form/{animation?}', [AnimationController::class, 'form'])->middleware(['admin'])->name('.form');
-        Route::post('/store', [AnimationController::class, 'store'])->middleware(['admin'])->name('.store');
-        Route::post('/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('.update');
-        Route::delete('/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('.delete');
+        Route::get('', [AnimationController::class, 'index'])->name('');
+        Route::get('/form/{animation?}', [AnimationController::class, 'form'])->name('.form');
+        Route::post('/store', [AnimationController::class, 'store'])->name('.store');
+        Route::post('/update/{animation}', [AnimationController::class, 'update'])->name('.update');
+        Route::delete('/{animation}', [AnimationController::class, 'destroy'])->name('.delete');
     });
     Route::group([
         'prefix' => 'users',
         'as' => 'users',
+        'middleware' => 'super_admin',
     ], function () {
         Route::get('', [ManageUserController::class, 'index'])->middleware(['admin'])->name('');
         Route::get('/form/{user?}', [ManageUserController::class, 'form'])->middleware(['admin'])->name('.form');
