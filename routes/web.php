@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimationController;
 use App\Http\Controllers\FOAnimationController;
+use App\Http\Controllers\ManageUserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,11 +28,25 @@ Route::group([
     'as' => 'admin.',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/animation', [AnimationController::class, 'index'])->middleware(['admin'])->name('animation');
-    Route::get('/animation/form/{animation?}', [AnimationController::class, 'form'])->middleware(['admin'])->name('animation.form');
-    Route::post('/animation/store', [AnimationController::class, 'store'])->middleware(['admin'])->name('animation.store');
-    Route::post('/animation/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('animation.update');
-    Route::delete('/animation/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('animation.delete');
+    Route::group([
+        'prefix' => 'animation',
+        'as' => 'animation',
+    ], function () {
+        Route::get('', [AnimationController::class, 'index'])->middleware(['admin'])->name('');
+        Route::get('/form/{animation?}', [AnimationController::class, 'form'])->middleware(['admin'])->name('.form');
+        Route::post('/store', [AnimationController::class, 'store'])->middleware(['admin'])->name('.store');
+        Route::post('/update/{animation}', [AnimationController::class, 'update'])->middleware(['admin'])->name('.update');
+        Route::delete('/{animation}', [AnimationController::class, 'destroy'])->middleware(['admin'])->name('.delete');
+    });
+    Route::group([
+        'prefix' => 'users',
+        'as' => 'users',
+    ], function () {
+        Route::get('', [ManageUserController::class, 'index'])->middleware(['admin'])->name('');
+        Route::get('/form/{user?}', [ManageUserController::class, 'form'])->middleware(['admin'])->name('.form');
+        Route::post('/update/{user}', [ManageUserController::class, 'update'])->middleware(['admin'])->name('.update');
+        Route::delete('/{user}', [ManageUserController::class, 'destroy'])->middleware(['admin'])->name('.delete');
+    });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
