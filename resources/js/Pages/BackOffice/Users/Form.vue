@@ -90,7 +90,6 @@ export default {
         submitForm() {
             if(this.user?.id) this.form.post(route('admin.users.update', this.user.id))
             else this.form.post(route('admin.users.store'))
-            console.log(this.form)
         },
         confirmDelete() {
             this.$inertia.delete(route('admin.users.delete', this.user?.id))
