@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Animation\StoreAnimationRequest;
 use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
+use App\Models\Category;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -52,11 +53,12 @@ class AnimationController extends Controller
     public function form(Animation $animation = null)
     {
         $departments = Department::all();
+        $categories = Category::all();
         return Inertia::render('BackOffice/Animation/Form', [
             'animation' => $animation,
             'admin' => User::ADMIN,
             'department' => $departments,
-            'categories' => Animation::CATEGORIES
+            'categories' => $categories
         ]);
     }
 

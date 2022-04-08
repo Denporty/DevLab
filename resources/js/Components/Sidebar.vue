@@ -1,6 +1,6 @@
 <template>
     <div class="container__sidebar">
-        <a :href="route('dashboard')">
+        <a :href="route('admin.animation')">
             <img src="/img/logo_white.svg" alt="logo">
         </a>
 
@@ -21,6 +21,11 @@
                         Gestion des pôles
                     </a>
                 </li>
+                <li v-if="$page.props.auth.user.super_admin">
+                    <a :href="route('admin.categories')">
+                        Gestion des catégories
+                    </a>
+                </li>
             </ul>
 
             <a class="btn__event" :href="route('admin.animation.form')">Créer un évènements</a>
@@ -30,6 +35,11 @@
             <NavLink :href="route('logout')" method="post" as="button">
                 Deconnexion
             </NavLink>
+            <button class="mt-4">
+                <a :href="route('animation')">
+                    Retour au site
+                </a>
+            </button>
         </div>
     </div>
 </template>

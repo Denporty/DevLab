@@ -67,9 +67,6 @@ export default {
             type: Object,
             default: {}
         }
-    },
-    mounted() {
-        console.log(this.departments.data)
     }
 }
 </script>

@@ -43,6 +43,10 @@
     .container__logout {
         margin-top: 55vh;
         bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-right: auto;
+        margin-left: auto;
 
         button {
             font-family: 'Montserrat' , sans-serif;
