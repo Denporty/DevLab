@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Animation;
+use App\Models\Department;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -23,7 +24,7 @@ class RegisteredUserController extends Controller
     public function create()
     {
         return Inertia::render('Auth/Register', [
-            'department' => Animation::DEPARTMENT
+            'department' => Department::all()
         ]);
     }
 

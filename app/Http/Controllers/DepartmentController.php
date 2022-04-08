@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Department\StoreDepartmentRequest;
 use App\Models\Department;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -47,5 +48,40 @@ class DepartmentController extends Controller
         return Inertia::render('BackOffice/Department/Form', [
             'department' => $department,
         ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StoreDepartmentRequest $request
+     * @return RedirectResponse
+     */
+    public function store(StoreDepartmentRequest $request): RedirectResponse
+    {
+        Department::create($request->validated());
+        return redirect()->route('admin.departments')->with('success', "Le département a bien été crée");
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param StoreDepartmentRequest $request
+     * @param Department $department
+     * @return RedirectResponse
+     */
+    public function update(StoreDepartmentRequest $request, Department $department): RedirectResponse
+    {
+        $department->update($request->validated());
+        return redirect()->route('admin.departments')->with('success', "Le département a bien été mise à jour");
+    }
+
+    /**
+     * @param Department $department
+     * @return RedirectResponse
+     */
+    public function destroy(Department $department): RedirectResponse
+    {
+        $department->delete();
+        return Redirect::route('admin.departments')->with('success', 'Le departement a bien été supprimé');
     }
 }

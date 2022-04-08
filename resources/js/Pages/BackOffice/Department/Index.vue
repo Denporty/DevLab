@@ -5,6 +5,10 @@
             <Sidebar></Sidebar>
 
             <div class="container__main">
+
+                <a :href="route('admin.departments.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                    AJouter
+                </a>
                 <div class="p-8">
                     <Table
                         :filters="queryBuilderProps.filters"

@@ -22,7 +22,7 @@
                     <Select label="Catégorie" v-model="form.tag" :options="categories" :message="form.errors.tag"/>
                 </div>
                 <div class="my-2">
-                    <Select label="Départements concernés" v-model="form.department" :options="department" :message="form.errors.department"/>
+                    <Select label="Départements concernés" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
                 </div>
                 <div class="my-2">
                     <Input type="number" label='Nombre de places' name="places" v-model="form.places" :message="form.errors.places"/>
@@ -114,8 +114,12 @@ export default {
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
             }),
-            showModal: false
+            showModal: false,
+            filteredArray: null,
         }
+    },
+    mounted() {
+      this.filterData()
     },
     methods: {
         submitForm() {
@@ -125,7 +129,13 @@ export default {
         confirmDelete() {
             this.$inertia.delete(route('admin.animation.delete', this.animation?.id))
             this.showModal = false
-        }
+        },
+        filterData() {
+            this.filteredArray = []
+            return this.department?.forEach(department => {
+                this.filteredArray.push(department.name)
+            })
+        },
     }
 }
 </script>

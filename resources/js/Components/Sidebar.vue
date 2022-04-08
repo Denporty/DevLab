@@ -16,7 +16,11 @@
                         Gestion des utilisateurs
                     </a>
                 </li>
-                <li>gestion des pôles</li>
+                <li>
+                    <a :href="route('admin.departments')">
+                        Gestion des pôles
+                    </a>
+                </li>
             </ul>
 
             <a class="btn__event" :href="route('admin.animation.form')">Créer un évènements</a>
