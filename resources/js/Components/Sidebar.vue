@@ -11,7 +11,11 @@
                         Évènements
                     </a>
                 </li>
-                <li>Gestion des utilisateurs</li>
+                <li>
+                    <a :href="route('admin.users')">
+                        Gestion des utilisateurs
+                    </a>
+                </li>
                 <li>gestion des pôles</li>
             </ul>
 

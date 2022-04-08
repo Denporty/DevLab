@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Animation\StoreAnimationRequest;
 use App\Http\Requests\User\StoreUserRequest;
-use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Spatie\QueryBuilder\AllowedFilter;

@@ -1,12 +1,12 @@
 .container__sidebar {
     background: #60A5FA;
-    height: 100vh; /* Full-height: remove this if you want "auto" height */
     width: 300px; /* Set the width of the sidebar */
+    height: 100vh;
     z-index: 1; /* Stay on top */
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    position: fixed;
 
     img {
         margin-top: 20px;
@@ -41,7 +41,7 @@
     }
 
     .container__logout {
-        position: absolute;
+        margin-top: 55vh;
         bottom: 20px;
 
         button {
