@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserRequest;
 use App\Models\Animation;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
@@ -46,9 +47,10 @@ class ManageUserController extends Controller
      */
     public function form(User $user = null)
     {
+        $departments = Department::all();
         return Inertia::render('BackOffice/Users/Form', [
             'user' => $user,
-            'department' => Animation::DEPARTMENT,
+            'department' => $departments,
             'admin' => User::ADMIN
         ]);
     }

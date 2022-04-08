@@ -42,9 +42,9 @@
                 <a :href="route('animation.online', $page.props.auth.user.id)" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Liste des événements
                 </a>
-                <a v-if="$page.props.auth.user != null" :href="route('logout')" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
+                <NavLink method="post" as="button" :href="route('logout')" :base_style="false" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">
                     Déconnexion
-                </a>
+                </NavLink>
             </div>
             <div v-else>
                 <a :href="route('register')" class="block text-mme-blue p-4 hover:bg-blue-300 hover:text-white duration-300">

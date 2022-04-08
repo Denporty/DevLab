@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimationController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FOAnimationController;
 use App\Http\Controllers\ManageUserController;
 use Illuminate\Foundation\Application;
@@ -47,6 +48,16 @@ Route::group([
         Route::get('/form/{user?}', [ManageUserController::class, 'form'])->middleware(['admin'])->name('.form');
         Route::post('/update/{user}', [ManageUserController::class, 'update'])->middleware(['admin'])->name('.update');
         Route::delete('/{user}', [ManageUserController::class, 'destroy'])->middleware(['admin'])->name('.delete');
+    });
+    Route::group([
+        'prefix' => 'departments',
+        'as' => 'departments',
+    ], function () {
+        Route::get('', [DepartmentController::class, 'index'])->middleware(['admin'])->name('');
+        Route::get('/form/{department?}', [DepartmentController::class, 'form'])->middleware(['admin'])->name('.form');
+        Route::post('/store', [DepartmentController::class, 'store'])->middleware(['admin'])->name('.store');
+        Route::post('/update/{department}', [DepartmentController::class, 'update'])->middleware(['admin'])->name('.update');
+        Route::delete('/{department}', [DepartmentController::class, 'destroy'])->middleware(['admin'])->name('.delete');
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');

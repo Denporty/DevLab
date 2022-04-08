@@ -16,7 +16,11 @@
                         Gestion des utilisateurs
                     </a>
                 </li>
-                <li>gestion des pôles</li>
+                <li v-if="$page.props.auth.user.super_admin">
+                    <a :href="route('admin.departments')">
+                        Gestion des pôles
+                    </a>
+                </li>
             </ul>
 
             <a class="btn__event" :href="route('admin.animation.form')">Créer un évènements</a>

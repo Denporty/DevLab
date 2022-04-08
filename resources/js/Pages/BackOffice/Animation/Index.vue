@@ -40,6 +40,8 @@
                                             <a :href="route('admin.animation.form', animation.id)">
                                                 <img src="/img/actions.svg" alt="">
                                             </a>
+
+                                            <Button @click="this.findDepartmentName(animation.department)">Click</Button>
                                         </div>
                                     </div>
                                 </td>
@@ -70,10 +72,27 @@ export default {
         Icon,
         Table: Tailwind2.Table,
     },
+    mounted() {
+        console.log(this.departments)
+    },
     props: {
         animations: {
             type: Object,
             default: {}
+        },
+        departments: {
+            type: Object,
+            default: {}
+        }
+    },
+    methods: {
+        findDepartmentName(item) {
+            this.departments?.forEach(department => {
+                if(parseInt(item) === department.id) {
+                    console.log(department.name)
+                }
+                console.log(parseInt(item), department.id, parseInt(item) === department.id)
+            });
         }
     }
 }
