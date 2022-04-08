@@ -121,7 +121,7 @@ export default {
     },
     mounted() {
         this.filterData()
-        this.filterCategoriesDate()
+        this.filterCategoriesData()
     },
     methods: {
         submitForm() {
@@ -138,7 +138,7 @@ export default {
                 this.filteredArray.push(department.name)
             })
         },
-        filterCategoriesDate() {
+        filterCategoriesData() {
             this.filteredCategoriesArray = []
             return this.categories?.forEach(category => {
                 this.filteredCategoriesArray.push(category.name)
