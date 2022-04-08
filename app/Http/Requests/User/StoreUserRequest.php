@@ -29,7 +29,7 @@ class StoreUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'admin' => 'nullable|boolean|',
             'super_admin' => 'nullable|boolean|',
-            'department' => 'nullable|string|max:255|in:'. implode(',', array_keys(Animation::DEPARTMENT)),
+            'department' => 'nullable|string|max:255',
             'email' => ['required', 'string', 'email'],
         ];
     }

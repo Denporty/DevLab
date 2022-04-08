@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Animation;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('Admin'),
                 'admin' => true,
                 'super_admin' => true,
-                'department' => 'ADMIN'
+                'department' => array_rand(Animation::DEPARTMENT, 1)
             ]);
         }
     }
