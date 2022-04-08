@@ -25,6 +25,9 @@
                             <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
                         </div>
                         <div class="my-2">
+                            <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
+                        </div>
+                        <div class="my-2">
                             <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
                         </div>
                         <div class="flex py-4">
@@ -77,7 +80,8 @@ export default {
                 name: this.user?.name ?? null,
                 email: this.user?.email ?? null,
                 department: this.user?.department ?? null,
-                admin: this.user?.admin ?? null
+                admin: this.user?.admin ?? null,
+                super_admin: this.user?.super_admin ?? null,
             }),
             showModal: false,
         }

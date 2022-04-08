@@ -11,7 +11,7 @@
                         Évènements
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.super_admin">
                     <a :href="route('admin.users')">
                         Gestion des utilisateurs
                     </a>
