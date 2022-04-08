@@ -70,8 +70,15 @@ export default {
         Icon,
         Table: Tailwind2.Table,
     },
+    mounted() {
+        console.log(this.departments)
+    },
     props: {
         animations: {
+            type: Object,
+            default: {}
+        },
+        departments: {
             type: Object,
             default: {}
         }

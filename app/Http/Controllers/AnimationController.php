@@ -23,6 +23,7 @@ class AnimationController extends Controller
 
     public function index()
     {
+        $department = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 if (is_array($value)) $value = implode( ',', $value);
@@ -38,6 +39,7 @@ class AnimationController extends Controller
 
         return Inertia::render('BackOffice/Animation/Index', [
             'animations' => new AnimationCollection($animations),
+            'departments' => $department
         ])->table();
     }
 
