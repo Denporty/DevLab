@@ -17,6 +17,7 @@
                                 <th>Date d'inscription</th>
                                 <th>Départements</th>
                                 <th>Organisateur</th>
+                                <th>Super Admin</th>
                                 <th>Actions</th>
                             </tr>
                         </template>
@@ -26,6 +27,7 @@
                                 <td>{{ user.created_at }}</td>
                                 <td>{{ user.department }}</td>
                                 <td>{{ user.admin }}</td>
+                                <td>{{ user.super_admin }}</td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

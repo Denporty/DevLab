@@ -31,10 +31,10 @@ class Animation extends Model
     use HasFactory;
 
     const CATEGORIES = [
-        'Séminaire' => 'Séminaire',
-        'Pôt de départ' => 'Pôt de départ',
-        'After Work' => 'After Work',
-        'Activités diverses' => 'Activités diverses',
+        1 => 'Séminaire',
+        2 => 'Pôt de départ',
+        3 => 'After Work',
+        4 => 'Activités diverses',
     ];
 
     const DEPARTMENT = [

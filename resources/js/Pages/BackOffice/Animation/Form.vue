@@ -19,7 +19,7 @@
                     <Input label="Localisation" name="localisation" v-model="form.localisation" :message="form.errors.localisation"/>
                 </div>
                 <div class="my-2">
-                    <Select label="Catégorie" v-model="form.tag" :options="categories" :message="form.errors.tag"/>
+                    <Select label="Catégorie" v-model="form.tag" :options="filteredCategoriesArray" :message="form.errors.tag"/>
                 </div>
                 <div class="my-2">
                     <Select label="Départements concernés" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
@@ -116,10 +116,13 @@ export default {
             }),
             showModal: false,
             filteredArray: null,
+            filteredCategoriesArray: null
         }
     },
     mounted() {
-      this.filterData()
+        this.filterData()
+        this.filterCategoriesDate()
+        console.log(this.categories)
     },
     methods: {
         submitForm() {
@@ -136,6 +139,12 @@ export default {
                 this.filteredArray.push(department.name)
             })
         },
+        filterCategoriesDate() {
+            this.filteredCategoriesArray = []
+            return this.categories?.forEach(category => {
+                this.filteredCategoriesArray.push(category.name)
+            })
+        }
     }
 }
 </script>
