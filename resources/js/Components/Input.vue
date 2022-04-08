@@ -63,9 +63,6 @@ export default {
         focus() {
             this.$refs.input.focus()
         },
-    },
-    mounted() {
-        console.log(this.classname)
     }
 }
 </script>
