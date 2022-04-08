@@ -1,0 +1,64 @@
+.wrapper__events-list {
+    display: flex;
+    justify-content: space-between;
+
+    .container__main {
+        margin-left: 300px;
+        width: 100%;
+        .title__back {
+            font-family: 'Montserrat' , sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: #0E3536;
+            margin-right: 30px;
+        }
+
+        .add__event {
+            background: #60A5FA;
+            border-radius: 3px;
+            font-family: 'Montserrat' , sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #F1F1F1;
+            text-transform: uppercase;
+        }
+
+
+        .container__list {
+            table {
+
+                thead {
+                    tr {
+                        background: white;
+
+                        th {
+                            text-transform: uppercase;
+                            font-family: Montserrat , sans-serif;
+                            color: #0E3536;
+                            font-size: 13px;
+                        }
+                    }
+                }
+
+                tbody {
+                    tr {
+                        background: white;
+                        th {
+                            text-transform: uppercase;
+                            font-family: Montserrat , sans-serif;
+                            color: #0E3536;
+                            font-size: 13px;
+                        }
+                    }
+
+                    tr:nth-child(odd) {
+                        background: #F1F1F1;
+                    }
+                    tr:nth-child(even) {
+                        background: #60a5fa6e;
+                    }
+                }
+            }
+        }
+    }
+}

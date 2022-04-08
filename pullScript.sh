@@ -19,6 +19,8 @@ read -p "Do you want to generate fake data ? : y / N " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     php artisan db:seed --class=AnimationSeeder
+    php artisan db:seed --class=UserSeeder
+    php artisan db:seed --class=DepartmentSeeder
 fi
 
 php artisan clear-compiled
