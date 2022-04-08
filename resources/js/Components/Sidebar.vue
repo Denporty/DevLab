@@ -16,7 +16,7 @@
                         Gestion des utilisateurs
                     </a>
                 </li>
-                <li>
+                <li v-if="$page.props.auth.user.super_admin">
                     <a :href="route('admin.departments')">
                         Gestion des pôles
                     </a>
