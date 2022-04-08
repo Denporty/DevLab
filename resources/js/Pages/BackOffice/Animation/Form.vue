@@ -122,7 +122,6 @@ export default {
     mounted() {
         this.filterData()
         this.filterCategoriesDate()
-        console.log(this.categories)
     },
     methods: {
         submitForm() {
