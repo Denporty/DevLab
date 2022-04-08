@@ -62,9 +62,6 @@ export default {
         Sidebar,
         Table: Tailwind2.Table,
     },
-    mounted() {
-      console.log(this.users.data)
-    },
     props: {
         users: {
             type: Object,
