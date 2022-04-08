@@ -1,0 +1,59 @@
+.container__sidebar {
+    background: #60A5FA;
+    width: 300px; /* Set the width of the sidebar */
+    height: 100vh;
+    z-index: 1; /* Stay on top */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+
+    img {
+        margin-top: 20px;
+    }
+
+    .container__menu {
+        margin-top: 50px;
+
+        ul {
+            margin-bottom: 30px;
+            li {
+                font-family: 'Montserrat' , sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                color: #F1F1F1;
+                margin: 10px 0;
+                text-transform: uppercase;
+            }
+        }
+
+        .btn__event {
+            font-family: 'Montserrat' , sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 5px;
+            background: #F1F1F1;
+            color: #000000;
+            padding: 10px;
+        }
+    }
+
+    .container__logout {
+        margin-top: 55vh;
+        bottom: 20px;
+
+        button {
+            font-family: 'Montserrat' , sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            text-transform: uppercase;
+            border-radius: 5px;
+            background: #F1F1F1;
+            color: #000000;
+            padding: 10px 20px;
+        }
+    }
+}
