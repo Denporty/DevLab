@@ -21,6 +21,7 @@ then
     php artisan db:seed --class=AnimationSeeder
     php artisan db:seed --class=UserSeeder
     php artisan db:seed --class=DepartmentSeeder
+    php artisan db:seed --class=CategorySeeder
 fi
 
 php artisan clear-compiled
