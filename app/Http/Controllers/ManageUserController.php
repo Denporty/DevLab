@@ -21,6 +21,7 @@ class ManageUserController extends Controller
 
     public function index()
     {
+        $departments = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 if (is_array($value)) $value = implode( ',', $value);
@@ -36,6 +37,7 @@ class ManageUserController extends Controller
 
         return Inertia::render('BackOffice/Users/Index', [
             'users' => $users,
+            'departments'=> $departments
         ])->table();
     }
 

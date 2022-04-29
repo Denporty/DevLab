@@ -122,6 +122,7 @@ export default {
     mounted() {
         this.filterData()
         this.filterCategoriesData()
+        console.log(this.filteredCategoriesArray)
     },
     methods: {
         submitForm() {
@@ -143,7 +144,7 @@ export default {
             return this.categories?.forEach(category => {
                 this.filteredCategoriesArray.push(category.id)
             })
-        }
+        },
     }
 }
 </script>
