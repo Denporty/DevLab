@@ -31,6 +31,7 @@ class StoreUserRequest extends FormRequest
             'super_admin' => 'nullable|boolean|',
             'department' => 'nullable|int',
             'email' => ['required', 'string', 'email'],
+            'animation_id' => 'nullable|int',
         ];
     }
 

@@ -96,6 +96,7 @@ export default {
                 password_confirmation: '',
                 department: '',
                 terms: false,
+                animation_id: null
             })
         }
     },

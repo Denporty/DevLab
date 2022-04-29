@@ -28,7 +28,7 @@
                     </a>
                     <p class="flex items-center">
                         <span>Nombre de places : </span>
-                        <span class="font-bold">{{ item.places }}</span>
+                        <span class="font-bold">{{ lastPlaces(item) }}</span>
                     </p>
                 </div>
             </div>
@@ -52,7 +52,8 @@ export default {
         user: Object,
         datenow: String,
         tags: Object,
-        departments: Object
+        departments: Object,
+        users: Object
     },
     methods: {
         checkDate(date, element) {
@@ -85,6 +86,17 @@ export default {
             });
             return name;
         },
+
+        lastPlaces (animation) {
+            let i = 0;
+            this.users?.forEach(user => {
+                console.log(user.animation_id)
+                if (user.animation_id === animation.id) {
+                    i = i + 1;
+                }
+            });
+            return animation.places - i;
+        }
     }
 }
 </script>

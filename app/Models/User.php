@@ -34,7 +34,8 @@ class User extends Authenticatable
         'password',
         'admin',
         'super_admin',
-        'department'
+        'department',
+        'animation_id'
     ];
 
     /**

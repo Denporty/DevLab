@@ -24,6 +24,7 @@ class AnimationController extends Controller
 
     public function index()
     {
+        $users = User::all();
         $department = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
@@ -40,7 +41,8 @@ class AnimationController extends Controller
 
         return Inertia::render('BackOffice/Animation/Index', [
             'animations' => new AnimationCollection($animations),
-            'departments' => $department
+            'departments' => $department,
+            'users' => $users
         ])->table();
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreReservationRequest;
+use App\Http\Requests\User\StoreUserRequest;
 use App\Models\Animation;
 use App\Models\Category;
 use App\Models\Department;
@@ -11,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Inertia\Response;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class FOAnimationController extends Controller
 {
@@ -18,6 +21,7 @@ class FOAnimationController extends Controller
     {
         $departments = Department::all();
         $tags = Category::all();
+        $users = User::all();
         if($user != null){
             if($user->admin) {
                 return Inertia::render('FrontOffice/Animation/Index', [
@@ -25,7 +29,8 @@ class FOAnimationController extends Controller
                     'user' => $user,
                     'datenow' => Carbon::now()->format('Y-m-d'),
                     'departments' => $departments,
-                    'tags' => $tags
+                    'tags' => $tags,
+                    'users' => $users
                 ]);
             } else {
                 $scopedAnimation = DB::table('animations')->where('department', '=', $user->department)->get();
@@ -34,7 +39,8 @@ class FOAnimationController extends Controller
                     'user' => $user,
                     'datenow' => Carbon::now()->format('Y-m-d'),
                     'departments' => $departments,
-                    'tags' => $tags
+                    'tags' => $tags,
+                    'users' => $users
                 ]);
             }
         }
@@ -49,10 +55,24 @@ class FOAnimationController extends Controller
     public function more(Animation $animation) {
         $departments = Department::all();
         $tags = Category::all();
+        $users = User::all();
         return Inertia::render('FrontOffice/Animation/More', [
             'animation' =>  $animation,
             'departments' => $departments,
-            'tags' => $tags
+            'tags' => $tags,
+            'users' => $users
         ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param StoreReservationRequest $request
+     * @param User $user
+     */
+    public function update(StoreReservationRequest $request, User $user)
+    {
+        $user->update($request->validated());
+        return redirect()->route('animation')->with('success', "L'animation a bien été crée");
     }
 }

@@ -24,6 +24,7 @@
                         <template #head>
                             <tr>
                                 <th>Titre</th>
+                                <th>Nombre de places restantes</th>
                                 <th>Pôles concernés</th>
                                 <th>Date de fin</th>
                                 <th>Actions</th>
@@ -32,6 +33,7 @@
                         <template #body>
                             <tr v-for="animation in animations.data" :key="animation.id">
                                 <td>{{ animation.name }}</td>
+                                <td>{{ lastPlaces(animation) }}</td>
                                 <td>{{ findDepartmentName(animation.department) }}</td>
                                 <td>{{ animation.end_date }}</td>
                                 <td>
@@ -78,6 +80,10 @@ export default {
         departments: {
             type: Object,
             default: {}
+        },
+        users: {
+            type: Object,
+            default: {}
         }
     },
     methods: {
@@ -89,6 +95,17 @@ export default {
                 }
             });
             return name;
+        },
+        lastPlaces (animation) {
+            let i = 0;
+            this.users?.forEach(user => {
+                console.log(user.animation_id)
+                if (user.animation_id === animation.id) {
+                    i = i + 1;
+                    console.log('coucou')
+                }
+            });
+            return animation.places - i;
         }
     }
 }
