@@ -25830,7 +25830,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.filteredArray = [];
       return (_this$department = this.department) === null || _this$department === void 0 ? void 0 : _this$department.forEach(function (department) {
-        _this2.filteredArray.push(department.name);
+        _this2.filteredArray.push(department.id);
       });
     }
   }
@@ -26035,7 +26035,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.filteredArray = [];
       return (_this$department = this.department) === null || _this$department === void 0 ? void 0 : _this$department.forEach(function (department) {
-        _this.filteredArray.push(department.name);
+        _this.filteredArray.push(department.id);
       });
     },
     filterCategoriesData: function filterCategoriesData() {
@@ -26044,7 +26044,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.filteredCategoriesArray = [];
       return (_this$categories = this.categories) === null || _this$categories === void 0 ? void 0 : _this$categories.forEach(function (category) {
-        _this2.filteredCategoriesArray.push(category.name);
+        _this2.filteredCategoriesArray.push(category.id);
       });
     }
   }

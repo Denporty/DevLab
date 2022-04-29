@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Article
@@ -66,4 +67,20 @@ class Animation extends Model
         'start_date' => 'datetime:Y-m-d',
         'end_date' => 'datetime:Y-m-d',
     ];
+
+    /**
+     * @return HasOne
+     */
+    public function department(): HasOne
+    {
+        return $this->hasOne(Department::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function tag(): HasOne
+    {
+        return $this->hasOne(Category::class);
+    }
 }

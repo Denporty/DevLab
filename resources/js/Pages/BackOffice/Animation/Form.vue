@@ -135,13 +135,13 @@ export default {
         filterData() {
             this.filteredArray = []
             return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
+                this.filteredArray.push(department.id)
             })
         },
         filterCategoriesData() {
             this.filteredCategoriesArray = []
             return this.categories?.forEach(category => {
-                this.filteredCategoriesArray.push(category.name)
+                this.filteredCategoriesArray.push(category.id)
             })
         }
     }

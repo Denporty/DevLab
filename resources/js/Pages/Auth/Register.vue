@@ -112,7 +112,7 @@ export default {
         filterData() {
             this.filteredArray = []
             return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
+                this.filteredArray.push(department.id)
             })
         },
     }
