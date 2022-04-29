@@ -19,10 +19,10 @@
                     <Input label="Localisation" name="localisation" v-model="form.localisation" :message="form.errors.localisation"/>
                 </div>
                 <div class="my-2">
-                    <Select label="Catégorie" v-model="form.tag" :options="filteredCategoriesArray" :message="form.errors.tag"/>
+                    <Select label="Catégorie" v-model="form.tag" :options="categories" :message="form.errors.tag"/>
                 </div>
                 <div class="my-2">
-                    <Select label="Départements concernés" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+                    <Select label="Départements concernés" v-model="form.department" :options="department" :message="form.errors.department"/>
                 </div>
                 <div class="my-2">
                     <Input type="number" label='Nombre de places' name="places" v-model="form.places" :message="form.errors.places"/>
@@ -114,15 +114,8 @@ export default {
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
             }),
-            showModal: false,
-            filteredArray: null,
-            filteredCategoriesArray: null
+            showModal: false
         }
-    },
-    mounted() {
-        this.filterData()
-        this.filterCategoriesData()
-        console.log(this.filteredCategoriesArray)
     },
     methods: {
         submitForm() {
@@ -132,18 +125,6 @@ export default {
         confirmDelete() {
             this.$inertia.delete(route('admin.animation.delete', this.animation?.id))
             this.showModal = false
-        },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.id)
-            })
-        },
-        filterCategoriesData() {
-            this.filteredCategoriesArray = []
-            return this.categories?.forEach(category => {
-                this.filteredCategoriesArray.push(category.id)
-            })
         },
     }
 }
