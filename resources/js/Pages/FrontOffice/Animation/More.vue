@@ -12,8 +12,8 @@
         </div>
         <div>
             <div class="flex lg:flex-row flex-col items-end lg:justify-between mb-16">
-                <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ animation.tag }}</p>
-                <p class="inline-block bg-green-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ animation.department }}</p>
+                <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findTagName(animation.tag) }}</p>
+                <p class="inline-block bg-green-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findDepartmentName(animation.department) }}</p>
             </div>
             <h2 class="text-gray-800 text-5xl font-semibold capitalize">{{ animation.name }}</h2>
             <br>
@@ -61,7 +61,29 @@ export default {
     name: 'AnimationMore',
     components: {FOLayout, Icon},
     props: {
-        animation: Object
+        animation: Object,
+        tags: Object,
+        departments: Object
+    },
+    methods: {
+        findDepartmentName (id) {
+            let name = "";
+            this.departments?.forEach(department => {
+                if (department.id === id) {
+                    name = department.name
+                }
+            });
+            return name;
+        },
+        findTagName (id) {
+            let name = "";
+            this.tags?.forEach(tag => {
+                if (tag.id === id) {
+                    name = tag.name
+                }
+            });
+            return name;
+        },
     }
 }
 </script>
