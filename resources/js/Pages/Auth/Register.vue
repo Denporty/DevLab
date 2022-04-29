@@ -43,7 +43,7 @@
         </div>
         <div class="mt-4">
             <Label value="Choose your pole" class="text-mme-blue uppercase"></Label>
-            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="department" :message="form.errors.department"/>
         </div>
         </div>
 
@@ -96,25 +96,15 @@ export default {
                 password_confirmation: '',
                 department: '',
                 terms: false,
-            }),
-            filteredArray: null
+            })
         }
-    },
-    mounted() {
-      this.filterData()
     },
     methods: {
         submit() {
             this.form.post(this.route('register'), {
                 onFinish: () => this.form.reset('password', 'password_confirmation'),
             })
-        },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.id)
-            })
-        },
+        }
     }
 }
 </script>

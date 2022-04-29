@@ -19,7 +19,7 @@
                             <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
                         </div>
                         <div class="my-2">
-                            <Select label="Départements" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+                            <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
                         </div>
                         <div class="my-2">
                             <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
@@ -84,8 +84,10 @@ export default {
                 super_admin: this.user?.super_admin ?? null,
             }),
             showModal: false,
-            filteredArray: null
         }
+    },
+    created(){
+        console.log(this.admin)
     },
     methods: {
         submitForm() {
@@ -96,16 +98,7 @@ export default {
             this.$inertia.delete(route('admin.users.delete', this.user?.id))
             this.showModal = false
         },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
-            })
-        },
     },
-    mounted() {
-        this.filterData()
-    }
 }
 </script>
 <style lang="scss" scoped>
