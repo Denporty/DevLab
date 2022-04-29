@@ -26095,6 +26095,19 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": {}
     }
+  },
+  methods: {
+    findDepartmentName: function findDepartmentName(id) {
+      var _this$departments;
+
+      var name = "";
+      (_this$departments = this.departments) === null || _this$departments === void 0 ? void 0 : _this$departments.forEach(function (department) {
+        if (department.id === id) {
+          name = department.name;
+        }
+      });
+      return name;
+    }
   }
 });
 
@@ -28789,7 +28802,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               key: animation.id
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(animation.name), 1
             /* TEXT */
-            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(animation.department), 1
+            ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.findDepartmentName(animation.department)), 1
             /* TEXT */
             ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(animation.end_date), 1
             /* TEXT */

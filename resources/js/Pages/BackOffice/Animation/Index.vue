@@ -32,7 +32,7 @@
                         <template #body>
                             <tr v-for="animation in animations.data" :key="animation.id">
                                 <td>{{ animation.name }}</td>
-                                <td>{{ animation.department }}</td>
+                                <td>{{ findDepartmentName(animation.department) }}</td>
                                 <td>{{ animation.end_date }}</td>
                                 <td>
                                     <div class="flex item-center ">
@@ -80,6 +80,17 @@ export default {
             default: {}
         }
     },
+    methods: {
+        findDepartmentName (id) {
+            let name = "";
+            this.departments?.forEach(department => {
+                if (department.id === id) {
+                    name = department.name
+                }
+            });
+            return name;
+        }
+    }
 }
 </script>
 
