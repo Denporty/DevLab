@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Animation\StoreAnimationRequest;
 use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
+use App\Models\Category;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,6 +24,7 @@ class AnimationController extends Controller
 
     public function index()
     {
+        $department = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 if (is_array($value)) $value = implode( ',', $value);
@@ -37,6 +40,7 @@ class AnimationController extends Controller
 
         return Inertia::render('BackOffice/Animation/Index', [
             'animations' => new AnimationCollection($animations),
+            'departments' => $department
         ])->table();
     }
 
@@ -48,10 +52,13 @@ class AnimationController extends Controller
      */
     public function form(Animation $animation = null)
     {
+        $departments = Department::all();
+        $categories = Category::all();
         return Inertia::render('BackOffice/Animation/Form', [
             'animation' => $animation,
             'admin' => User::ADMIN,
-            'department' => Animation::DEPARTMENT
+            'department' => $departments,
+            'categories' => $categories
         ]);
     }
 

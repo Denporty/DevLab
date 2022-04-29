@@ -7,7 +7,6 @@
                 <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
             </div>
         </Modal>
-
         <div class="wrapper__form">
             <Sidebar></Sidebar>
 
@@ -24,10 +23,10 @@
 
                         <div class="container__cat-dep">
                             <div class="my-2">
-                                <Select label="Catégorie" v-model="form.tag" :options="categories" :message="form.errors.tag"/>
+                                <Select label="Catégorie" v-model="form.tag" :options="filteredCategoriesArray" :message="form.errors.tag"/>
                             </div>
                             <div class="my-2">
-                                <Select label="Départements concernés" v-model="form.department" :options="department" :message="form.errors.department"/>
+                                <Select label="Départements concernés" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
                             </div>
                         </div>
                         <div class="my-2 nb__place">
@@ -129,8 +128,14 @@ export default {
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
             }),
-            showModal: false
+            showModal: false,
+            filteredArray: null,
+            filteredCategoriesArray: null
         }
+    },
+    mounted() {
+        this.filterData()
+        this.filterCategoriesData()
     },
     methods: {
         submitForm() {
@@ -140,6 +145,18 @@ export default {
         confirmDelete() {
             this.$inertia.delete(route('admin.animation.delete', this.animation?.id))
             this.showModal = false
+        },
+        filterData() {
+            this.filteredArray = []
+            return this.department?.forEach(department => {
+                this.filteredArray.push(department.name)
+            })
+        },
+        filterCategoriesData() {
+            this.filteredCategoriesArray = []
+            return this.categories?.forEach(category => {
+                this.filteredCategoriesArray.push(category.name)
+            })
         }
     }
 }

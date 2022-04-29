@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Animation;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +23,8 @@ class UserSeeder extends Seeder
                 'email' => 'contact@test.fr',
                 'password' => Hash::make('Admin'),
                 'admin' => true,
-                'department' => 'ADMIN'
+                'super_admin' => true,
+                'department' => array_rand(Animation::DEPARTMENT, 1)
             ]);
         }
     }

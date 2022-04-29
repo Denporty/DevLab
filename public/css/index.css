@@ -90,6 +90,10 @@
 .container__sidebar .container__logout {
   margin-top: 55vh;
   bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
 }
 .container__sidebar .container__logout button {
   font-family: "Montserrat", sans-serif;
