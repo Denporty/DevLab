@@ -1,5 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 background-base">
+        <img src="/img/element_graphique1.svg" alt="Élément graphique">
+        <img src="/img/element_graphique2.svg" alt="Élément graphique">
         <div>
             <Link href="/">
                 <BreezeApplicationLogo/>
