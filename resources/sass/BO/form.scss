@@ -4,7 +4,11 @@
 
     .container__main {
         width: 100%;
-        margin-left: 300px ;
+        margin-top: 60px;
+        @media (min-width: 1024px) {
+            margin-left: 300px;
+            margin-top: 0;
+        }
 
         .container__all{
             display: flex;
@@ -22,10 +26,15 @@
             }
 
             .container__form {
-                box-shadow: 3px 2px 6px #8080804f;
-                width: 95%;
+                width: 100%;
                 background-color: #F7F7F7;
-                padding: 20px 50px;
+                padding: 20px;
+                @media (min-width: 1024px) {
+                    width: 95%;
+                    padding: 20px 50px;
+                    box-shadow: 3px 2px 6px #8080804f;
+                }
+
                 @media (min-width: 1366px) {
                     width: 70%;
                 }
@@ -65,21 +74,35 @@
                 .container__cat-dep {
                     display: flex;
                     align-items: center;
-                    justify-content: space-between;
+                    flex-direction: column;
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
 
                     .my-2 {
-                        width: 48%;
+                        width: 100%;
+
+                        @media (min-width: 1024px) {
+                            width: 48%;
+                        }
                     }
                 }
-
                 .container__dates {
                     display: flex;
                     align-items: center;
-
+                    flex-direction: column;
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                    }
                     .my-2 {
-                        width: 220px;
-                        margin-right: 20px;
+                        width: 100%;
 
+                        @media (min-width: 1024px) {
+                            width: 220px;
+                            margin-right: 20px;
+
+                        }
                         input {
                             background-color: white;
                         }
@@ -96,6 +119,14 @@
                     font-family: 'Montserrat' , sans-serif;
                     font-weight: 700;
                     font-size: 14px;
+                }
+                .btn__delete {
+                    background-color: #E72626;
+                    font-family: 'Montserrat' , sans-serif;
+                    font-weight: 700;
+                    font-size: 14px;
+                    color: white;
+                    margin-left: 30px;
                 }
             }
         }

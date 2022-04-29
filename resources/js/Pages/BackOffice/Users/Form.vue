@@ -1,42 +1,49 @@
 <template>
     <Authenticated>
-        <div class="wrapper__events-list">
+        <div class="wrapper__form">
             <Sidebar></Sidebar>
+            <BurgerMenu></BurgerMenu>
+
             <div class="container__main">
-                <Modal :show="showModal" type="danger">
-                    <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cet item ?</div>
-                    <div class="flex my-2 justify-center">
-                        <button @click="showModal = false" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mx-2">Non</button>
-                        <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
-                    </div>
-                </Modal>
-                <div class="lg:px-36 px-4">
-                    <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
-                        Retour
-                    </button>
-                    <div class="w-full px-4 py-6">
-                        <div class="my-2">
-                            <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                <div class="px-4 container__all">
+
+                    <h1 class="title">Utilisateurs</h1>
+
+                    <Modal :show="showModal" type="danger">
+                        <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cet item ?</div>
+                        <div class="flex my-2 justify-center">
+                            <button @click="showModal = false" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mx-2">Non</button>
+                            <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
                         </div>
-                        <div class="my-2">
-                            <Select label="Départements" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
-                        </div>
-                        <div class="flex py-4">
-                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
-                                Sauvegarder
-                            </Button>
-                            <Button v-if="user?.id" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
-                                Supprimer
-                            </Button>
+                    </Modal>
+                    <div class="lg:px-36 px-4 container__form mt-10">
+                        <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
+                            Retour
+                        </button>
+                        <div class="w-full px-4 py-6">
+                            <div class="my-2">
+                                <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Départements" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
+                            </div>
+                            <div class="my-2">
+                                <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
+                            </div>
+                            <div class="flex py-4">
+                                <Button :disabled="form.processing" @click="submitForm" class="btn__create">
+                                    Sauvegarder
+                                </Button>
+                                <Button v-if="user?.id" @click="showModal = true" class="btn__delete">
+                                    Supprimer
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,6 +62,8 @@ import Select from "@/Components/Select";
 import Modal from "@/Components/Modal";
 import InputError from "@/Components/InputError";
 import Sidebar from "@/Components/Sidebar";
+import BurgerMenu from '@/Components/BurgerMenu';
+
 export default {
     name: 'UsersForm',
     components: {
@@ -66,7 +75,8 @@ export default {
         Select,
         Modal,
         InputError,
-        Sidebar
+        Sidebar,
+        BurgerMenu
 
     },
     props: {
