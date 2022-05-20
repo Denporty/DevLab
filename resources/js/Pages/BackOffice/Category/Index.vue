@@ -3,16 +3,19 @@
 
         <div class="wrapper__events-list">
             <Sidebar></Sidebar>
-
+            <BurgerMenu></BurgerMenu>
             <div class="container__main">
-
-                <a :href="route('admin.categories.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                    AJouter
-                </a>
-                <div class="p-8">
+                <div class="flex px-8 mt-10 items-center">
+                    <h1 class="title__back">
+                        Catégories
+                    </h1>
+                    <a :href="route('admin.categories.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                        Ajouter
+                    </a>
+                </div>
+                <div class="p-8 container__list" >
                     <Table
                         :filters="queryBuilderProps.filters"
-                        :search="queryBuilderProps.search"
                         :columns="queryBuilderProps.columns"
                         :on-update="setQueryBuilder"
                         :meta="categories"
@@ -20,7 +23,7 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
-                                <th>Actions</th>
+                                <th style="text-align: center">Actions</th>
                             </tr>
                         </template>
                         <template #body>
@@ -30,7 +33,7 @@
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('admin.categories.form', category.id)">
-                                                <Icon icon="pencil"></Icon>
+                                                <img src="/img/actions.svg" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -51,6 +54,8 @@ import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-ta
 import Input from "@/Components/Input";
 import Button from "@/Components/Button";
 import Icon from "@/Components/Icon";
+import BurgerMenu from '@/Components/BurgerMenu';
+
 export default {
     mixins: [InteractsWithQueryBuilder],
     name: 'DepartmentList',
@@ -60,6 +65,7 @@ export default {
         Button,
         Icon,
         Sidebar,
+        BurgerMenu,
         Table: Tailwind2.Table,
     },
     props: {

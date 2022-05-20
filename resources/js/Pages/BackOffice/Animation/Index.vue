@@ -2,8 +2,8 @@
     <Authenticated>
 
         <div class="wrapper__events-list">
+            <BurgerMenu></BurgerMenu>
             <Sidebar></Sidebar>
-
             <div class="container__main">
                 <div class="flex px-8 mt-10 items-center">
                     <h1 class="title__back">
@@ -37,7 +37,7 @@
                                 <td>{{ findDepartmentName(animation.department) }}</td>
                                 <td>{{ animation.end_date }}</td>
                                 <td>
-                                    <div class="flex item-center ">
+                                    <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('admin.animation.form', animation.id)">
                                                 <img src="/img/actions.svg" alt="">
@@ -60,6 +60,8 @@ import Icon from "@/Components/Icon";
 import Button from '@/Components/Button'
 import Authenticated from "@/Layouts/Authenticated";
 import Sidebar from "@/Components/Sidebar";
+import BurgerMenu from "@/Components/BurgerMenu";
+
 import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
 export default {
     mixins: [InteractsWithQueryBuilder],
@@ -70,6 +72,7 @@ export default {
         Input,
         Button,
         Icon,
+        BurgerMenu,
         Table: Tailwind2.Table,
     },
     props: {

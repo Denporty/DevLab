@@ -1,6 +1,6 @@
 <template>
     <Label :for="name" :value="label"/>
-    <input class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:border-gray-500"
+    <textarea  class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:border-gray-500"
            :class="classname"
            :type="type"
            :min="min"
@@ -11,8 +11,9 @@
            ref="input"
            :list="list"
            :id="name"
+           :rows="rows"
            :required="required != null"
-    >
+    ></textarea>
 
     <div class="flex justify-between">
         <InputError class="w-full" :message="message"></InputError>
@@ -47,6 +48,10 @@ export default {
             type: [String, Number],
             default: null
         },
+        'rows': {
+            type: [String, Number],
+            default: null
+        },
         'message': String
     },
     emits: ['update:modelValue'],
@@ -63,6 +68,9 @@ export default {
         focus() {
             this.$refs.input.focus()
         },
+    },
+    mounted() {
+        console.log(this.classname)
     }
 }
 </script>
