@@ -1,10 +1,13 @@
 <template>
-    <div class="container__sidebar">
-        <a :href="route('admin.animation')">
-            <img src="/img/logo_white.svg" alt="logo">
-        </a>
+    <header class="burger__menu">
+        <nav class="nav__mobile">
+            <img id="open" src="/img/burger.svg" alt="open" class="open__menu" @click="openMenu">
+            <img src="/img/logo-mme.png" alt="logo" class="logo">
+        </nav>
 
-        <div class="container__menu">
+        <div  id="menu" class="container__menu">
+            <img id="close" src="/img/close_menu.svg" alt="" @click="closeMenu">
+
             <ul>
                 <li>
                     <a :href="route('admin.animation')">
@@ -27,32 +30,28 @@
                     </a>
                 </li>
             </ul>
-
-            <a class="btn__event" :href="route('admin.animation.form')">Créer un évènements</a>
         </div>
-
-        <div class="container__logout">
-            <NavLink :href="route('logout')" method="post" as="button">
-                Deconnexion
-            </NavLink>
-            <button class="mt-4">
-                <a :href="route('animation')">
-                    Retour au site
-                </a>
-            </button>
-        </div>
-    </div>
+    </header>
 </template>
 
 <script>
-import Button from "@/Components/Button";
-import NavLink from "@/Components/NavLink";
-
 export default {
-    components: {
-        Button,
-        NavLink,
+    name: 'BurgerMenu',
+    methods: {
+        openMenu() {
+            let menu = document.getElementById('menu');
+            let body = document.querySelector('body');
+
+            menu.classList.add('menuAppears');
+            body.style.overflowY = 'hidden';
+        },
+        closeMenu() {
+            let menu = document.getElementById('menu');
+            let body = document.querySelector('body');
+
+            menu.classList.remove('menuAppears');
+            body.style.overflowY = 'visible';
+        },
     },
-    props: ['value']
 }
 </script>
