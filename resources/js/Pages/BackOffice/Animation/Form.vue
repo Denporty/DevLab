@@ -11,8 +11,25 @@
             <BurgerMenu></BurgerMenu>
             <Sidebar></Sidebar>
             <div class="container__main">
+                <div class="flex px-8 mt-10 items-center">
+                    <div class="flex flex-col">
+                        <h1 class="title__back">
+                            {{ animation != null ? "Modifier l'événement "+animation.name : "Créer un événement" }}
+                        </h1>
+                        <div class="flex" v-if="animation != null">
+                            <a :href="route('admin.animation.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
+                                Modifier l'événement
+                            </a>
+                            <a :href="route('admin.animation.usersList', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
+                                Liste des participants
+                            </a>
+                            <a :href="route('admin.animation.budget', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                                Gestion du budget
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="px-4 container__all">
-                    <h1 class="title">{{ this.animation != null ? "Modifier l'événement " + this.animation.name : "Créer un événement" }}</h1>
                     <div class="w-full px-4 container__form">
                         <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                             Retour
@@ -26,10 +43,10 @@
 
                         <div class="container__cat-dep">
                             <div class="my-2">
-                                <Select label="Catégorie" v-model="form.tag" :options="filteredCategoriesArray" :message="form.errors.tag"/>
+                                <Select label="Catégorie" v-model="form.tag" :options="categories" :message="form.errors.tag"/>
                             </div>
                             <div class="my-2">
-                                <Select label="Départements concernés" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+                                <Select label="Départements concernés" v-model="form.department" :options="department" :message="form.errors.department"/>
                             </div>
                         </div>
                         <div class="my-2 nb__place">
@@ -133,14 +150,8 @@ export default {
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
             }),
-            showModal: false,
-            filteredArray: null,
-            filteredCategoriesArray: null
+            showModal: false
         }
-    },
-    mounted() {
-        this.filterData()
-        this.filterCategoriesData()
     },
     methods: {
         submitForm() {
@@ -151,20 +162,15 @@ export default {
             this.$inertia.delete(route('admin.animation.delete', this.animation?.id))
             this.showModal = false
         },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
-            })
-        },
-        filterCategoriesData() {
-            this.filteredCategoriesArray = []
-            return this.categories?.forEach(category => {
-                this.filteredCategoriesArray.push(category.name)
-            })
-        }
     }
 }
 </script>
 <style lang="scss" scoped>
+.title__back {
+    font-family: 'Montserrat' , sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #0E3536;
+    margin-right: 30px;
+}
 </style>

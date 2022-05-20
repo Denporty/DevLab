@@ -30,9 +30,9 @@
                             <tr v-for="user in users.data" :key="user.id">
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.created_at }}</td>
-                                <td>{{ user.department }}</td>
-                                <td>{{ user.admin }}</td>
-                                <td>{{ user.super_admin }}</td>
+                                <td>{{ findDepartmentName(user.department) }}</td>
+                                <td>{{ booleanToString(user.admin) }}</td>
+                                <td>{{ booleanToString(user.super_admin) }}</td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -76,6 +76,24 @@ export default {
         users: {
             type: Object,
             default: {}
+        },
+        departments: {
+            type: Object,
+            default: {}
+        }
+    },
+    methods: {
+        findDepartmentName (id) {
+            let name = "";
+            this.departments?.forEach(department => {
+                if (department.id === id) {
+                    name = department.name
+                }
+            });
+            return name;
+        },
+        booleanToString (bool) {
+            return bool ? 'Oui' : 'Non'
         }
     }
 }

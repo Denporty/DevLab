@@ -42,7 +42,8 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'department' => 'required|string|max:255'
+            'department' => 'required|string|max:255',
+            'animation_id' => 'nullable|int'
         ]);
 
         $user = User::create([
@@ -50,6 +51,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'department' => $request->department,
+            'animation_id' => $request->animation_id,
         ]);
 
         event(new Registered($user));
