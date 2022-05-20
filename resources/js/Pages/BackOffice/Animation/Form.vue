@@ -59,6 +59,14 @@
                             <Textarea rows="5" label="Description de l'événement" name="description" v-model="form.description" :message="form.errors.description"/>
                         </div>
 
+                        <div class="my-2">
+                            <InputFileImage
+                                :form="form"
+                                label="image"
+                                v-model="form.image"
+                            ></InputFileImage>
+                        </div>
+
                         <div class="container__dates">
                             <div class="my-2">
                                 <Datepicker label="Date de début" name="start_date" v-model="form.start_date" :message="form.errors.start_date"/>
@@ -111,10 +119,12 @@ import InputError from "@/Components/InputError";
 import Sidebar from "@/Components/Sidebar";
 import Textarea from "@/Components/Textarea";
 import BurgerMenu from "@/Components/BurgerMenu";
+import InputFileImage from "@/Components/InputFileImage";
 
 export default {
     name: 'AnimationForm',
     components: {
+        InputFileImage,
         BurgerMenu,
         Datepicker,
         Authenticated,
@@ -149,6 +159,7 @@ export default {
                 map: this.animation?.map ?? null,
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
+                image: this.animation?.image ?? null,
             }),
             showModal: false
         }
