@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Services\CloudinaryService;
 use Carbon\Carbon;
+use Cloudinary\Api\Exception\ApiError;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class Article
@@ -60,13 +63,35 @@ class Animation extends Model
         'active_section',
         'start_date',
         'end_date',
-        'summary'
+        'summary',
+        'image',
     ];
 
     protected $casts = [
         'start_date' => 'datetime:Y-m-d',
         'end_date' => 'datetime:Y-m-d',
     ];
+
+    /**
+     * Setter : image
+     * @param $value
+     * @throws ApiError
+     */
+    public function setImageAttribute($value){
+        if ($value instanceof UploadedFile || substr($value, 0, 5) == 'data:') {
+            $value = CloudinaryService::upload($value);
+        }
+        $this->attributes['image'] = $value;
+    }
+
+    /**
+     * @param $value
+     * @return array|string
+     */
+    public function getImageAttribute($value): array|string
+    {
+        return (!str_contains($value, 'upload/f_auto,q_auto')) ? str_replace('upload/', 'upload/f_auto,q_auto,w_auto:100:1000/', $value) : $value;
+    }
 
     /**
      * @return HasOne
