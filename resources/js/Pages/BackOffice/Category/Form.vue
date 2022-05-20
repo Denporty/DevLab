@@ -18,23 +18,11 @@
                         <div class="my-2">
                             <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
                         </div>
-                        <div class="my-2">
-                            <Select label="Départements" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
-                        </div>
                         <div class="flex py-4">
                             <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
                                 Sauvegarder
                             </Button>
-                            <Button v-if="user?.id" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
+                            <Button v-if="category?.id" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
                                 Supprimer
                             </Button>
                         </div>
@@ -56,7 +44,7 @@ import Modal from "@/Components/Modal";
 import InputError from "@/Components/InputError";
 import Sidebar from "@/Components/Sidebar";
 export default {
-    name: 'UsersForm',
+    name: 'CategoriesForm',
     components: {
         Datepicker,
         Authenticated,
@@ -70,42 +58,26 @@ export default {
 
     },
     props: {
-        user: Object,
-        department: Object,
-        admin: Object
+        category: Object,
     },
     data() {
         return {
             form: this.$inertia.form({
-                name: this.user?.name ?? null,
-                email: this.user?.email ?? null,
-                department: this.user?.department ?? null,
-                admin: this.user?.admin ?? null,
-                super_admin: this.user?.super_admin ?? null,
+                name: this.category?.name ?? null
             }),
             showModal: false,
-            filteredArray: null
         }
     },
     methods: {
         submitForm() {
-            if(this.user?.id) this.form.post(route('admin.users.update', this.user.id))
-            else this.form.post(route('admin.users.store'))
+            if(this.category?.id) this.form.post(route('admin.categories.update', this.category.id))
+            else this.form.post(route('admin.categories.store'))
         },
         confirmDelete() {
-            this.$inertia.delete(route('admin.users.delete', this.user?.id))
+            this.$inertia.delete(route('admin.categories.delete', this.category?.id))
             this.showModal = false
-        },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
-            })
-        },
+        }
     },
-    mounted() {
-        this.filterData()
-    }
 }
 </script>
 <style lang="scss" scoped>

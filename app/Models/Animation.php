@@ -31,19 +31,19 @@ class Animation extends Model
     use HasFactory;
 
     const CATEGORIES = [
-        'Séminaire' => 'Séminaire',
-        'Pôt de départ' => 'Pôt de départ',
-        'After Work' => 'After Work',
-        'Activités diverses' => 'Activités diverses',
+        1 => 'Séminaire',
+        2 => 'Pôt de départ',
+        3 => 'After Work',
+        4 => 'Activités diverses',
     ];
 
     const DEPARTMENT = [
-        'Ressources Humaines' => 'Ressources Humaines',
-        'Service Informatique' => 'Service Informatique',
-        'Externes' => 'Externes',
-        'Resources et développement' => 'Resources et développement',
-        'Marketing' => 'Marketing',
-        'Community Management' => 'Community Management'
+        1 => 'Ressources Humaines',
+        2 => 'Service Informatique',
+        3 => 'Externes',
+        4 => 'Resources et développement',
+        5 => 'Marketing',
+        6 => 'Community Management'
     ];
 
     protected $fillable = [

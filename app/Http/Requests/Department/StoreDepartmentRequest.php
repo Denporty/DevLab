@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Department;
 
-use App\Models\Animation;
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class StoreDepartmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,10 +25,6 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'admin' => 'nullable|boolean|',
-            'super_admin' => 'nullable|boolean|',
-            'department' => 'nullable|string|max:255',
-            'email' => ['required', 'string', 'email'],
         ];
     }
 
@@ -42,9 +36,7 @@ class StoreUserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => "Nom de l'utilisateur",
-            'email' => 'Adresse mail',
-            'department' => 'Département',
+            'name' => "Nom du département",
         ];
     }
 }

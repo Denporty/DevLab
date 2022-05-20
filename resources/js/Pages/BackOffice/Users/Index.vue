@@ -3,6 +3,11 @@
         <div class="wrapper__events-list">
             <Sidebar></Sidebar>
             <div class="container__main">
+                <div class="flex px-8 mt-10 items-center">
+                    <h1 class="title__back">
+                        Utilisateurs
+                    </h1>
+                </div>
                 <div class="p-8">
                     <Table
                         :filters="queryBuilderProps.filters"
@@ -17,6 +22,7 @@
                                 <th>Date d'inscription</th>
                                 <th>Départements</th>
                                 <th>Organisateur</th>
+                                <th>Super Admin</th>
                                 <th>Actions</th>
                             </tr>
                         </template>
@@ -26,6 +32,7 @@
                                 <td>{{ user.created_at }}</td>
                                 <td>{{ user.department }}</td>
                                 <td>{{ user.admin }}</td>
+                                <td>{{ user.super_admin }}</td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
