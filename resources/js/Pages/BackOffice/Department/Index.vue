@@ -8,14 +8,6 @@
             <div class="container__main">
                 <div class="flex px-8 mt-10 items-center">
                     <h1 class="title__back">
-                        Pôles
-                    </h1>
-                    <a :href="route('admin.departments.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                        Ajouter
-                    </a>
-                </div>
-                <div class="flex px-8 mt-10 items-center">
-                    <h1 class="title__back">
                         Départements
                     </h1>
                     <a :href="route('admin.departments.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">

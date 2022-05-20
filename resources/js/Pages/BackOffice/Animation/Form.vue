@@ -12,7 +12,7 @@
             <Sidebar></Sidebar>
             <div class="container__main">
                 <div class="px-4 container__all">
-                    <h1 class="title">Créer un événement</h1>
+                    <h1 class="title">{{ this.animation != null ? "Modifier l'événement " + this.animation.name : "Créer un événement" }}</h1>
                     <div class="w-full px-4 container__form">
                         <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                             Retour
@@ -98,6 +98,7 @@ import BurgerMenu from "@/Components/BurgerMenu";
 export default {
     name: 'AnimationForm',
     components: {
+        BurgerMenu,
         Datepicker,
         Authenticated,
         Input,
@@ -107,7 +108,6 @@ export default {
         Modal,
         InputError,
         Sidebar,
-        MenuBurger,
         Textarea
 
     },

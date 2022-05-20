@@ -6,7 +6,7 @@
 
             <div class="container__main">
                 <div class="px-4 container__all">
-                    <h1 class="title">Créer un département</h1>
+                    <h1 class="title">{{ this.department != null ? 'Modifier le département '+ department.name : 'Créer un département' }}</h1>
 
                     <Modal :show="showModal" type="danger">
                         <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cet item ?</div>

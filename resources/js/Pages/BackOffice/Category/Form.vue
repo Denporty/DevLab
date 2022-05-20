@@ -6,7 +6,7 @@
 
             <div class="container__main">
                 <div class="px-4 container__all">
-                    <h1 class="title">Créer une catégorie</h1>
+                    <h1 class="title">{{ category != null ? 'Modifier la catégorie ' + category.name : 'Créer une catégorie' }}</h1>
 
                     <Modal :show="showModal" type="danger">
                         <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cett catégorie ?</div>
@@ -87,7 +87,7 @@ export default {
             this.$inertia.delete(route('admin.categories.delete', this.category?.id))
             this.showModal = false
         }
-    },
+    }
 }
 </script>
 <style lang="scss" scoped>

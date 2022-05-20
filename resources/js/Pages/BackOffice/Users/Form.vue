@@ -7,7 +7,7 @@
             <div class="container__main">
                 <div class="px-4 container__all">
 
-                    <h1 class="title">Utilisateurs</h1>
+                    <h1 class="title">Modifier l'utilisateur {{ this.user.name }}</h1>
 
                     <Modal :show="showModal" type="danger">
                         <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cet item ?</div>
