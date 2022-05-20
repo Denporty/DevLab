@@ -39,6 +39,8 @@ Route::group([
         Route::post('/store', [AnimationController::class, 'store'])->name('.store');
         Route::post('/update/{animation}', [AnimationController::class, 'update'])->name('.update');
         Route::delete('/{animation}', [AnimationController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{animation}', [AnimationController::class, 'usersList'])->name('.usersList');
+        Route::get('/budget/{animation}', [AnimationController::class, 'budget'])->name('.budget');
     });
     Route::group([
         'prefix' => 'users',
@@ -47,6 +49,7 @@ Route::group([
     ], function () {
         Route::get('', [ManageUserController::class, 'index'])->name('');
         Route::get('/form/{user?}', [ManageUserController::class, 'form'])->name('.form');
+        Route::get('/reservation/cancel/{user?}', [ManageUserController::class, 'reservationCancelForm'])->name('.reservationCancelForm');
         Route::post('/update/{user}', [ManageUserController::class, 'update'])->name('.update');
         Route::delete('/{user}', [ManageUserController::class, 'destroy'])->name('.delete');
     });

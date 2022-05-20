@@ -11,8 +11,25 @@
             <BurgerMenu></BurgerMenu>
             <Sidebar></Sidebar>
             <div class="container__main">
+                <div class="flex px-8 mt-10 items-center">
+                    <div class="flex flex-col">
+                        <h1 class="title__back">
+                            {{ animation != null ? "Modifier l'événement "+animation.name : "Créer un événement" }}
+                        </h1>
+                        <div class="flex" v-if="animation != null">
+                            <a :href="route('admin.animation.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
+                                Modifier l'événement
+                            </a>
+                            <a :href="route('admin.animation.usersList', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
+                                Liste des participants
+                            </a>
+                            <a :href="route('admin.animation.budget', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                                Gestion du budget
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="px-4 container__all">
-                    <h1 class="title">{{ this.animation != null ? "Modifier l'événement " + this.animation.name : "Créer un événement" }}</h1>
                     <div class="w-full px-4 container__form">
                         <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                             Retour
@@ -149,4 +166,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.title__back {
+    font-family: 'Montserrat' , sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #0E3536;
+    margin-right: 30px;
+}
 </style>

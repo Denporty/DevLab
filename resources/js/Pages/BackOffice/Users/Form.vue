@@ -19,20 +19,38 @@
                         Retour
                     </button>
                     <div class="w-full px-4 py-6">
-                        <div class="my-2">
-                            <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                        <div class="my-2" v-if="reservationCancel">
+                            <p>Etes vous sur de vouloir annuler la participation à l'événement de l'utilisateur {{ this.user.name }} ?</p>
+                            <br>
+                            <select label="Animation" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="animation_id" val v-model="form.animation_id">
+                                <option disabled selected :value="form.animation_id">Selectionner "annuler la participation"</option>
+                                <option :value="null">Annuler la participation</option>
+                            </select>
                         </div>
-                        <div class="my-2">
-                            <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
+                        <div v-else>
+                            <div class="my-2">
+                                <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
+                            </div>
+                            <div class="my-2">
+                                <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
+                            </div>
                         </div>
-                        <div class="my-2">
-                            <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
+                        <div class="flex py-4">
+                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
+                                Sauvegarder
+                            </Button>
+                            <Button v-if="user?.id && !reservationCancel" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
+                                Supprimer
+                            </Button>
                         </div>
                     </div>
                     </div>
@@ -70,9 +88,22 @@ export default {
 
     },
     props: {
-        user: Object,
-        department: Object,
-        admin: Object
+        department: {
+            type: Object,
+            default: {}
+        },
+        user: {
+            type: Object,
+            default: {}
+        },
+        admin: {
+            type: Object,
+            default: {}
+        },
+        reservationCancel: {
+            type: Boolean,
+            default: false
+        },
     },
     data() {
         return {
@@ -82,8 +113,10 @@ export default {
                 department: this.user?.department ?? null,
                 admin: this.user?.admin ?? null,
                 super_admin: this.user?.super_admin ?? null,
+                animation_id: this.user?.animation_id ?? null
             }),
             showModal: false,
+            showAlert: false
         }
     },
     created(){
