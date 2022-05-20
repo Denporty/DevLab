@@ -53,8 +53,7 @@ class ManageUserController extends Controller
         $departments = Department::all();
         return Inertia::render('BackOffice/Users/Form', [
             'user' => $user,
-            'department' => $departments,
-            'admin' => User::ADMIN
+            'department' => $departments
         ]);
     }
 
@@ -90,8 +89,7 @@ class ManageUserController extends Controller
     {
         return Inertia::render('BackOffice/Users/Form', [
             'user' => $user,
-            'reservationCancel' => true,
-            'admin' => User::ADMIN
+            'reservationCancel' => true
         ]);
     }
 }

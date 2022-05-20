@@ -35,10 +35,18 @@
                                 <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
                             </div>
                             <div class="my-2">
-                                <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
+                                <select label="Admin" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.admin">
+                                    <option disabled selected :value="form.admin">Admin</option>
+                                    <option :value="admin.Oui">Oui</option>
+                                    <option :value="admin.Non">Non</option>
+                                </select>
                             </div>
                             <div class="my-2">
-                                <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
+                                <select label="Super Admin" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.super_admin">
+                                    <option disabled selected :value="form.super_admin">Super Admin</option>
+                                    <option :value="admin.Oui">Oui</option>
+                                    <option :value="admin.Non">Non</option>
+                                </select>
                             </div>
                             <div class="my-2">
                                 <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
@@ -98,7 +106,9 @@ export default {
         },
         admin: {
             type: Object,
-            default: {}
+            default: function () {
+                return { Oui: true, Non: false }
+            }
         },
         reservationCancel: {
             type: Boolean,
@@ -121,6 +131,8 @@ export default {
     },
     created(){
         console.log(this.admin)
+        console.log(this.form.admin)
+        console.log(this.user.admin)
     },
     methods: {
         submitForm() {
