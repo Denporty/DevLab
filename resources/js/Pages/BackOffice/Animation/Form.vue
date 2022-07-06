@@ -107,7 +107,7 @@ export default {
         Modal,
         InputError,
         Sidebar,
-        MenuBurger,
+        BurgerMenu,
         Textarea
 
     },

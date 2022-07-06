@@ -26092,7 +26092,7 @@ __webpack_require__.r(__webpack_exports__);
     Modal: _Components_Modal__WEBPACK_IMPORTED_MODULE_6__["default"],
     InputError: _Components_InputError__WEBPACK_IMPORTED_MODULE_7__["default"],
     Sidebar: _Components_Sidebar__WEBPACK_IMPORTED_MODULE_8__["default"],
-    MenuBurger: MenuBurger,
+    BurgerMenu: _Components_BurgerMenu__WEBPACK_IMPORTED_MODULE_10__["default"],
     Textarea: _Components_Textarea__WEBPACK_IMPORTED_MODULE_9__["default"]
   },
   props: {
