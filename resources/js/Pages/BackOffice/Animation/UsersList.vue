@@ -8,9 +8,9 @@
                 <div class="flex px-8 mt-10 items-center">
                     <div class="flex flex-col">
                         <h1 class="title__back">
-                            Liste des utilisateurs de l'événement {{ animation.name }}
+                            Liste des utilisateurs de l'événement : {{ animation.name }}
                         </h1>
-                        <div class="flex">
+                        <div class="flex container__btns">
                             <a :href="route('admin.animation.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
                                 Modifier l'événement
                             </a>
@@ -52,6 +52,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                         </template>
                     </Table>
                 </div>
