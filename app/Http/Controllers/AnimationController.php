@@ -24,6 +24,7 @@ class AnimationController extends Controller
 
     public function index()
     {
+        $users = User::all();
         $department = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
@@ -40,7 +41,8 @@ class AnimationController extends Controller
 
         return Inertia::render('BackOffice/Animation/Index', [
             'animations' => new AnimationCollection($animations),
-            'departments' => $department
+            'departments' => $department,
+            'users' => $users
         ])->table();
     }
 
@@ -95,5 +97,30 @@ class AnimationController extends Controller
     {
         $animation->delete();
         return Redirect::route('admin.animation')->with('success', 'L\'article a bien été supprimé');
+    }
+
+    public  function usersList(Animation $animation = null) {
+        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+            $query->where(function ($query) use ($value) {
+                if (is_array($value)) $value = implode( ',', $value);
+                $query->where('name', 'LIKE', "%{$value}%");
+            });
+        });
+        $users = QueryBuilder::for(User::class)
+            ->defaultSort('created_at')
+            ->allowedSorts(['id', 'name', 'created_at'])
+            ->allowedFilters(['id', 'name', $globalSearch])
+            ->paginate($this->nbPerPage)
+            ->withQueryString();
+        return Inertia::render('BackOffice/Animation/UsersList', [
+            'animation' => $animation,
+            'users' => $users
+        ])->table();
+    }
+
+    public  function budget(Animation $animation = null) {
+        return Inertia::render('BackOffice/Animation/Budget', [
+            'animation' => $animation
+        ])->table();
     }
 }

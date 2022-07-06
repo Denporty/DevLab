@@ -6,8 +6,6 @@
             <BurgerMenu></BurgerMenu>
 
             <div class="container__main">
-
-
                 <div class="flex px-8 mt-10 items-center">
                     <h1 class="title__back">
                         Départements

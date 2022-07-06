@@ -5,7 +5,6 @@
             <Sidebar></Sidebar>
             <BurgerMenu></BurgerMenu>
             <div class="container__main">
-
                 <div class="flex px-8 mt-10 items-center">
                     <h1 class="title__back">
                         Catégories
@@ -14,7 +13,6 @@
                         Ajouter
                     </a>
                 </div>
-
                 <div class="p-8 container__list" >
                     <Table
                         :filters="queryBuilderProps.filters"

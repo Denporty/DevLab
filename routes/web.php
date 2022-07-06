@@ -39,7 +39,11 @@ Route::group([
         Route::post('/store', [AnimationController::class, 'store'])->name('.store');
         Route::post('/update/{animation}', [AnimationController::class, 'update'])->name('.update');
         Route::delete('/{animation}', [AnimationController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{animation}', [AnimationController::class, 'usersList'])->name('.usersList');
+        Route::get('/budget/{animation}', [AnimationController::class, 'budget'])->name('.budget');
     });
+    Route::get('users/reservation/cancel/{user?}', [ManageUserController::class, 'reservationCancelForm'])->name('users.reservationCancelForm');
+    Route::post('users/update/{user}', [ManageUserController::class, 'update'])->name('users.update');
     Route::group([
         'prefix' => 'users',
         'as' => 'users',
@@ -47,7 +51,6 @@ Route::group([
     ], function () {
         Route::get('', [ManageUserController::class, 'index'])->name('');
         Route::get('/form/{user?}', [ManageUserController::class, 'form'])->name('.form');
-        Route::post('/update/{user}', [ManageUserController::class, 'update'])->name('.update');
         Route::delete('/{user}', [ManageUserController::class, 'destroy'])->name('.delete');
     });
     Route::group([
@@ -74,6 +77,7 @@ Route::group([
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
+Route::post('/animation/update/{user?}', [FOAnimationController::class, 'update'])->name('animation.reservation');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
 Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 

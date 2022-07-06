@@ -4,8 +4,8 @@
             <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8 bg-white">
                 <div class="flex md:flex-row flex-col justify-between">
                     <div class="flex flex-col justify-between">
-                        <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
-                        <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+                        <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ findTagName(item.tag) }}</p>
+                        <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ findDepartmentName(item.department) }}</p>
                     </div>
                     <div class="flex flex-row md:justify-end items-center">
                         <div class="rounded-full py-2 px-4 text-white"
@@ -28,7 +28,7 @@
                     </a>
                     <p class="flex items-center">
                         <span>Nombre de places : </span>
-                        <span class="font-bold">{{ item.places }}</span>
+                        <span class="font-bold">{{ lastPlaces(item) }}</span>
                     </p>
                 </div>
             </div>
@@ -50,7 +50,10 @@ export default {
     props: {
         items: Object,
         user: Object,
-        datenow: String
+        datenow: String,
+        tags: Object,
+        departments: Object,
+        users: Object
     },
     methods: {
         checkDate(date, element) {
@@ -64,6 +67,35 @@ export default {
                     return true
                 }
             }
+        },
+        findDepartmentName (id) {
+            let name = "";
+            this.departments?.forEach(department => {
+                if (department.id === id) {
+                    name = department.name
+                }
+            });
+            return name;
+        },
+        findTagName (id) {
+            let name = "";
+            this.tags?.forEach(tag => {
+                if (tag.id === id) {
+                    name = tag.name
+                }
+            });
+            return name;
+        },
+
+        lastPlaces (animation) {
+            let i = 0;
+            this.users?.forEach(user => {
+                console.log(user.animation_id)
+                if (user.animation_id === animation.id) {
+                    i = i + 1;
+                }
+            });
+            return animation.places - i;
         }
     }
 }
