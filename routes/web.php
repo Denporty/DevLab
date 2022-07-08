@@ -40,7 +40,16 @@ Route::group([
         Route::post('/update/{animation}', [AnimationController::class, 'update'])->name('.update');
         Route::delete('/{animation}', [AnimationController::class, 'destroy'])->name('.delete');
         Route::get('/userslist/{animation}', [AnimationController::class, 'usersList'])->name('.usersList');
-        Route::get('/budget/{animation}', [AnimationController::class, 'budget'])->name('.budget');
+        Route::group([
+            'prefix' => 'budget',
+            'as' => '.budget',
+        ], function () {
+            Route::get('/{animation}', [AnimationController::class, 'budget'])->name('');
+            Route::post('/store', [AnimationController::class, 'storeBudget'])->name('.store');
+            Route::post('/update/{budget}', [AnimationController::class, 'updateBudget'])->name('.update');
+            Route::get('/form/{animation}/{budget?}', [AnimationController::class, 'formBudget'])->name('.form');
+            Route::delete('/{budget}', [AnimationController::class, 'destroyBudget'])->name('.delete');
+        });
     });
     Route::get('users/reservation/cancel/{user?}', [ManageUserController::class, 'reservationCancelForm'])->name('users.reservationCancelForm');
     Route::post('users/update/{user}', [ManageUserController::class, 'update'])->name('users.update');
