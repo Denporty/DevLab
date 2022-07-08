@@ -18,6 +18,7 @@
                 <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findTagName(animation.tag) }}</p>
                 <p class="inline-block bg-green-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findDepartmentName(animation.department) }}</p>
             </div>
+            <img :src="animation.image" class="w-full">
             <h2 class="text-gray-800 text-5xl font-semibold capitalize">{{ animation.name }}</h2>
             <br>
             <div class="flex lg:flex-row flex-col justify-between">
