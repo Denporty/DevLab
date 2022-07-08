@@ -42,6 +42,7 @@ class StoreAnimationRequest extends FormRequest
             'department' => 'nullable|int',
             'places' => 'required|integer',
             'summary' => 'required|string',
+            'budget' => 'nullable|numeric',
             'image' => new ImageOrFile($this->animation, true),
         ];
     }
