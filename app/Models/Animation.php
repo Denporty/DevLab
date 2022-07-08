@@ -18,6 +18,7 @@ use Illuminate\Http\UploadedFile;
  * @property string tag
  * @property string department
  * @property integer places
+ * @property float budget
  * @property string description
  * @property string map
  * @property string section_title
@@ -65,6 +66,7 @@ class Animation extends Model
         'end_date',
         'summary',
         'image',
+        'budget',
     ];
 
     protected $casts = [
