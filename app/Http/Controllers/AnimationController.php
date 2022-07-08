@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Animation\StoreAnimationRequest;
+use App\Http\Requests\Animation\StoreBudgetRequest;
 use App\Http\Resources\BackOffice\Animation\AnimationCollection;
 use App\Models\Animation;
+use App\Models\Budget;
 use App\Models\Category;
 use App\Models\Department;
+use App\Models\GlobalBudget;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -50,7 +54,7 @@ class AnimationController extends Controller
      * Show the form for creating or update a resource.
      *
      * @param Animation|null $animation
-     * @return \Inertia\Response
+     * @return Response
      */
     public function form(Animation $animation = null)
     {
@@ -100,6 +104,7 @@ class AnimationController extends Controller
     }
 
     public  function usersList(Animation $animation = null) {
+        $globalBudget = GlobalBudget::where('animation_id', $animation->id)->first();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 if (is_array($value)) $value = implode( ',', $value);
@@ -114,13 +119,57 @@ class AnimationController extends Controller
             ->withQueryString();
         return Inertia::render('BackOffice/Animation/UsersList', [
             'animation' => $animation,
-            'users' => $users
+            'users' => $users,
+            'globalBudget' => $globalBudget
         ])->table();
     }
 
-    public  function budget(Animation $animation = null) {
+    public function budget(Animation $animation) {
+        $globalBudget = GlobalBudget::where('id', $animation->id)->first();
+        $budgets = Budget::where('animation_id', $animation->id)->get();
         return Inertia::render('BackOffice/Animation/Budget', [
-            'animation' => $animation
+            'animation' => $animation,
+            'budgets' => $budgets,
+            'globalBudget' => $globalBudget
         ])->table();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param StoreBudgetRequest $request
+     * @return RedirectResponse
+     */
+    public function storeBudget(StoreBudgetRequest $request): RedirectResponse
+    {
+        Budget::create($request->validated());
+        return redirect()->route('admin.animation')->with('success', "Le budget a bien été créé");
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param StoreBudgetRequest $request
+     * @param Budget $budget
+     * @return RedirectResponse
+     */
+    public function updateBudget(StoreBudgetRequest $request, Budget $budget): RedirectResponse
+    {
+        $budget->update($request->validated());
+        return redirect()->route('admin.animation.budget', $budget->id)->with('success', "Le budget a bien été créé mis à jour");
+    }
+
+    /**
+     * Show the form for creating or update a resource.
+     *
+     * @param Budget|null $budget
+     * @return Response
+     */
+    public function formBudget(Budget $budget = null, Animation $animation = null): Response
+    {
+        return Inertia::render('BackOffice/Animation/BudgetForm', [
+            'budget' => $budget,
+            'animation' => $animation
+        ]);
     }
 }

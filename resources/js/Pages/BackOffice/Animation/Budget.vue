@@ -23,6 +23,43 @@
                         </div>
                     </div>
                 </div>
+                <a :href="route('admin.animation.budget.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8">
+                    Ajouter
+                </a>
+                <div class="p-8 container__list">
+                    <Table
+                        :filters="queryBuilderProps.filters"
+                        :columns="queryBuilderProps.columns"
+                        :on-update="setQueryBuilder"
+                        :meta="budgets"
+                    >
+                        <template #head>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prix</th>
+                                <th>Quantité</th>
+                                <th>Action</th>
+                            </tr>
+                        </template>
+                        <template #body>
+                            <tr v-for="budget in budgets" :key="budget.id">
+                                <td>{{ budget.name }}</td>
+                                <td>{{ budget.price }} €</td>
+                                <td>{{ budget.quantity }}</td>
+                                <td>
+                                    <div class="flex item-center justify-center">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a :href="route('admin.animation.budget.form', budget.id)">
+                                                <img src="/img/actions.svg" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </Table>
+                    <p>Budget restant : {{ globalBudgetFormatted }}</p>
+                </div>
             </div>
         </div>
     </Authenticated>
@@ -47,9 +84,34 @@ export default {
             type: Object,
             default: {}
         },
+        globalBudget: {
+            type: Object,
+            default: {}
+        },
+        budgets: {
+            type: Object,
+            default: {}
+        },
+    },
+    data() {
+        return {
+            globalBudgetFormatted: null
+        }
+    },
+    methods: {
+        lastBudget () {
+            let i = 0;
+            this.budgets?.forEach(budget => {
+                i = i + (budget.price * budget.quantity)
+            });
+            this.globalBudgetFormatted = this.globalBudget.budget - i
+        }
     },
     mounted() {
         console.log(this.animation)
+        console.log(this.globalBudget)
+        console.log(this.budgets)
+        this.lastBudget()
     },
 }
 </script>
