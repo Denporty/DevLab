@@ -6,7 +6,7 @@
 
             <div class="container__main">
                 <div class="px-4 container__all">
-                    <h1 class="title">{{ budget != null ? 'Modifier la catégorie ' + budget.name : 'Créer une catégorie' }}</h1>
+                    <h1 class="title">Créer un budget</h1>
 
                     <!--                    <Modal :show="showModal" type="danger">-->
                     <!--                        <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cett catégorie ?</div>-->
@@ -17,9 +17,9 @@
                     <!--                    </Modal>-->
 
                     <div class="lg:px-36 px-4 container__form mt-10">
-                        <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
+                        <a :href="route('admin.animation.budget', animation.id)" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                             Retour
-                        </button>
+                        </a>
                         <div class="w-full px-4 py-6 ">
                             <div class="my-2">
                                 <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
@@ -84,8 +84,8 @@ export default {
     },
     methods: {
         submitForm() {
-            if(this.budget?.id) this.form.post(route('admin.animation.budget.update', this.budget.id))
-            else this.form.post(route('admin.animation.budget.store', this.animation.id))
+            this.form.post(route('admin.animation.budget.store', this.animation.id))
+            location.replace(route('admin.animation.budget', this.animation.id))
         },
         confirmDelete() {
             this.$inertia.delete(route('admin.animation.budget.delete', this.budget?.id))

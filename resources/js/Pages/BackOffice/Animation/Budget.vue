@@ -121,6 +121,7 @@ export default {
             this.$inertia.delete(route('admin.animation.budget.delete', this.budgetToDelete))
             this.showModal = false
             this.budgetToDelete = null
+            location.reload()
         },
         deleteBudgetAction(budget) {
             this.showModal = true
