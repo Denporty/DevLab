@@ -49,8 +49,13 @@
                                 <Select label="Départements concernés" v-model="form.department" :options="department" :message="form.errors.department"/>
                             </div>
                         </div>
-                        <div class="my-2 nb__place">
-                            <Input type="number" label='Nombre de places' name="places" v-model="form.places" :message="form.errors.places"/>
+                        <div class="container__cat-dep">
+                            <div class="my-2">
+                                <Input type="number" label='Nombre de places' name="places" v-model="form.places" :message="form.errors.places"/>
+                            </div>
+                            <div class="my-2">
+                                <Input type="number" label='Budget' name="budget" v-model="form.budget" :message="form.errors.budget"/>
+                            </div>
                         </div>
                         <div class="my-2">
                             <Input label="Résumé" name="summary" v-model="form.summary" :message="form.errors.summary"/>
@@ -160,6 +165,7 @@ export default {
                 active_section: this.animation?.active_section ?? false,
                 summary: this.animation?.summary ?? null,
                 image: this.animation?.image ?? null,
+                budget: this.animation?.budget ?? null,
             }),
             showModal: false
         }
