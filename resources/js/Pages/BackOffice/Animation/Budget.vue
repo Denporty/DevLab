@@ -48,7 +48,7 @@
                                         <td>{{ budget.quantity }}</td>
                                         <td>{{ budget.price * budget.quantity }}</td>
                                         <td>
-                                            <div class="flex item-center justify-center">
+                                            <div class="flex item-center">
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <div @click="deleteBudgetAction(budget.id)">
                                                         <img src="/img/trash.svg" alt="">
@@ -59,7 +59,7 @@
                                     </tr>
                                 </template>
                             </Table>
-                            <div>Budget restant : {{ lastBudget }} ({{ animation.budget }})</div>
+                            <div class="mt-5">Budget restant : {{ lastBudget }} ({{ animation.budget }})</div>
                         </div>
                     </div>
                 </div>

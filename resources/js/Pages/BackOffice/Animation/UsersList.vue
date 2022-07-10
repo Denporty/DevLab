@@ -43,7 +43,7 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>
-                                    <div class="flex item-center justify-center">
+                                    <div class="flex item-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('admin.users.reservationCancelForm', user.id)">
                                                 <img src="/img/actions.svg" alt="">

@@ -23,11 +23,11 @@
                     >
                         <template #head>
                             <tr>
-                                <th>Titre</th>
-                                <th>Nombre de places restantes</th>
-                                <th>Pôles concernés</th>
-                                <th>Date de fin</th>
-                                <th>Actions</th>
+                                <th class="title__header__tab">Titre</th>
+                                <th class="title__header__tab">Places</th>
+                                <th class="title__header__tab">Pôles concernés</th>
+                                <th class="title__header__tab">Date de fin</th>
+                                <th class="title__header__tab">Actions</th>
                             </tr>
                         </template>
                         <template #body>
