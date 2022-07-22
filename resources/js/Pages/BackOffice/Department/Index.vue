@@ -25,6 +25,7 @@
                             <tr>
                                 <th>Nom</th>
                                 <th>Nombre de membres</th>
+                                <th>Nombre d'événements</th>
                                 <th style="text-align: center">Actions</th>
                             </tr>
                         </template>
@@ -33,7 +34,12 @@
                                 <td>{{ department.name }}</td>
                                 <td>
                                     <a :href="route('admin.departments.usersList', department.id)" class="font-bold underline">
-                                        {{ findUsersByDepartment(department.id) }}
+                                        {{ findDataByDepartment(users, department.id) }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a :href="route('admin.departments.animationsList', department.id)" class="font-bold underline">
+                                        {{ findDataByDepartment(animations, department.id) }}
                                     </a>
                                 </td>
                                 <td>
@@ -83,17 +89,21 @@ export default {
         users: {
             type: Object,
             default: {}
-        }
+        },
+        animations: {
+            type: Object,
+            default: {}
+        },
     },
     methods: {
-      findUsersByDepartment(department) {
-          const userByDepartment = []
-          this.users.forEach(user => {
-              if (user.department === department) {
-                  userByDepartment.push(user)
+      findDataByDepartment(data, department) {
+          const dataByDepartment = []
+          data.forEach(data => {
+              if (data.department === department) {
+                  dataByDepartment.push(data)
               }
           })
-          return userByDepartment.length
+          return dataByDepartment.length
       }
     }
 }

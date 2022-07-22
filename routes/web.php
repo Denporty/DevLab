@@ -73,6 +73,7 @@ Route::group([
         Route::post('/update/{department}', [DepartmentController::class, 'update'])->name('.update');
         Route::delete('/{department}', [DepartmentController::class, 'destroy'])->name('.delete');
         Route::get('/userslist/{department}', [DepartmentController::class, 'usersList'])->name('.usersList');
+        Route::get('/animationslist/{department}', [DepartmentController::class, 'animationsList'])->name('.animationsList');
     });
     Route::group([
         'prefix' => 'categories',
