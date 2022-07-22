@@ -2,8 +2,13 @@
 
 namespace App\Http\Requests\User;
 
+use App\Models\Animation;
+use App\Rules\ImageOrFile;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed $animation
+ */
 class StoreReservationRequest extends FormRequest
 {
     /**
@@ -24,7 +29,7 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'animation_id' => 'required|int'
+            'animation_id' => 'nullable|int',
         ];
     }
 }

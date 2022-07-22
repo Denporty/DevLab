@@ -70,9 +70,8 @@ class FOAnimationController extends Controller
      * @param StoreReservationRequest $request
      * @param User $user
      */
-    public function update(StoreReservationRequest $request, User $user)
+    public function reservation(StoreReservationRequest $request, User $user)
     {
         $user->update($request->validated());
-        return redirect()->route('animation')->with('success', "L'animation a bien été crée");
     }
 }

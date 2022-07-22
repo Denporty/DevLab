@@ -1,11 +1,25 @@
 <template>
     <FOLayout>
+        <Modal :show="showModal">
+            <p>Etes vous sur de vouloir {{ $page.props.auth.user.animation_id === animation.id ? 'annuler votre réservation' : 'réserver votre place' }} pour cet événement ?</p>
+            <div class="flex justify-center">
+                <button @click="showModal = false" class="inline-block bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-2 px-4 rounded my-2 mr-4">
+                    Non
+                </button>
+                <button @click="confirmReservation($page.props.auth.user.animation_id === animation.id)" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+                    Oui
+                </button>
+            </div>
+        </Modal>
         <div class="flex flex-row justify-between w-full">
             <button onclick="window.history.back()" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
                 Retour
             </button>
-            <button @click="reservation" :disabled="$page.props.auth.user.animation_id === animation.id" :class="$page.props.auth.user.animation_id === animation.id ? 'disabled' : 'submit'" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
-                Réserver
+            <button
+                @click="reserved ? '' : showModal = true"
+                class="inline-block text-white text-xl font-bold py-2 px-4 rounded my-2"
+                :class="$page.props.auth.user.animation_id === animation.id ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'">
+                {{ $page.props.auth.user.animation_id === animation.id ? 'Annuler ma réservation' : 'Réserver' }}
             </button>
             <div v-if="$page.props.auth.user.admin" class="w-8 mr-2 transform hover:text-purple-500 hover:scale-110">
                 <a :href="route('admin.animation.form', animation.id)">
@@ -15,8 +29,8 @@
         </div>
         <div>
             <div class="flex lg:flex-row flex-col items-end lg:justify-between mb-16">
-                <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findTagName(animation.tag) }}</p>
-                <p class="inline-block bg-green-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findDepartmentName(animation.department) }}</p>
+                <p class="inline-block bg-red-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findDataByName(tags ,animation.tag) }}</p>
+                <p class="inline-block bg-green-500 text-white w-fit font-bold py-2 px-4 rounded my-2">{{ findDataByName(departments ,animation.department) }}</p>
             </div>
             <img :src="animation.image" class="w-full">
             <h2 class="text-gray-800 text-5xl font-semibold capitalize">{{ animation.name }}</h2>
@@ -61,9 +75,10 @@
 <script>
 import FOLayout from "@/Components/FOLayout";
 import Icon from "@/Components/Icon";
+import Modal from "@/Components/Modal";
 export default {
     name: 'AnimationMore',
-    components: {FOLayout, Icon},
+    components: {Modal, FOLayout, Icon},
     props: {
         animation: Object,
         tags: Object,
@@ -75,33 +90,16 @@ export default {
             form: this.$inertia.form({
                 animation_id: this.$page.props.auth.user?.animation_id ?? null,
             }),
-            showModal: false
+            showModal: false,
+            reserved: false
         }
     },
     methods: {
-        findDepartmentName (id) {
+        findDataByName (data, id) {
             let name = "";
-            this.departments?.forEach(department => {
-                if (department.id === id) {
-                    name = department.name
-                }
-            });
-            return name;
-        },
-        reservation() {
-            this.form.animation_id = this.animation.id
-            this.form.post(route('animation.reservation', this.$page.props.auth.user.id))
-        },
-        noReservation() {
-            this.form.animation_id = null
-            console.log('coucou')
-            this.form.post(route('animation.reservation', this.$page.props.auth.user.id))
-        },
-        findTagName (id) {
-            let name = "";
-            this.tags?.forEach(tag => {
-                if (tag.id === id) {
-                    name = tag.name
+            data?.forEach(data => {
+                if (data.id === id) {
+                    name = data.name
                 }
             });
             return name;
@@ -109,13 +107,18 @@ export default {
         lastPlaces (animation) {
             let i = 0;
             this.users?.forEach(user => {
-                console.log(user.animation_id)
                 if (user.animation_id === animation.id) {
                     i = i + 1;
                 }
             });
             return animation.places - i;
-        }
+        },
+        confirmReservation(bool) {
+            bool ? this.form.animation_id = null : this.form.animation_id = this.animation.id
+            this.form.post(route('animation.reservation', this.$page.props.auth.user?.id))
+            this.showModal = false
+            location.reload()
+        },
     },
 }
 </script>
