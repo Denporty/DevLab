@@ -24,13 +24,18 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
+                                <th>Nombre de membres</th>
                                 <th style="text-align: center">Actions</th>
-
                             </tr>
                         </template>
                         <template #body>
                             <tr v-for="department in departments.data" :key="department.id">
                                 <td>{{ department.name }}</td>
+                                <td>
+                                    <a :href="route('admin.departments.usersList', department.id)" class="font-bold underline">
+                                        {{ findUsersByDepartment(department.id) }}
+                                    </a>
+                                </td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -74,7 +79,22 @@ export default {
         departments: {
             type: Object,
             default: {}
+        },
+        users: {
+            type: Object,
+            default: {}
         }
+    },
+    methods: {
+      findUsersByDepartment(department) {
+          const userByDepartment = []
+          this.users.forEach(user => {
+              if (user.department === department) {
+                  userByDepartment.push(user)
+              }
+          })
+          return userByDepartment.length
+      }
     }
 }
 </script>
