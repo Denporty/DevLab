@@ -23,12 +23,18 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
+                                <th>Nombre d'événements</th>
                                 <th style="text-align: center">Actions</th>
                             </tr>
                         </template>
                         <template #body>
                             <tr v-for="category in categories.data" :key="category.id">
                                 <td>{{ category.name }}</td>
+                                <td>
+                                    <a :href="route('admin.categories.animationsList', category.id)" class="font-bold underline">
+                                        {{ findAnimationByCategory(category.id) }}
+                                    </a>
+                                </td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -72,6 +78,21 @@ export default {
         categories: {
             type: Object,
             default: {}
+        },
+        animations: {
+            type: Object,
+            default: {}
+        }
+    },
+    methods: {
+        findAnimationByCategory(category) {
+            const animationByCategory = []
+            this.animations.forEach(animation => {
+                if (animation.tag === category) {
+                    animationByCategory.push(animation)
+                }
+            })
+            return animationByCategory.length
         }
     }
 }

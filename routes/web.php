@@ -72,6 +72,7 @@ Route::group([
         Route::post('/store', [DepartmentController::class, 'store'])->name('.store');
         Route::post('/update/{department}', [DepartmentController::class, 'update'])->name('.update');
         Route::delete('/{department}', [DepartmentController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{department}', [DepartmentController::class, 'usersList'])->name('.usersList');
     });
     Route::group([
         'prefix' => 'categories',
@@ -83,6 +84,7 @@ Route::group([
         Route::post('/store', [CategoryController::class, 'store'])->name('.store');
         Route::post('/update/{category}', [CategoryController::class, 'update'])->name('.update');
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('.delete');
+        Route::get('/animationlist/{category}', [CategoryController::class, 'animationList'])->name('.animationsList');
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');

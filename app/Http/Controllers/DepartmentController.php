@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Department\StoreDepartmentRequest;
 use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -34,6 +36,7 @@ class DepartmentController extends Controller
 
         return Inertia::render('BackOffice/Department/Index', [
             'departments' => $department,
+            'users' => User::all()
         ])->table();
     }
 
@@ -41,7 +44,7 @@ class DepartmentController extends Controller
      * Show the form for creating or update a resource.
      *
      * @param Department|null $department
-     * @return \Inertia\Response
+     * @return Response
      */
     public function form(Department $department = null)
     {
@@ -83,5 +86,14 @@ class DepartmentController extends Controller
     {
         $department->delete();
         return Redirect::route('admin.departments')->with('success', 'Le departement a bien été supprimé');
+    }
+
+    public  function usersList(Department $department = null): Response
+    {
+        $users = User::all();
+        return Inertia::render('BackOffice/Department/UsersList', [
+            'department' => $department,
+            'users' => $users
+        ]);
     }
 }
