@@ -4,7 +4,7 @@
             <button onclick="window.history.back()" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
                 Retour
             </button>
-            <button @click="reservation" :disabled="$page.props.auth.user.animation_id === animation.id" :class="$page.props.auth.user.animation_id === animation.id ? 'disabled' : 'submit'" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+            <button class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
                 Réserver
             </button>
             <div v-if="$page.props.auth.user.admin" class="w-8 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -87,15 +87,6 @@ export default {
                 }
             });
             return name;
-        },
-        reservation() {
-            this.form.animation_id = this.animation.id
-            this.form.post(route('animation.reservation', this.$page.props.auth.user.id))
-        },
-        noReservation() {
-            this.form.animation_id = null
-            console.log('coucou')
-            this.form.post(route('animation.reservation', this.$page.props.auth.user.id))
         },
         findTagName (id) {
             let name = "";
