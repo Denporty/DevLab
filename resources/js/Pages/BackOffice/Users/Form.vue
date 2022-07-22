@@ -23,8 +23,8 @@
                             <p>Etes vous sur de vouloir annuler la participation à l'événement de l'utilisateur {{ this.user.name }} ?</p>
                             <br>
                             <select label="Animation" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="animation_id" val v-model="form.animation_id">
-                                <option disabled selected :value="form.animation_id">Selectionner "annuler la participation"</option>
-                                <option :value="null">Annuler la participation</option>
+                                <option :value="form.animation_id">Non</option>
+                                <option :value="null">Oui</option>
                             </select>
                         </div>
                         <div v-else>
