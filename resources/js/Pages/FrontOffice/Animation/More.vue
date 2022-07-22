@@ -16,7 +16,7 @@
                 Retour
             </button>
             <button
-                @click="reserved ? '' : showModal = true"
+                @click="showModal = true"
                 class="inline-block text-white text-xl font-bold py-2 px-4 rounded my-2"
                 :class="$page.props.auth.user.animation_id === animation.id ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'">
                 {{ $page.props.auth.user.animation_id === animation.id ? 'Annuler ma réservation' : 'Réserver' }}
@@ -90,8 +90,7 @@ export default {
             form: this.$inertia.form({
                 animation_id: this.$page.props.auth.user?.animation_id ?? null,
             }),
-            showModal: false,
-            reserved: false
+            showModal: false
         }
     },
     methods: {
