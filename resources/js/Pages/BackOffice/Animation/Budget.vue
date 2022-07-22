@@ -106,16 +106,12 @@ export default {
       getBudgetOfAnimation() {
           let tmpLastBudget = this.animation.budget
           this.budgets.forEach(budget => {
-              console.log(budget.id)
               if (budget.animation_id === this.animation.id) {
                   this.budgetFiltered.push(budget)
                   tmpLastBudget = tmpLastBudget - (budget.price * budget.quantity)
-                  console.log(this.budgetFiltered)
-                  console.log(tmpLastBudget)
               }
           })
           this.lastBudget = tmpLastBudget
-          console.log(this.lastBudget)
       },
         confirmDelete() {
             this.$inertia.delete(route('admin.animation.budget.delete', this.budgetToDelete))

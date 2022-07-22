@@ -93,8 +93,6 @@ export default {
         }
     },
     mounted() {
-        console.log(this.budget)
-        console.log(this.form.animation_id)
         this.form.animation_id = this.animation.id
     }
 }

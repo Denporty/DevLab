@@ -90,8 +90,6 @@ export default {
     },
     mounted() {
         this.filterData()
-        console.log(this.animation)
-        console.log(this.users.data)
     },
     methods: {
         filterData() {

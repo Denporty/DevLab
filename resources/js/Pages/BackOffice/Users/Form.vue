@@ -35,17 +35,17 @@
                                 <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
                             </div>
                             <div class="my-2">
-                                <select label="Admin" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.admin">
-                                    <option disabled selected :value="form.admin">Admin</option>
-                                    <option :value="admin.Oui">Oui</option>
-                                    <option :value="admin.Non">Non</option>
+                                <label>Organisateur</label>
+                                <select class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.admin">
+                                    <option disabled selected :value="form.admin">{{ form.admin ? 'Oui' : 'Non' }}</option>
+                                    <option :value="!form.admin ? admin.Oui : admin.Non">{{ !form.admin ? 'Oui' : 'Non' }}</option>
                                 </select>
                             </div>
                             <div class="my-2">
-                                <select label="Super Admin" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.super_admin">
-                                    <option disabled selected :value="form.super_admin">Super Admin</option>
-                                    <option :value="admin.Oui">Oui</option>
-                                    <option :value="admin.Non">Non</option>
+                                <label>Super administrateur</label>
+                                <select class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.super_admin">
+                                    <option disabled selected :value="form.super_admin">{{ form.super_admin ? 'Oui' : 'Non' }}</option>
+                                    <option :value="!form.super_admin ? admin.Oui : admin.Non">{{ !form.super_admin ? 'Oui' : 'Non' }}</option>
                                 </select>
                             </div>
                             <div class="my-2">
@@ -128,11 +128,6 @@ export default {
             showModal: false,
             showAlert: false
         }
-    },
-    created(){
-        console.log(this.admin)
-        console.log(this.form.admin)
-        console.log(this.user.admin)
     },
     methods: {
         submitForm() {

@@ -102,10 +102,8 @@ export default {
         lastPlaces (animation) {
             let i = 0;
             this.users?.forEach(user => {
-                console.log(user.animation_id)
                 if (user.animation_id === animation.id) {
                     i = i + 1;
-                    console.log('coucou')
                 }
             });
             return animation.places - i;

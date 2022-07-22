@@ -75,8 +75,6 @@ export default {
     },
     mounted() {
         this.filterData()
-        console.log(this.department.id)
-        console.log(this.animations)
     },
     methods: {
         filterData() {
