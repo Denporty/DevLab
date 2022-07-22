@@ -1,11 +1,25 @@
 <template>
     <FOLayout>
+        <Modal :show="showModal">
+            <p>Etes vous sur de vouloir {{ $page.props.auth.user.animation_id === animation.id ? 'annuler votre réservation' : 'réserver votre place' }} pour cet événement ?</p>
+            <div class="flex justify-center">
+                <button @click="showModal = false" class="inline-block bg-red-500 hover:bg-red-700 text-white text-xl font-bold py-2 px-4 rounded my-2 mr-4">
+                    Non
+                </button>
+                <button @click="confirmReservation($page.props.auth.user.animation_id === animation.id)" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
+                    Oui
+                </button>
+            </div>
+        </Modal>
         <div class="flex flex-row justify-between w-full">
             <button onclick="window.history.back()" class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
                 Retour
             </button>
-            <button class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded my-2">
-                Réserver
+            <button
+                @click="reserved ? '' : showModal = true"
+                class="inline-block text-white text-xl font-bold py-2 px-4 rounded my-2"
+                :class="$page.props.auth.user.animation_id === animation.id ? 'bg-red-500 hover:bg-red-700' : 'bg-blue-500 hover:bg-blue-700'">
+                {{ $page.props.auth.user.animation_id === animation.id ? 'Annuler ma réservation' : 'Réserver' }}
             </button>
             <div v-if="$page.props.auth.user.admin" class="w-8 mr-2 transform hover:text-purple-500 hover:scale-110">
                 <a :href="route('admin.animation.form', animation.id)">
@@ -61,9 +75,10 @@
 <script>
 import FOLayout from "@/Components/FOLayout";
 import Icon from "@/Components/Icon";
+import Modal from "@/Components/Modal";
 export default {
     name: 'AnimationMore',
-    components: {FOLayout, Icon},
+    components: {Modal, FOLayout, Icon},
     props: {
         animation: Object,
         tags: Object,
@@ -75,7 +90,8 @@ export default {
             form: this.$inertia.form({
                 animation_id: this.$page.props.auth.user?.animation_id ?? null,
             }),
-            showModal: false
+            showModal: false,
+            reserved: false
         }
     },
     methods: {
@@ -91,13 +107,18 @@ export default {
         lastPlaces (animation) {
             let i = 0;
             this.users?.forEach(user => {
-                console.log(user.animation_id)
                 if (user.animation_id === animation.id) {
                     i = i + 1;
                 }
             });
             return animation.places - i;
-        }
+        },
+        confirmReservation(bool) {
+            bool ? this.form.animation_id = null : this.form.animation_id = this.animation.id
+            this.form.post(route('animation.reservation', this.$page.props.auth.user?.id))
+            this.showModal = false
+            location.reload()
+        },
     },
 }
 </script>

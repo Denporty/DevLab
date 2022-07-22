@@ -29,7 +29,7 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'animation_id' => 'required|int',
+            'animation_id' => 'nullable|int',
         ];
     }
 }
