@@ -88,6 +88,7 @@ Route::group([
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
+Route::post('/animation/update/{user?}', [FOAnimationController::class, 'reservation'])->name('animation.reservation');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
 Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 
