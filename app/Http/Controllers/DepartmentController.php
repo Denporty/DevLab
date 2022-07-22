@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Department\StoreDepartmentRequest;
+use App\Models\Animation;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -36,7 +37,8 @@ class DepartmentController extends Controller
 
         return Inertia::render('BackOffice/Department/Index', [
             'departments' => $department,
-            'users' => User::all()
+            'users' => User::all(),
+            'animations' => Animation::all()
         ])->table();
     }
 
@@ -94,6 +96,15 @@ class DepartmentController extends Controller
         return Inertia::render('BackOffice/Department/UsersList', [
             'department' => $department,
             'users' => $users
+        ]);
+    }
+
+    public  function animationsList(Department $department = null): Response
+    {
+        $animations = Animation::all();
+        return Inertia::render('BackOffice/Department/AnimationsList', [
+            'department' => $department,
+            'animations' => $animations
         ]);
     }
 }

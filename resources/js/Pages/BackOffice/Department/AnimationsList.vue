@@ -8,7 +8,7 @@
                 <div class="flex px-8 mt-10 items-center">
                     <div class="flex flex-col">
                         <h1 class="title__back">
-                            Liste des utilisateurs du département {{ department.name }}
+                            Liste des événements du département {{ department.name }}
                         </h1>
                     </div>
                 </div>
@@ -21,20 +21,16 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
-                                <th>Email</th>
-                                <th>
-                                    <p class="flex item-center justify-end">Actions</p>
-                                </th>
+                                <th>Actions</th>
                             </tr>
                         </template>
                         <template #body>
-                            <tr v-for="user in filteredArray" :key="user.id">
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.email }}</td>
+                            <tr v-for="animation in filteredArray" :key="animation.id">
+                                <td>{{ animation.name }}</td>
                                 <td>
-                                    <div class="flex item-center justify-end">
+                                    <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a :href="route('admin.users.form', user.id)">
+                                            <a :href="route('admin.animation.form', animation.id)">
                                                 <img src="/img/actions.svg" alt="">
                                             </a>
                                         </div>
@@ -43,7 +39,7 @@
                             </tr>
                         </template>
                     </Table>
-                    <p>Utilisateurs dans le département : {{ filteredArray?.length }}</p>
+                    <p>Animations dans le département : {{ filteredArray?.length }}</p>
                 </div>
             </div>
         </div>
@@ -67,7 +63,7 @@ export default {
             type: Object,
             default: {}
         },
-        users: {
+        animations: {
             type: Object,
             default: {}
         }
@@ -80,14 +76,14 @@ export default {
     mounted() {
         this.filterData()
         console.log(this.department.id)
-        console.log(this.users)
+        console.log(this.animations)
     },
     methods: {
         filterData() {
             this.filteredArray = []
-            return this.users?.forEach(user => {
-                if (user.department === this.department.id) {
-                    this.filteredArray.push(user)
+            return this.animations?.forEach(animation => {
+                if (animation.department === this.department.id) {
+                    this.filteredArray.push(animation)
                 }
             })
         },
