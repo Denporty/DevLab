@@ -14,7 +14,7 @@
                         <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
                     </div>
                 </Modal>
-                <div class="lg:px-36 px-4 container__form mt-10">
+                <div class="lg:px-36 px-4 container__form mt-5">
                     <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                         Retour
                     </button>
@@ -52,11 +52,11 @@
                                 <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
                             </div>
                         </div>
-                        <div class="flex py-4">
-                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
+                        <div class="flex py-4 container__createDelete">
+                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700 btn__create">
                                 Sauvegarder
                             </Button>
-                            <Button v-if="user?.id && !reservationCancel" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
+                            <Button v-if="user?.id && !reservationCancel" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4 btn__delete">
                                 Supprimer
                             </Button>
                         </div>
