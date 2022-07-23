@@ -99,7 +99,7 @@
                         </div>
                         <div class="flex py-4 justify-center">
                             <Button :disabled="form.processing" @click="submitForm" class="btn__create">
-                                Créer
+                                {{ animation ? 'Editer' : 'Créer' }}
                             </Button>
                             <Button v-if="animation?.id" @click="showModal = true" class="btn__delete">
                                 Supprimer

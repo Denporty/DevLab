@@ -72,6 +72,8 @@ Route::group([
         Route::post('/store', [DepartmentController::class, 'store'])->name('.store');
         Route::post('/update/{department}', [DepartmentController::class, 'update'])->name('.update');
         Route::delete('/{department}', [DepartmentController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{department}', [DepartmentController::class, 'usersList'])->name('.usersList');
+        Route::get('/animationslist/{department}', [DepartmentController::class, 'animationsList'])->name('.animationsList');
     });
     Route::group([
         'prefix' => 'categories',
@@ -83,10 +85,11 @@ Route::group([
         Route::post('/store', [CategoryController::class, 'store'])->name('.store');
         Route::post('/update/{category}', [CategoryController::class, 'update'])->name('.update');
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('.delete');
+        Route::get('/animationlist/{category}', [CategoryController::class, 'animationList'])->name('.animationsList');
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
-Route::post('/animation/update/{user?}', [FOAnimationController::class, 'update'])->name('animation.reservation');
+Route::post('/animation/update/{user?}', [FOAnimationController::class, 'reservation'])->name('animation.reservation');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
 Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 

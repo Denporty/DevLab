@@ -35,7 +35,6 @@ export default {
     methods: {
         focus() {
             this.$refs.input.focus()
-            console.log('test')
         },
     }
 }

@@ -24,13 +24,24 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
+                                <th>Nombre de membres</th>
+                                <th>Nombre d'événements</th>
                                 <th style="text-align: center">Actions</th>
-
                             </tr>
                         </template>
                         <template #body>
                             <tr v-for="department in departments.data" :key="department.id">
                                 <td>{{ department.name }}</td>
+                                <td>
+                                    <a :href="route('admin.departments.usersList', department.id)" class="font-bold underline">
+                                        {{ findDataByDepartment(users, department.id) }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a :href="route('admin.departments.animationsList', department.id)" class="font-bold underline">
+                                        {{ findDataByDepartment(animations, department.id) }}
+                                    </a>
+                                </td>
                                 <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -74,7 +85,26 @@ export default {
         departments: {
             type: Object,
             default: {}
-        }
+        },
+        users: {
+            type: Object,
+            default: {}
+        },
+        animations: {
+            type: Object,
+            default: {}
+        },
+    },
+    methods: {
+      findDataByDepartment(data, department) {
+          const dataByDepartment = []
+          data.forEach(data => {
+              if (data.department === department) {
+                  dataByDepartment.push(data)
+              }
+          })
+          return dataByDepartment.length
+      }
     }
 }
 </script>

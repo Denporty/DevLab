@@ -8,34 +8,23 @@
                 <div class="flex px-8 mt-10 items-center">
                     <div class="flex flex-col">
                         <h1 class="title__back">
-                            Liste des utilisateurs de l'événement : {{ animation.name }}
+                            Liste des utilisateurs du département {{ department.name }}
                         </h1>
-                        <div class="flex container__btns">
-                            <a :href="route('admin.animation.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
-                                Modifier l'événement
-                            </a>
-                            <a :href="route('admin.animation.usersList', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
-                                Liste des participants
-                            </a>
-                            <a :href="route('admin.animation.budget', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                                Gestion du budget
-                            </a>
-                        </div>
                     </div>
                 </div>
 
                 <div class="p-8 container__list">
-                    <Table
-                        :filters="queryBuilderProps.filters"
-                        :columns="queryBuilderProps.columns"
-                        :on-update="setQueryBuilder"
-                        :meta="users"
-                    >
+                    <a :href="route('admin.departments')" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
+                        Retour
+                    </a>
+                    <Table>
                         <template #head>
                             <tr>
                                 <th>Nom</th>
                                 <th>Email</th>
-                                <th>Actions</th>
+                                <th>
+                                    <p class="flex item-center justify-end">Actions</p>
+                                </th>
                             </tr>
                         </template>
                         <template #body>
@@ -43,18 +32,18 @@
                                 <td>{{ user.name }}</td>
                                 <td>{{ user.email }}</td>
                                 <td>
-                                    <div class="flex item-center">
+                                    <div class="flex item-center justify-end">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a :href="route('admin.users.reservationCancelForm', user.id)">
+                                            <a :href="route('admin.users.form', user.id)">
                                                 <img src="/img/actions.svg" alt="">
                                             </a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-
                         </template>
                     </Table>
+                    <p>Utilisateurs dans le département : {{ filteredArray?.length }}</p>
                 </div>
             </div>
         </div>
@@ -64,10 +53,9 @@
 import Authenticated from "@/Layouts/Authenticated";
 import Sidebar from "@/Components/Sidebar";
 import BurgerMenu from "@/Components/BurgerMenu";
-import {InteractsWithQueryBuilder, Tailwind2} from "@protonemedia/inertiajs-tables-laravel-query-builder";
+import {Tailwind2} from "@protonemedia/inertiajs-tables-laravel-query-builder";
 export default {
-    name: 'AnimationUsersList',
-    mixins: [InteractsWithQueryBuilder],
+    name: 'DepartmentUsersList',
     components: {
         Sidebar,
         Authenticated,
@@ -75,7 +63,7 @@ export default {
         Table: Tailwind2.Table
     },
     props: {
-        animation: {
+        department: {
             type: Object,
             default: {}
         },
@@ -95,8 +83,8 @@ export default {
     methods: {
         filterData() {
             this.filteredArray = []
-            return this.users.data?.forEach(user => {
-                if (user.animation_id === this.animation.id) {
+            return this.users?.forEach(user => {
+                if (user.department === this.department.id) {
                     this.filteredArray.push(user)
                 }
             })
