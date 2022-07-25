@@ -16,7 +16,7 @@
                         <h1 class="title__back">
                             {{ animation != null ? "Modifier l'événement "+animation.name : "Créer un événement" }}
                         </h1>
-                        <div class="flex" v-if="animation != null">
+                        <div class="flex container__btns" v-if="animation != null">
                             <a :href="route('admin.animation.form', animation.id)" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-2">
                                 Modifier l'événement
                             </a>
@@ -140,8 +140,8 @@ export default {
         Modal,
         InputError,
         Sidebar,
+        BurgerMenu,
         Textarea
-
     },
     props: {
         animation: Object,
