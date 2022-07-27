@@ -7,18 +7,18 @@
         {{ status }}
     </div>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" >
         <div class="flex w-full">
-            <div class="select-login">
+            <div class="select-login container__btn__register" style="background: white">
                 <div class="link">
-                    <a :href="route('register')">
+                    <a :href="route('register')" class="uppercase font-bold" style="color: #60A5FA">
                         Inscription
                     </a>
                 </div>
             </div>
-            <div class="select-login">
-                <div class="button">
-                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')">
+            <div class="select-login container__btn__login" style="background-color: #60A5FA;border-top-right-radius: 0.5rem;">
+                <div class="link">
+                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')" >
                         Connexion
                     </a>
                 </div>

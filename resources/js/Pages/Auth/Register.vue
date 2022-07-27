@@ -4,22 +4,25 @@
     <BreezeValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
-        <div class="flex w-full">
-            <div class="select-login">
-                <div class="button">
-                    <a :href="route('register')">
+        <div class="flex w-full justify-center	">
+
+            <div class="select-login container__btn__register" style="background-color: #60A5FA">
+                <div class="link">
+                    <a :href="route('register')" class="uppercase font-bold" style="color: white">
                         Inscription
                     </a>
                 </div>
             </div>
-            <div class="select-login">
+
+            <div class="select-login container__btn__login" style="background-color: white">
                 <div class="link">
-                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')">
+                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')" style="color: #60A5FA">
                         Connexion
                     </a>
                 </div>
             </div>
         </div>
+
         <div class="px-16 pt-10 pb-6">
 
         <div>
