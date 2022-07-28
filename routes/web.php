@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimationController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\FOAnimationController;
@@ -91,6 +92,9 @@ Route::group([
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
 Route::post('/animation/update/{user?}', [FOAnimationController::class, 'reservation'])->name('animation.reservation');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
-Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
+Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
+Route::get('/', [RegisteredUserController::class, 'create'])
+    ->middleware('guest')
+    ->name('register');
 
 require __DIR__.'/auth.php';
