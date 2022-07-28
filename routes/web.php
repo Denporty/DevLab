@@ -95,6 +95,6 @@ Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->
 Route::get('/animation', [FOAnimationController::class, 'index'])->name('animation');
 Route::get('/', [RegisteredUserController::class, 'create'])
     ->middleware('guest')
-    ->name('register');
+    ->name('register-home');
 
 require __DIR__.'/auth.php';
