@@ -1,35 +1,37 @@
 <template>
     <FOLayout>
-        <div>
-            <div v-if="items != null" v-for="item in items" :key="item.id" class="p-8 space-y-3 border-2 border-blue-400 dark:border-blue-300 rounded-xl mb-8 bg-white">
-                <div class="flex md:flex-row flex-col justify-between">
-                    <div class="flex flex-col justify-between">
-                        <p class="inline-block bg-red-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.tag }}</p>
-                        <p class="inline-block bg-green-500 w-fit text-white font-bold py-2 px-4 rounded my-2">{{ item.department }}</p>
+        <div class="eventsList">
+            <div v-if="items != null" v-for="item in items" :key="item.id" class="eventCard">
+                <div class="eventCard_pic"></div>
+                <div class="eventCard_texts">
+                    <div>
+                        <p class="eventCard_status" v-html="checkDate(item.end_date, false) ? 'évenement terminé' : 'évenement à venir'"/>
+                        <h2>{{ item.name }}</h2>
+                        <p>
+                            {{ item.summary }}
+                        </p>
+                        <div class="eventCard_infos">
+                            <div>
+                                <p>Catégorie :</p>
+                                <p>{{ item.department }}</p>
+                            </div>
+                            <div>
+                                <p>Nombre de places :</p>
+                                <p>{{ item.places }}</p>
+                            </div>
+                            <div>
+                                <p>Lieu :</p>
+                                <p>{{ item.localisation }}</p>
+                            </div>
+                            <div>
+                                <p>Date :</p>
+                                <p>{{ item.start_date }} / {{ item.end_date }}</p>
+                            </div>
+                        </div>
+                        <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 eventCard_button" :class="checkDate(item.end_date, true) ? 'pointer-events-none bg-blue-200' : ''">
+                            En savoir plus
+                        </a>
                     </div>
-                    <div class="flex flex-row md:justify-end items-center">
-                        <div class="rounded-full py-2 px-4 text-white"
-                             :class="checkDate(item.end_date, false) ? 'bg-red-600' : 'bg-green-600'"
-                             v-html="checkDate(item.end_date, false) ? 'Terminé' : 'A venir'"/>
-                    </div>
-                </div>
-
-                <h1 class="text-2xl font-semibold text-blue-500 capitalize dark:text-blue-500">{{ item.name }}</h1>
-
-                <p class="text-blue-400 dark:text-blue-400">
-                    {{ item.summary }}
-                </p>
-                <p class="font-bold text-blue-500 text-xs">
-                    {{ item.start_date }} / {{ item.end_date }}
-                </p>
-                <div class="flex lg:flex-row flex-col justify-between">
-                    <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" :class="checkDate(item.end_date, true) ? 'pointer-events-none bg-blue-200' : ''">
-                        Plus d'infos
-                    </a>
-                    <p class="flex items-center">
-                        <span>Nombre de places : </span>
-                        <span class="font-bold">{{ item.places }}</span>
-                    </p>
                 </div>
             </div>
             <div v-else-if="$page.props.auth.user != null">
