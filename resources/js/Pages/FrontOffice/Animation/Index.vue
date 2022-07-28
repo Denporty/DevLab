@@ -13,7 +13,7 @@
                         <div class="eventCard_infos">
                             <div>
                                 <p>Catégorie :</p>
-                                <p>{{ item.department }}</p>
+                                <p>{{ findDataByName(departments, item.department) }}</p>
                             </div>
                             <div>
                                 <p>Nombre de places :</p>

@@ -27,7 +27,7 @@
         <div class="eventDetail">
             <div class="eventDetail_titles">
                 <h1>{{ animation.name }}</h1>
-                <h3>{{ animation.department }}</h3>
+                <h3>{{ findDataByName(departments, animation.department) }}</h3>
             </div>
             <div class="eventDetail_blocs">
                 <div>
