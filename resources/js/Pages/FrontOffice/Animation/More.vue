@@ -30,17 +30,17 @@
                 <h3>{{ findDataByName(departments, animation.department) }}</h3>
             </div>
             <div class="eventDetail_blocs">
-                <div>
-                    <div></div>
-                    <p>{{ animation.localisation }}</p>
+                <div class="p-4">
+                    <img src="/img/pin.png" class="min-w-20">
+                    <p class="mt-4 text-center">{{ animation.localisation }}</p>
                 </div>
-                <div>
-                    <div></div>
-                    <p>{{ animation.start_date }} / {{ animation.end_date }}</p>
+                <div class="p-4">
+                    <img src="/img/calendar.png" class="min-w-20">
+                    <p class="mt-4 text-center">Du {{ animation.start_date }} au {{ animation.end_date }}</p>
                 </div>
-                <div>
-                    <div></div>
-                    <p>{{ lastPlaces(animation) }}</p>
+                <div class="p-4">
+                    <img src="/img/group.png" class="min-w-20">
+                    <p class="mt-4 text-center">{{ lastPlaces(animation) }}</p>
                 </div>
             </div>
             <div class="eventDetail_background"></div>
