@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -21,6 +22,7 @@ class ManageUserController extends Controller
 
     public function index()
     {
+        $departments = Department::all();
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 if (is_array($value)) $value = implode( ',', $value);
@@ -36,6 +38,7 @@ class ManageUserController extends Controller
 
         return Inertia::render('BackOffice/Users/Index', [
             'users' => $users,
+            'departments'=> $departments
         ])->table();
     }
 
@@ -43,15 +46,14 @@ class ManageUserController extends Controller
      * Show the form for creating or update a resource.
      *
      * @param User|null $user
-     * @return \Inertia\Response
+     * @return Response
      */
     public function form(User $user = null)
     {
         $departments = Department::all();
         return Inertia::render('BackOffice/Users/Form', [
             'user' => $user,
-            'department' => $departments,
-            'admin' => User::ADMIN
+            'department' => $departments
         ]);
     }
 
@@ -67,7 +69,6 @@ class ManageUserController extends Controller
         $user->update($request->validated());
         return redirect()->route('admin.users')->with('success', "L'utilisateur a bien été mise à jour");
     }
-
     /**
      * @param User $user
      * @return RedirectResponse
@@ -76,5 +77,19 @@ class ManageUserController extends Controller
     {
         $user->delete();
         return Redirect::route('admin.users')->with('success', 'L\'utilisateur a bien été supprimé');
+    }
+
+    /**
+     * Show the form for creating or update a resource.
+     *
+     * @param User|null $user
+     * @return Response
+     */
+    public function reservationCancelForm(User $user = null): Response
+    {
+        return Inertia::render('BackOffice/Users/Form', [
+            'user' => $user,
+            'reservationCancel' => true
+        ]);
     }
 }

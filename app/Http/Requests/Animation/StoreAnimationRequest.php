@@ -3,8 +3,12 @@
 namespace App\Http\Requests\Animation;
 
 use App\Models\Animation;
+use App\Rules\ImageOrFile;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed $animation
+ */
 class StoreAnimationRequest extends FormRequest
 {
     /**
@@ -34,10 +38,12 @@ class StoreAnimationRequest extends FormRequest
             'section_title' => 'nullable|string',
             'description_section' => 'nullable|string',
             'active_section' => 'nullable|boolean',
-            'tag' => 'nullable|string|max:255',
-            'department' => 'nullable|string|max:255',
+            'tag' => 'nullable|int',
+            'department' => 'nullable|int',
             'places' => 'required|integer',
             'summary' => 'required|string',
+            'budget' => 'nullable|numeric',
+            'image' => new ImageOrFile($this->animation, true),
         ];
     }
 

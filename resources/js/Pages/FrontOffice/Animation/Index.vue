@@ -52,7 +52,10 @@ export default {
     props: {
         items: Object,
         user: Object,
-        datenow: String
+        datenow: String,
+        tags: Object,
+        departments: Object,
+        users: Object
     },
     methods: {
         checkDate(date, element) {
@@ -66,6 +69,25 @@ export default {
                     return true
                 }
             }
+        },
+        findDataByName (data, id) {
+            let name = "";
+            data?.forEach(data => {
+                if (data.id === id) {
+                    name = data.name
+                }
+            });
+            return name;
+        },
+
+        lastPlaces (animation) {
+            let i = 0;
+            this.users?.forEach(user => {
+                if (user.animation_id === animation.id) {
+                    i = i + 1;
+                }
+            });
+            return animation.places - i;
         }
     }
 }

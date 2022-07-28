@@ -14,3 +14,12 @@ export default {
     }
 }
 </script>
+
+<style type="text/scss">
+    .disabled {
+        background-color: grey;
+    }
+    .disabled:hover {
+        background-color: grey !important;
+    }
+</style>

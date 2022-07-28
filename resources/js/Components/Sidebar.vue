@@ -18,7 +18,7 @@
                 </li>
                 <li v-if="$page.props.auth.user.super_admin">
                     <a :href="route('admin.departments')">
-                        Gestion des pôles
+                        Gestion des départements
                     </a>
                 </li>
                 <li v-if="$page.props.auth.user.super_admin">

@@ -16,7 +16,6 @@
 
     <div class="flex justify-between">
         <InputError class="w-full" :message="message"></InputError>
-        <span v-if="isTypeText" class="w-full block text-xs text-right">{{ nbChar }} <span v-if="max" class="text-xs">/ {{ max }}</span> caractères</span>
     </div>
 </template>
 

@@ -1,0 +1,172 @@
+.wrapper__form {
+    display: flex;
+    justify-content: space-between;
+
+    .container__main {
+        width: 100%;
+        margin-top: 60px;
+
+        .container__btns {
+            flex-direction: column;
+            align-items: start;
+
+            .add__event {
+                background: #60A5FA;
+                border-radius: 3px;
+                font-family: 'Montserrat' , sans-serif;
+                font-weight: 600;
+                font-size: 14px;
+                color: #F1F1F1;
+                text-transform: uppercase;
+            }
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                margin: 20px 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            margin-left: 300px;
+            margin-top: 0;
+        }
+
+        .container__all{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .title {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 36px;
+                color: #0E3536;
+                margin-top: 30px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .container__form {
+                width: 100%;
+                background-color: #F7F7F7;
+                padding: 20px;
+                @media (min-width: 1024px) {
+                    width: 95%;
+                    padding: 20px 50px;
+                    box-shadow: 3px 2px 6px #8080804f;
+                }
+
+                @media (min-width: 1366px) {
+                    width: 70%;
+                }
+
+                .my-2 {
+                    input {
+                        border: none;
+                        &:focus {
+                            outline: none;
+                            --tw-ring-shadow: none;
+                        }
+                    }
+
+                    select {
+                        &:focus {
+                            outline: none;
+                            --tw-ring-shadow: none;
+                        }
+                    }
+                    label {
+                        span {
+                            font-family: 'Montserrat' , sans-serif;
+                            font-weight: 400;
+                            font-size: 12px;
+                            line-height: 15px;
+                            color: #000000;
+                        }
+                    }
+
+                    .flex {
+                        .text-xs {
+                            display: none;
+                        }
+                    }
+                }
+
+                .container__cat-dep {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+
+                    .my-2 {
+                        width: 100%;
+
+                        @media (min-width: 1024px) {
+                            width: 48%;
+                        }
+                    }
+                }
+                .container__dates {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                    }
+                    .my-2 {
+                        width: 100%;
+
+                        @media (min-width: 1024px) {
+                            width: 220px;
+                            margin-right: 20px;
+
+                        }
+                        input {
+                            background-color: white;
+                        }
+                    }
+                }
+
+                .nb__place {
+                    input {
+                        width: 100px;
+                    }
+                }
+
+                .container__createDelete {
+                    flex-direction: column;
+                    align-items: start;
+
+                    @media (min-width: 1024px) {
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                .btn__create {
+                    margin: 10px;
+
+                    background-color: #60A5FA;
+                    font-family: 'Montserrat' , sans-serif;
+                    font-weight: 700;
+                    font-size: 14px;
+                }
+                .btn__delete {
+                    background-color: #E72626;
+                    font-family: 'Montserrat' , sans-serif;
+                    font-weight: 700;
+                    font-size: 14px;
+                    color: white;
+                    margin: 10px;
+                    @media (min-width: 1024px) {
+                        margin-left: 30px;
+
+                    }
+                }
+            }
+        }
+    }
+}

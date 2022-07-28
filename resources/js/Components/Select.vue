@@ -7,7 +7,7 @@
             :required="required != null"
     >
         <template v-for="(value, key) in options" :key="key">
-            <option :value="key">{{ value }}</option>
+            <option :value="value.id">{{ value.name }}</option>
         </template>
     </select>
     <InputError :message="message"></InputError>
@@ -36,7 +36,7 @@ export default {
         focus() {
             this.$refs.input.focus()
         },
-    },
+    }
 }
 </script>
 

@@ -3,16 +3,20 @@
 
         <div class="wrapper__events-list">
             <Sidebar></Sidebar>
+            <BurgerMenu></BurgerMenu>
 
             <div class="container__main">
-
-                <a :href="route('admin.departments.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                    AJouter
-                </a>
-                <div class="p-8">
+                <div class="flex px-8 mt-10 items-center">
+                    <h1 class="title__back">
+                        Départements
+                    </h1>
+                    <a :href="route('admin.departments.form')" class="add__event inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
+                        Ajouter
+                    </a>
+                </div>
+                <div class="p-8 container__list" >
                     <Table
                         :filters="queryBuilderProps.filters"
-                        :search="queryBuilderProps.search"
                         :columns="queryBuilderProps.columns"
                         :on-update="setQueryBuilder"
                         :meta="departments"
@@ -20,17 +24,29 @@
                         <template #head>
                             <tr>
                                 <th>Nom</th>
-                                <th>Actions</th>
+                                <th>Nombre de membres</th>
+                                <th>Nombre d'événements</th>
+                                <th style="text-align: center">Actions</th>
                             </tr>
                         </template>
                         <template #body>
                             <tr v-for="department in departments.data" :key="department.id">
                                 <td>{{ department.name }}</td>
                                 <td>
+                                    <a :href="route('admin.departments.usersList', department.id)" class="font-bold underline">
+                                        {{ findDataByDepartment(users, department.id) }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a :href="route('admin.departments.animationsList', department.id)" class="font-bold underline">
+                                        {{ findDataByDepartment(animations, department.id) }}
+                                    </a>
+                                </td>
+                                <td>
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('admin.departments.form', department.id)">
-                                                <Icon icon="pencil"></Icon>
+                                                <img src="/img/actions.svg" alt="">
                                             </a>
                                         </div>
                                     </div>
@@ -51,6 +67,8 @@ import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-ta
 import Input from "@/Components/Input";
 import Button from "@/Components/Button";
 import Icon from "@/Components/Icon";
+import BurgerMenu from '@/Components/BurgerMenu';
+
 export default {
     mixins: [InteractsWithQueryBuilder],
     name: 'DepartmentList',
@@ -60,13 +78,33 @@ export default {
         Button,
         Icon,
         Sidebar,
+        BurgerMenu,
         Table: Tailwind2.Table,
     },
     props: {
         departments: {
             type: Object,
             default: {}
-        }
+        },
+        users: {
+            type: Object,
+            default: {}
+        },
+        animations: {
+            type: Object,
+            default: {}
+        },
+    },
+    methods: {
+      findDataByDepartment(data, department) {
+          const dataByDepartment = []
+          data.forEach(data => {
+              if (data.department === department) {
+                  dataByDepartment.push(data)
+              }
+          })
+          return dataByDepartment.length
+      }
     }
 }
 </script>

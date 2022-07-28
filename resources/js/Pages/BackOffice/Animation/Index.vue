@@ -2,8 +2,8 @@
     <Authenticated>
 
         <div class="wrapper__events-list">
+            <BurgerMenu></BurgerMenu>
             <Sidebar></Sidebar>
-
             <div class="container__main">
                 <div class="flex px-8 mt-10 items-center">
                     <h1 class="title__back">
@@ -23,19 +23,21 @@
                     >
                         <template #head>
                             <tr>
-                                <th>Titre</th>
-                                <th>Pôles concernés</th>
-                                <th>Date de fin</th>
-                                <th>Actions</th>
+                                <th class="title__header__tab">Titre</th>
+                                <th class="title__header__tab">Places</th>
+                                <th class="title__header__tab">Pôles concernés</th>
+                                <th class="title__header__tab">Date de fin</th>
+                                <th class="title__header__tab">Actions</th>
                             </tr>
                         </template>
                         <template #body>
                             <tr v-for="animation in animations.data" :key="animation.id">
                                 <td>{{ animation.name }}</td>
-                                <td>{{ animation.department }}</td>
+                                <td>{{ lastPlaces(animation) }}</td>
+                                <td>{{ findDepartmentName(animation.department) }}</td>
                                 <td>{{ animation.end_date }}</td>
                                 <td>
-                                    <div class="flex item-center ">
+                                    <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('admin.animation.form', animation.id)">
                                                 <img src="/img/actions.svg" alt="">
@@ -58,6 +60,8 @@ import Icon from "@/Components/Icon";
 import Button from '@/Components/Button'
 import Authenticated from "@/Layouts/Authenticated";
 import Sidebar from "@/Components/Sidebar";
+import BurgerMenu from "@/Components/BurgerMenu";
+
 import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
 export default {
     mixins: [InteractsWithQueryBuilder],
@@ -68,6 +72,7 @@ export default {
         Input,
         Button,
         Icon,
+        BurgerMenu,
         Table: Tailwind2.Table,
     },
     props: {
@@ -78,8 +83,32 @@ export default {
         departments: {
             type: Object,
             default: {}
+        },
+        users: {
+            type: Object,
+            default: {}
         }
     },
+    methods: {
+        findDepartmentName (id) {
+            let name = "";
+            this.departments?.forEach(department => {
+                if (department.id === id) {
+                    name = department.name
+                }
+            });
+            return name;
+        },
+        lastPlaces (animation) {
+            let i = 0;
+            this.users?.forEach(user => {
+                if (user.animation_id === animation.id) {
+                    i = i + 1;
+                }
+            });
+            return animation.places - i;
+        }
+    }
 }
 </script>
 

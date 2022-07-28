@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Models\Animation;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -34,6 +36,7 @@ class CategoryController extends Controller
 
         return Inertia::render('BackOffice/Category/Index', [
             'categories' => $category,
+            'animations' => Animation::all()
         ])->table();
     }
 
@@ -41,7 +44,7 @@ class CategoryController extends Controller
      * Show the form for creating or update a resource.
      *
      * @param Category|null $category
-     * @return \Inertia\Response
+     * @return Response
      */
     public function form(Category $category = null)
     {
@@ -83,5 +86,14 @@ class CategoryController extends Controller
     {
         $category->delete();
         return Redirect::route('admin.categories')->with('success', 'Le departement a bien été supprimé');
+    }
+
+    public  function animationList(Category $category = null): Response
+    {
+        $animations = Animation::all();
+        return Inertia::render('BackOffice/Category/AnimationsList', [
+            'category' => $category,
+            'animations' => $animations
+        ]);
     }
 }

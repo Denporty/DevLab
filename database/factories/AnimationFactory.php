@@ -29,6 +29,8 @@ class AnimationFactory extends Factory
             'tag'=> array_rand(Animation::CATEGORIES, 1),
             'department'=> array_rand(Animation::DEPARTMENT, 1),
             'places'=> $this->faker->numberBetween(5, 300),
+            'budget'=> $this->faker->numberBetween(100, 2500),
+            'image' => $this->faker->imageUrl(),
             'active_section' => $this->faker->boolean(),
             'section_title' => $this->faker->realTextBetween(50, 75),
             'description_section' => $this->faker->realTextBetween(500, 3500),

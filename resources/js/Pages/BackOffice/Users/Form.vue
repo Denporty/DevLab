@@ -1,8 +1,12 @@
 <template>
     <Authenticated>
-        <div class="wrapper__events-list">
+        <div class="wrapper__form">
             <Sidebar></Sidebar>
+            <BurgerMenu></BurgerMenu>
+
             <div class="container__main">
+                <div class="px-4 container__all">
+                    <h1 class="title">Modifier l'utilisateur {{ this.user.name }}</h1>
                 <Modal :show="showModal" type="danger">
                     <div class="font-bold text-xl leading-none">Êtes-vous sûr de vouloir supprimer cet item ?</div>
                     <div class="flex my-2 justify-center">
@@ -10,38 +14,57 @@
                         <button @click="confirmDelete" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2">Oui</button>
                     </div>
                 </Modal>
-                <div class="lg:px-36 px-4">
+                <div class="lg:px-36 px-4 container__form mt-5">
                     <button onclick="window.history.back()" class="inline-block bg-gray-800 hover:bg-gray-700 active:bg-gray-900 text-white font-bold py-2 px-4 rounded my-2">
                         Retour
                     </button>
                     <div class="w-full px-4 py-6">
-                        <div class="my-2">
-                            <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                        <div class="my-2" v-if="reservationCancel">
+                            <p>Etes vous sur de vouloir annuler la participation à l'événement de l'utilisateur {{ this.user.name }} ?</p>
+                            <br>
+                            <select label="Animation" class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="animation_id" val v-model="form.animation_id">
+                                <option :value="form.animation_id">Non</option>
+                                <option :value="null">Oui</option>
+                            </select>
                         </div>
-                        <div class="my-2">
-                            <Select label="Départements" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+                        <div v-else>
+                            <div class="my-2">
+                                <Input label="Nom" name="name" v-model="form.name" :message="form.errors.name"/>
+                            </div>
+                            <div class="my-2">
+                                <Select label="Départements" v-model="form.department" :options="department" :message="form.errors.department"/>
+                            </div>
+                            <div class="my-2">
+                                <label>Organisateur</label>
+                                <select class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.admin">
+                                    <option disabled selected :value="form.admin">{{ form.admin ? 'Oui' : 'Non' }}</option>
+                                    <option :value="!form.admin ? admin.Oui : admin.Non">{{ !form.admin ? 'Oui' : 'Non' }}</option>
+                                </select>
+                            </div>
+                            <div class="my-2">
+                                <label>Super administrateur</label>
+                                <select class="appearance-none block w-full capitalize bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="admin" val v-model="form.super_admin">
+                                    <option disabled selected :value="form.super_admin">{{ form.super_admin ? 'Oui' : 'Non' }}</option>
+                                    <option :value="!form.super_admin ? admin.Oui : admin.Non">{{ !form.super_admin ? 'Oui' : 'Non' }}</option>
+                                </select>
+                            </div>
+                            <div class="my-2">
+                                <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
+                            </div>
                         </div>
-                        <div class="my-2">
-                            <Select label="Admin" name="admin" v-model="form.admin" :options="admin" :message="form.errors.admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Select label="Super Admin" name="super_admin" v-model="form.super_admin" :options="admin" :message="form.errors.super_admin"/>
-                        </div>
-                        <div class="my-2">
-                            <Input label="Email" name="summary" v-model="form.email" :message="form.errors.email"/>
-                        </div>
-                        <div class="flex py-4">
-                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700">
+                        <div class="flex py-4 container__createDelete">
+                            <Button :disabled="form.processing" @click="submitForm" class="bg-blue-500 hover:bg-blue-700 btn__create">
                                 Sauvegarder
                             </Button>
-                            <Button v-if="user?.id" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4">
+                            <Button v-if="user?.id && !reservationCancel" @click="showModal = true" class="bg-red-500 hover:bg-red-700 ml-4 btn__delete">
                                 Supprimer
                             </Button>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
     </Authenticated>
 </template>
 
@@ -55,6 +78,8 @@ import Select from "@/Components/Select";
 import Modal from "@/Components/Modal";
 import InputError from "@/Components/InputError";
 import Sidebar from "@/Components/Sidebar";
+import BurgerMenu from '@/Components/BurgerMenu';
+
 export default {
     name: 'UsersForm',
     components: {
@@ -66,13 +91,29 @@ export default {
         Select,
         Modal,
         InputError,
-        Sidebar
+        Sidebar,
+        BurgerMenu
 
     },
     props: {
-        user: Object,
-        department: Object,
-        admin: Object
+        department: {
+            type: Object,
+            default: {}
+        },
+        user: {
+            type: Object,
+            default: {}
+        },
+        admin: {
+            type: Object,
+            default: function () {
+                return { Oui: true, Non: false }
+            }
+        },
+        reservationCancel: {
+            type: Boolean,
+            default: false
+        },
     },
     data() {
         return {
@@ -82,9 +123,10 @@ export default {
                 department: this.user?.department ?? null,
                 admin: this.user?.admin ?? null,
                 super_admin: this.user?.super_admin ?? null,
+                animation_id: this.user?.animation_id ?? null
             }),
             showModal: false,
-            filteredArray: null
+            showAlert: false
         }
     },
     methods: {
@@ -96,16 +138,7 @@ export default {
             this.$inertia.delete(route('admin.users.delete', this.user?.id))
             this.showModal = false
         },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
-            })
-        },
     },
-    mounted() {
-        this.filterData()
-    }
 }
 </script>
 <style lang="scss" scoped>

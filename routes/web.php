@@ -39,7 +39,20 @@ Route::group([
         Route::post('/store', [AnimationController::class, 'store'])->name('.store');
         Route::post('/update/{animation}', [AnimationController::class, 'update'])->name('.update');
         Route::delete('/{animation}', [AnimationController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{animation}', [AnimationController::class, 'usersList'])->name('.usersList');
+        Route::group([
+            'prefix' => 'budget',
+            'as' => '.budget',
+        ], function () {
+            Route::get('/{animation}', [AnimationController::class, 'budget'])->name('');
+            Route::post('/store', [AnimationController::class, 'storeBudget'])->name('.store');
+            Route::post('/update/{budget}', [AnimationController::class, 'updateBudget'])->name('.update');
+            Route::get('/form/{animation}/{budget?}', [AnimationController::class, 'formBudget'])->name('.form');
+            Route::delete('/{budget}', [AnimationController::class, 'destroyBudget'])->name('.delete');
+        });
     });
+    Route::get('users/reservation/cancel/{user?}', [ManageUserController::class, 'reservationCancelForm'])->name('users.reservationCancelForm');
+    Route::post('users/update/{user}', [ManageUserController::class, 'update'])->name('users.update');
     Route::group([
         'prefix' => 'users',
         'as' => 'users',
@@ -47,7 +60,6 @@ Route::group([
     ], function () {
         Route::get('', [ManageUserController::class, 'index'])->name('');
         Route::get('/form/{user?}', [ManageUserController::class, 'form'])->name('.form');
-        Route::post('/update/{user}', [ManageUserController::class, 'update'])->name('.update');
         Route::delete('/{user}', [ManageUserController::class, 'destroy'])->name('.delete');
     });
     Route::group([
@@ -60,6 +72,8 @@ Route::group([
         Route::post('/store', [DepartmentController::class, 'store'])->name('.store');
         Route::post('/update/{department}', [DepartmentController::class, 'update'])->name('.update');
         Route::delete('/{department}', [DepartmentController::class, 'destroy'])->name('.delete');
+        Route::get('/userslist/{department}', [DepartmentController::class, 'usersList'])->name('.usersList');
+        Route::get('/animationslist/{department}', [DepartmentController::class, 'animationsList'])->name('.animationsList');
     });
     Route::group([
         'prefix' => 'categories',
@@ -71,9 +85,11 @@ Route::group([
         Route::post('/store', [CategoryController::class, 'store'])->name('.store');
         Route::post('/update/{category}', [CategoryController::class, 'update'])->name('.update');
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('.delete');
+        Route::get('/animationlist/{category}', [CategoryController::class, 'animationList'])->name('.animationsList');
     });
 });
 Route::get('/animation/{animation}', [FOAnimationController::class, 'more'])->name('animation.more');
+Route::post('/animation/update/{user?}', [FOAnimationController::class, 'reservation'])->name('animation.reservation');
 Route::get('/animation-list/{user?}', [FOAnimationController::class, 'index'])->name('animation.online')->middleware('auth');
 Route::get('/', [FOAnimationController::class, 'index'])->name('animation');
 

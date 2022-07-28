@@ -95,25 +95,16 @@ export default {
                 password_confirmation: '',
                 department: '',
                 terms: false,
-            }),
-            filteredArray: null
+                animation_id: null
+            })
         }
-    },
-    mounted() {
-      this.filterData()
     },
     methods: {
         submit() {
             this.form.post(this.route('register'), {
                 onFinish: () => this.form.reset('password', 'password_confirmation'),
             })
-        },
-        filterData() {
-            this.filteredArray = []
-            return this.department?.forEach(department => {
-                this.filteredArray.push(department.name)
-            })
-        },
+        }
     }
 }
 </script>
