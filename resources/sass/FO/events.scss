@@ -1,0 +1,54 @@
+.eventsList{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eventCard{
+  background: #F1F1F1;
+  margin: 40px 0;
+  display: flex;
+  border-radius: 20px;
+  filter: drop-shadow(3px 4px 6px rgba(91, 91, 91, 0.31));
+}
+
+.eventCard_pic{
+  width: 35%;
+  background: blue;
+  border-radius: 20px;
+}
+
+.eventCard_texts{
+  width: 65%;
+  padding: 30px;
+  h2{
+    font-size: 28px;
+    color: #00588A;
+    margin: 20px 0 10px;
+  }
+}
+
+.eventCard_infos{
+  display: flex;
+  margin: 20px 0;
+  >div{
+    margin-right: 30px;
+    &:last-child{
+      margin-right: 0;
+    }
+    >p:first-child{
+      font-weight: bold;
+    }
+  }
+}
+
+.eventCard_status{
+  text-align: right;
+  color: #60A5FA;
+}
+
+.eventCard_button{
+  margin: 0 0 0 auto;
+  display: flex;
+  background: #60A5FA;
+  text-transform: uppercase;
+}

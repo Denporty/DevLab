@@ -1,0 +1,33 @@
+.elemGraph{
+  position: absolute;
+  z-index: -1;
+  &.elemGraph_1{
+    top: 0;
+    left: 0;
+  }
+  &.elemGraph_2{
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.container__btn__register {
+  border-top-left-radius: 0.5rem;
+}
+
+.container__btn__login {
+  border-top-right-radius: 0.5rem;
+}
+.select-login {
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #60A5FA;
+
+  .link {
+    text-align: center;
+
+    a {
+      color: white;
+    }
+  }
+}

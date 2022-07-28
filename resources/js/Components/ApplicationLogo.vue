@@ -1,3 +1,3 @@
 <template>
-    <img src="/img/logo-mme.png" class="w-fit">
+    <img src="/img/logo.svg" class="w-fit">
 </template>

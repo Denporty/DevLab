@@ -4,26 +4,29 @@
     <BreezeValidationErrors class="mb-4" />
 
     <form @submit.prevent="submit">
-        <div class="flex w-full">
-            <div class="select-login">
-                <div class="button">
-                    <a :href="route('register')">
+        <div class="flex w-full justify-center	">
+
+            <div class="select-login container__btn__register" style="background-color: #60A5FA">
+                <div class="link">
+                    <a :href="route('register')" class="uppercase font-bold" style="color: white">
                         Inscription
                     </a>
                 </div>
             </div>
-            <div class="select-login">
+
+            <div class="select-login container__btn__login" style="background-color: white">
                 <div class="link">
-                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')">
+                    <a :class="{ 'opacity-25': form.processing }" class="uppercase font-bold" :href="route('login')" style="color: #60A5FA">
                         Connexion
                     </a>
                 </div>
             </div>
         </div>
+
         <div class="px-16 pt-10 pb-6">
 
         <div>
-            <BreezeLabel for="name" class="text-mme-blue uppercase" value="Name" />
+            <BreezeLabel for="name" class="text-mme-blue uppercase" value="Nom" />
             <BreezeInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
         </div>
 
@@ -33,25 +36,21 @@
         </div>
 
         <div class="mt-4">
-            <BreezeLabel for="password" class="text-mme-blue uppercase" value="Password" />
+            <BreezeLabel for="password" class="text-mme-blue uppercase" value="Mot de passe" />
             <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
         </div>
 
         <div class="mt-4">
-            <BreezeLabel for="password_confirmation" class="text-mme-blue uppercase" value="Confirm Password" />
+            <BreezeLabel for="password_confirmation" class="text-mme-blue uppercase" value="Confirmer le mot de passe" />
             <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
         </div>
         <div class="mt-4">
-            <Label value="Choose your pole" class="text-mme-blue uppercase"></Label>
-            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="department" :message="form.errors.department"/>
+            <Label value="Choisissez votre département" class="text-mme-blue uppercase"></Label>
+            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
         </div>
         </div>
 
         <div class="block flex">
-            <!--            <label class="flex items-center">-->
-            <!--                <BreezeCheckbox name="remember" v-model:checked="form.remember" />-->
-            <!--                <span class="ml-2 text-sm">Remember me</span>-->
-            <!--            </label>-->
             <Button :class="{ 'opacity-25': form.processing }" class="uppercase font-bold m-auto bg-mme-blue hover:bg-blue-600" :disabled="form.processing">
                 S'inscrire
             </Button>
