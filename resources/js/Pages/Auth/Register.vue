@@ -46,7 +46,7 @@
         </div>
         <div class="mt-4">
             <Label value="Choisissez votre département" class="text-mme-blue uppercase"></Label>
-            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="filteredArray" :message="form.errors.department"/>
+            <Select class="text-mme-blue uppercase bg-white" v-model="form.department" :options="department" :message="form.errors.department"/>
         </div>
         </div>
 
