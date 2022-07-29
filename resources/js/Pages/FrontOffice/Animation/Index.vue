@@ -2,9 +2,7 @@
     <FOLayout>
         <div class="eventsList">
             <div v-if="items != null" v-for="item in items" :key="item.id" class="eventCard">
-                <div class="eventCard_pic flex">
-                    <img :src="item.image" class="m-auto">
-                </div>
+                <div class="eventCard_pic flex bg-center bg-cover" :style="'background-image:url('+item.image+')'"></div>
                 <div class="eventCard_texts">
                     <div>
                         <p class="eventCard_status" v-html="checkDate(item.end_date, false) ? 'évenement terminé' : 'évenement à venir'"/>

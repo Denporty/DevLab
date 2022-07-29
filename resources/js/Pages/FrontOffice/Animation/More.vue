@@ -43,8 +43,7 @@
                     <p class="mt-4 text-center">{{ lastPlaces(animation) }}</p>
                 </div>
             </div>
-            <div class="eventDetail_background">
-                <img :src="animation.image" class="m-auto" style="height: inherit;">
+            <div class="eventDetail_background bg-center bg-cover" :style="'background-image:url('+animation.image+')'">
             </div>
             <div class="eventDetail_blocText">
                 <h2>Description :</h2>
