@@ -6,6 +6,7 @@
                 <div class="eventCard_texts">
                     <div>
                         <p class="eventCard_status" v-html="checkDate(item.end_date, false) ? 'évenement terminé' : 'évenement à venir'"/>
+                        <h3 v-if="$page.props.auth.user.animation_id === animation.id">Vous participez à cet événement</h3>
                         <h2>{{ item.name }}</h2>
                         <p>
                             {{ item.summary }}
@@ -28,7 +29,7 @@
                                 <p>{{ item.start_date }} / {{ item.end_date }}</p>
                             </div>
                         </div>
-                        <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 eventCard_button" :class="checkDate(item.end_date, true) ? 'pointer-events-none bg-blue-200' : ''">
+                        <a :href="route('animation.more', item.id)" class="inline-block bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 eventCard_button" :class="!checkDate(item.end_date, false) ? 'pointer-events-none bg-gray-500' : ''">
                             En savoir plus
                         </a>
                     </div>
