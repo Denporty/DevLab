@@ -19,6 +19,14 @@
 .eventCard_texts{
   width: 65%;
   padding: 30px;
+  h3{
+    background: #60A5FA;
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: #FFF;
+    display: inline-block;
+    font-weight: bold;
+  }
   h2{
     font-size: 28px;
     color: #00588A;
@@ -48,6 +56,5 @@
 .eventCard_button{
   margin: 0 0 0 auto;
   display: flex;
-  background: #60A5FA;
   text-transform: uppercase;
 }
