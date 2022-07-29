@@ -6,7 +6,6 @@
                 <div class="eventCard_texts">
                     <div>
                         <p class="eventCard_status" v-html="checkDate(item.end_date, false) ? 'évenement terminé' : 'évenement à venir'"/>
-                        <h3 v-if="$page.props.auth.user.animation_id === animation.id">Vous participez à cet événement</h3>
                         <h2>{{ item.name }}</h2>
                         <p>
                             {{ item.summary }}
